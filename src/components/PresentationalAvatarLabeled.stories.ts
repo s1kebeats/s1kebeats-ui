@@ -12,9 +12,13 @@ type Story = StoryObj<typeof PresentationalAvatarLabeled>
 
 export const WithoutImage: Story = {
   render: (args) => ({
-    components: { PresentationalAvatarLabeled },
+    components: {
+      PresentationalAvatarLabeled
+    },
     setup() {
-      return { args }
+      return {
+        args
+      }
     },
     template: '<PresentationalAvatarLabeled v-bind="args" />'
   }),
@@ -26,9 +30,13 @@ export const WithoutImage: Story = {
 
 export const WithImage: Story = {
   render: (args) => ({
-    components: { PresentationalAvatarLabeled },
+    components: {
+      PresentationalAvatarLabeled
+    },
     setup() {
-      return { args }
+      return {
+        args
+      }
     },
     template: '<PresentationalAvatarLabeled v-bind="args" />'
   }),
@@ -40,9 +48,13 @@ export const WithImage: Story = {
 
 export const PositionRight: Story = {
   render: (args) => ({
-    components: { PresentationalAvatarLabeled },
+    components: {
+      PresentationalAvatarLabeled
+    },
     setup() {
-      return { args }
+      return {
+        args
+      }
     },
     template: '<PresentationalAvatarLabeled v-bind="args" />'
   }),
@@ -55,9 +67,13 @@ export const PositionRight: Story = {
 
 export const PositionLeft: Story = {
   render: (args) => ({
-    components: { PresentationalAvatarLabeled },
+    components: {
+      PresentationalAvatarLabeled
+    },
     setup() {
-      return { args }
+      return {
+        args
+      }
     },
     template: '<PresentationalAvatarLabeled v-bind="args" />'
   }),

@@ -12,9 +12,13 @@ type Story = StoryObj<typeof PresentationalAvatar>
 
 export const WithoutImage: Story = {
   render: (args) => ({
-    components: { PresentationalAvatar },
+    components: {
+      PresentationalAvatar
+    },
     setup() {
-      return { args }
+      return {
+        args
+      }
     },
     template: '<PresentationalAvatar v-bind="args" />'
   }),
@@ -26,9 +30,13 @@ export const WithoutImage: Story = {
 
 export const WithImage: Story = {
   render: (args) => ({
-    components: { PresentationalAvatar },
+    components: {
+      PresentationalAvatar
+    },
     setup() {
-      return { args }
+      return {
+        args
+      }
     },
     template: '<PresentationalAvatar v-bind="args" />'
   }),

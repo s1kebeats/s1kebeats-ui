@@ -1,5 +1,8 @@
 <template>
-  <div data-testid="presentationalAvatarLabeled" class="flex items-center gap-[5px] h-[56px]">
+  <div
+    data-testid="presentationalAvatarLabeled"
+    class="flex items-center gap-[5px] h-[56px]"
+  >
     <template v-if="position === 'right'">
       <span
         data-testid="presentationalAvatarLabeledLabel"

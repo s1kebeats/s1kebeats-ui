@@ -10,37 +10,52 @@ const defaultMountOptions = {
 }
 
 const presentationalAvatarSelector = '[data-testid=presentationalAvatar]'
-const presentationalAvatarLabeledSelector = '[data-testid=presentationalAvatarLabeled]'
-const presentationalAvatarLabeledLabelSelector = '[data-testid=presentationalAvatarLabeledLabel]'
+const presentationalAvatarLabeledSelector =
+  '[data-testid=presentationalAvatarLabeled]'
+const presentationalAvatarLabeledLabelSelector =
+  '[data-testid=presentationalAvatarLabeledLabel]'
 
 describe('PresentationalAvatarLabeled', () => {
   describe('props', () => {
     it('username - should render avatar with set username', () => {
-      const wrapper = shallowMount(PresentationalAvatarLabeled, defaultMountOptions)
-
-      expect(wrapper.get(presentationalAvatarSelector).attributes('username')).toBe(
-        defaultMountOptions.props.username
+      const wrapper = shallowMount(
+        PresentationalAvatarLabeled,
+        defaultMountOptions
       )
+
+      expect(
+        wrapper.get(presentationalAvatarSelector).attributes('username')
+      ).toBe(defaultMountOptions.props.username)
     })
     it('username - should render label with set username', () => {
-      const wrapper = shallowMount(PresentationalAvatarLabeled, defaultMountOptions)
+      const wrapper = shallowMount(
+        PresentationalAvatarLabeled,
+        defaultMountOptions
+      )
 
       expect(wrapper.get(presentationalAvatarLabeledLabelSelector).text()).toBe(
         `@${defaultMountOptions.props.username}`
       )
     })
     it('image - should render avatar with set image', () => {
-      const wrapper = shallowMount(PresentationalAvatarLabeled, defaultMountOptions)
-
-      expect(wrapper.get(presentationalAvatarSelector).attributes('image')).toBe(
-        defaultMountOptions.props.image
+      const wrapper = shallowMount(
+        PresentationalAvatarLabeled,
+        defaultMountOptions
       )
+
+      expect(
+        wrapper.get(presentationalAvatarSelector).attributes('image')
+      ).toBe(defaultMountOptions.props.image)
     })
   })
   it('snaphshot - should match the snapshot', () => {
-    const wrapper = shallowMount(PresentationalAvatarLabeled, defaultMountOptions)
+    const wrapper = shallowMount(
+      PresentationalAvatarLabeled,
+      defaultMountOptions
+    )
 
-    expect(wrapper.get(presentationalAvatarLabeledSelector)).toMatchInlineSnapshot(`
+    expect(wrapper.get(presentationalAvatarLabeledSelector))
+      .toMatchInlineSnapshot(`
           DOMWrapper {
             "isDisabled": [Function],
             "wrapperElement": <div

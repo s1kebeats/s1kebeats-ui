@@ -3,8 +3,10 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 const presentationalAvatarSelector = '[data-testid=presentationalAvatar]'
-const presentationalAvatarImageSelector = '[data-testid=presentationalAvatarImage]'
-const presentationalAvatarAbbrSelector = '[data-testid=presentationalAvatarAbbr]'
+const presentationalAvatarImageSelector =
+  '[data-testid=presentationalAvatarImage]'
+const presentationalAvatarAbbrSelector =
+  '[data-testid=presentationalAvatarAbbr]'
 
 describe('PresentationalAvatar', () => {
   describe('props', () => {
@@ -16,7 +18,9 @@ describe('PresentationalAvatar', () => {
         }
       })
 
-      expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(true)
+      expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(
+        true
+      )
     })
     it('image - should not render username abbr when provided', () => {
       const wrapper = mount(PresentationalAvatar, {
@@ -26,7 +30,9 @@ describe('PresentationalAvatar', () => {
         }
       })
 
-      expect(wrapper.find(presentationalAvatarAbbrSelector).exists()).toBe(false)
+      expect(wrapper.find(presentationalAvatarAbbrSelector).exists()).toBe(
+        false
+      )
     })
     it('image - should render username abbr when set to null', () => {
       const wrapper = mount(PresentationalAvatar, {
@@ -46,7 +52,9 @@ describe('PresentationalAvatar', () => {
         }
       })
 
-      expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(false)
+      expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(
+        false
+      )
     })
     it('username - should render valid username abbr', () => {
       const testUsername = 'testUsername'
