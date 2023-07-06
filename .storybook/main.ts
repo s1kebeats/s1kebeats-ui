@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
+
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -7,7 +8,12 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     {
       name: '@storybook/addon-styling',
-      options: {}
+      options: {
+        sass: {
+          // Require your Sass preprocessor here
+          implementation: require('sass'),
+        },
+      }
     }
   ],
   framework: {

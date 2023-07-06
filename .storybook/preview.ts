@@ -1,8 +1,8 @@
-import type { Preview } from '@storybook/vue3'
-import { setup } from '@storybook/vue3'
+import { type Preview, setup } from '@storybook/vue3'
 import { type App } from 'vue';
 
 import './tailwind.css'
+import '../src/assets/main.scss'
 
 import { createPinia } from 'pinia';
 

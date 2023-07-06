@@ -521,3 +521,86 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+
+.m-auto {
+  margin: auto;
+}
+
+.m-\[4px\] {
+  margin: 4px;
+}
+
+.flex {
+  display: flex;
+}
+
+.h-\[48px\] {
+  height: 48px;
+}
+
+.h-\[56px\] {
+  height: 56px;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-\[48px\] {
+  width: 48px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-\[\] {
+  gap: ;
+}
+
+.gap-\[5px\] {
+  gap: 5px;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(97 11 239 / var(--tw-bg-opacity));
+}
+
+.px-\[\] {
+  padding-left: ;
+  padding-right: ;
+}
+
+.py-\[5px\] {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.px-\[10px\] {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.text-grayscale-bg {
+  --tw-text-opacity: 1;
+  color: rgb(252 252 252 / var(--tw-text-opacity));
+}
+
+.text-grayscale-body {
+  --tw-text-opacity: 1;
+  color: rgb(78 75 102 / var(--tw-text-opacity));
+}
+

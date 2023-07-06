@@ -11,8 +11,10 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "storybook": "pnpm dlx tailwindcss -o .storybook/tailwind.css && storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "build-tailwind": "pnpm dlx tailwindcss -o .storybook/tailwind.css",
+    "dev-tailwind": "pnpm dlx tailwindcss -i ./src/assets/main.css -o .storybook/tailwind.css --watch"
   },
   "dependencies": {
     "pinia": "^2.1.3",
@@ -20,6 +22,7 @@
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@rushstack/eslint-patch": "^1.2.0",
     "@storybook/addon-essentials": "7.0.25",
     "@storybook/addon-interactions": "7.0.25",
@@ -39,15 +42,18 @@
     "@vue/test-utils": "^2.3.2",
     "@vue/tsconfig": "^0.4.0",
     "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3",
     "eslint": "^8.39.0",
     "eslint-plugin-storybook": "^0.6.12",
     "eslint-plugin-vue": "^9.11.0",
     "jsdom": "^22.1.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
     "prettier": "^2.8.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.63.6",
     "storybook": "7.0.25",
     "tailwindcss": "^3.3.2",
     "typescript": "~5.0.4",
