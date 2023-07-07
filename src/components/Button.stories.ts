@@ -22,11 +22,11 @@ export const Primary: Story = {
     template: `
       <Button v-bind="args">
         Кнопка
-      </ Button>
+      </Button>
     `
   }),
   args: {
-    size: 'md',
+    size: 'sm',
     type: 'primary'
   }
 };
