@@ -590,24 +590,29 @@ video {
   border-width: 2px;
 }
 
-.border-primary {
-  --tw-border-opacity: 1;
-  border-color: rgb(97 11 239 / var(--tw-border-opacity));
-}
-
 .border-grayscale-header {
   --tw-border-opacity: 1;
   border-color: rgb(20 20 43 / var(--tw-border-opacity));
 }
 
-.bg-primary {
-  --tw-bg-opacity: 1;
-  background-color: rgb(97 11 239 / var(--tw-bg-opacity));
+.border-grayscale-line {
+  --tw-border-opacity: 1;
+  border-color: rgb(217 219 233 / var(--tw-border-opacity));
+}
+
+.border-primary {
+  --tw-border-opacity: 1;
+  border-color: rgb(97 11 239 / var(--tw-border-opacity));
 }
 
 .bg-grayscale-header {
   --tw-bg-opacity: 1;
   background-color: rgb(20 20 43 / var(--tw-bg-opacity));
+}
+
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(97 11 239 / var(--tw-bg-opacity));
 }
 
 .px-\[10px\] {
@@ -670,11 +675,6 @@ video {
   color: rgb(97 11 239 / var(--tw-text-opacity));
 }
 
-.text-grayscale-header {
-  --tw-text-opacity: 1;
-  color: rgb(20 20 43 / var(--tw-text-opacity));
-}
-
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -709,8 +709,8 @@ video {
   outline-width: 8px;
 }
 
-.focus\:outline-\[800px\]:focus {
-  outline-width: 800px;
+.focus\:outline-grayscale-input:focus {
+  outline-color: #eff0f6;
 }
 
 .focus\:outline-primary-bg_strong:focus {

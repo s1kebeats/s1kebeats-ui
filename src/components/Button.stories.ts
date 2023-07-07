@@ -22,10 +22,75 @@ export const Primary: Story = {
     template: `
       <Button v-bind="args">
         Кнопка
-      <Button />
+      </ Button>
     `
   }),
   args: {
-    size: 'md'
+    size: 'md',
+    type: 'primary'
+  }
+}
+
+export const Secondary: Story = {
+  render: (args) => ({
+    components: {
+      Button
+    },
+    setup() {
+      return {
+        args
+      }
+    },
+    template: `
+      <Button v-bind="args">
+        Кнопка
+      </ Button>
+    `
+  }),
+  args: {
+    size: 'md',
+    type: 'secondary'
+  }
+}
+export const Subtle: Story = {
+  render: (args) => ({
+    components: {
+      Button
+    },
+    setup() {
+      return {
+        args
+      }
+    },
+    template: `
+      <Button v-bind="args">
+        Кнопка
+      </ Button>
+    `
+  }),
+  args: {
+    size: 'md',
+    type: 'subtle'
+  }
+}
+export const Ghost: Story = {
+  render: (args) => ({
+    components: {
+      Button
+    },
+    setup() {
+      return {
+        args
+      }
+    },
+    template: `
+      <Button v-bind="args">
+        Кнопка
+      </ Button>
+    `
+  }),
+  args: {
+    size: 'md',
+    type: 'ghost'
   }
 }
