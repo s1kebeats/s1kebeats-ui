@@ -1,14 +1,14 @@
-import PresentationalAvatarLabeled from './PresentationalAvatarLabeled.vue'
-import type { Meta, StoryObj } from '@storybook/vue3'
-import { faker } from '@faker-js/faker'
+import PresentationalAvatarLabeled from './PresentationalAvatarLabeled.vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
+import { faker } from '@faker-js/faker';
 
 const meta: Meta<typeof PresentationalAvatarLabeled> = {
   component: PresentationalAvatarLabeled
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof PresentationalAvatarLabeled>
+type Story = StoryObj<typeof PresentationalAvatarLabeled>;
 
 export const WithoutImage: Story = {
   render: (args) => ({
@@ -18,7 +18,7 @@ export const WithoutImage: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: '<PresentationalAvatarLabeled v-bind="args" />'
   }),
@@ -26,7 +26,7 @@ export const WithoutImage: Story = {
     username: 'testUsername',
     image: null
   }
-}
+};
 
 export const WithImage: Story = {
   render: (args) => ({
@@ -36,7 +36,7 @@ export const WithImage: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: '<PresentationalAvatarLabeled v-bind="args" />'
   }),
@@ -44,7 +44,7 @@ export const WithImage: Story = {
     username: 'testUsername',
     image: faker.image.avatar()
   }
-}
+};
 
 export const PositionRight: Story = {
   render: (args) => ({
@@ -54,7 +54,7 @@ export const PositionRight: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: '<PresentationalAvatarLabeled v-bind="args" />'
   }),
@@ -63,7 +63,7 @@ export const PositionRight: Story = {
     image: null,
     position: 'right'
   }
-}
+};
 
 export const PositionLeft: Story = {
   render: (args) => ({
@@ -73,7 +73,7 @@ export const PositionLeft: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: '<PresentationalAvatarLabeled v-bind="args" />'
   }),
@@ -82,4 +82,4 @@ export const PositionLeft: Story = {
     image: null,
     position: 'left'
   }
-}
+};

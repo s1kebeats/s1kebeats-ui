@@ -34,14 +34,14 @@
   </div>
 </template>
 <script setup lang="ts">
-import PresentationalAvatar from './PresentationalAvatar.vue'
+import PresentationalAvatar from './PresentationalAvatar.vue';
 
 interface Props {
-  username: string
-  image: string | null
-  position?: 'right' | 'left'
+  username: string;
+  image: string | null;
+  position?: 'right' | 'left';
 }
 const props = withDefaults(defineProps<Props>(), {
   position: 'left'
-})
+});
 </script>

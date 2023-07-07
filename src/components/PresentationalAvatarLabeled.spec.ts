@@ -1,19 +1,19 @@
-import PresentationalAvatarLabeled from './PresentationalAvatarLabeled.vue'
-import { describe, it, expect } from 'vitest'
-import { shallowMount } from '@vue/test-utils'
+import PresentationalAvatarLabeled from './PresentationalAvatarLabeled.vue';
+import { describe, it, expect } from 'vitest';
+import { shallowMount } from '@vue/test-utils';
 
 const defaultMountOptions = {
   props: {
     username: 'testUsername',
     image: 'testImage'
   }
-}
+};
 
-const presentationalAvatarSelector = '[data-testid=presentationalAvatar]'
+const presentationalAvatarSelector = '[data-testid=presentationalAvatar]';
 const presentationalAvatarLabeledSelector =
-  '[data-testid=presentationalAvatarLabeled]'
+  '[data-testid=presentationalAvatarLabeled]';
 const presentationalAvatarLabeledLabelSelector =
-  '[data-testid=presentationalAvatarLabeledLabel]'
+  '[data-testid=presentationalAvatarLabeledLabel]';
 
 describe('PresentationalAvatarLabeled', () => {
   describe('props', () => {
@@ -21,38 +21,38 @@ describe('PresentationalAvatarLabeled', () => {
       const wrapper = shallowMount(
         PresentationalAvatarLabeled,
         defaultMountOptions
-      )
+      );
 
       expect(
         wrapper.get(presentationalAvatarSelector).attributes('username')
-      ).toBe(defaultMountOptions.props.username)
-    })
+      ).toBe(defaultMountOptions.props.username);
+    });
     it('username - should render label with set username', () => {
       const wrapper = shallowMount(
         PresentationalAvatarLabeled,
         defaultMountOptions
-      )
+      );
 
       expect(wrapper.get(presentationalAvatarLabeledLabelSelector).text()).toBe(
         `@${defaultMountOptions.props.username}`
-      )
-    })
+      );
+    });
     it('image - should render avatar with set image', () => {
       const wrapper = shallowMount(
         PresentationalAvatarLabeled,
         defaultMountOptions
-      )
+      );
 
       expect(
         wrapper.get(presentationalAvatarSelector).attributes('image')
-      ).toBe(defaultMountOptions.props.image)
-    })
-  })
+      ).toBe(defaultMountOptions.props.image);
+    });
+  });
   it('snaphshot - should match the snapshot', () => {
     const wrapper = shallowMount(
       PresentationalAvatarLabeled,
       defaultMountOptions
-    )
+    );
 
     expect(wrapper.get(presentationalAvatarLabeledSelector))
       .toMatchInlineSnapshot(`
@@ -78,6 +78,6 @@ describe('PresentationalAvatarLabeled', () => {
               
             </div>,
           }
-        `)
-  })
-})
+        `);
+  });
+});

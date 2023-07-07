@@ -26,12 +26,12 @@
 </template>
 <script setup lang="ts">
 interface Props {
-  size?: 'sm' | 'md' | 'lg' | 'xl'
-  type?: 'primary' | 'secondary' | 'subtle' | 'ghost'
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  type?: 'primary' | 'secondary' | 'subtle' | 'ghost';
 }
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   type: 'secondary'
-})
+});
 </script>

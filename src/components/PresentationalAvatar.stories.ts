@@ -1,14 +1,14 @@
-import PresentationalAvatar from './PresentationalAvatar.vue'
-import type { Meta, StoryObj } from '@storybook/vue3'
-import { faker } from '@faker-js/faker'
+import PresentationalAvatar from './PresentationalAvatar.vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
+import { faker } from '@faker-js/faker';
 
 const meta: Meta<typeof PresentationalAvatar> = {
   component: PresentationalAvatar
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof PresentationalAvatar>
+type Story = StoryObj<typeof PresentationalAvatar>;
 
 export const WithoutImage: Story = {
   render: (args) => ({
@@ -18,7 +18,7 @@ export const WithoutImage: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: '<PresentationalAvatar v-bind="args" />'
   }),
@@ -26,7 +26,7 @@ export const WithoutImage: Story = {
     username: 'testUsername',
     image: null
   }
-}
+};
 
 export const WithImage: Story = {
   render: (args) => ({
@@ -36,7 +36,7 @@ export const WithImage: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: '<PresentationalAvatar v-bind="args" />'
   }),
@@ -44,4 +44,4 @@ export const WithImage: Story = {
     username: 'testUsername',
     image: faker.image.avatar()
   }
-}
+};

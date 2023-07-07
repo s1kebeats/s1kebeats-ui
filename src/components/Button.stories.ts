@@ -1,13 +1,13 @@
-import Button from './Button.vue'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import Button from './Button.vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
 
 const meta: Meta<typeof Button> = {
   component: Button
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   render: (args) => ({
@@ -17,7 +17,7 @@ export const Primary: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: `
       <Button v-bind="args">
@@ -29,7 +29,7 @@ export const Primary: Story = {
     size: 'md',
     type: 'primary'
   }
-}
+};
 
 export const Secondary: Story = {
   render: (args) => ({
@@ -39,7 +39,7 @@ export const Secondary: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: `
       <Button v-bind="args">
@@ -51,7 +51,7 @@ export const Secondary: Story = {
     size: 'md',
     type: 'secondary'
   }
-}
+};
 export const Subtle: Story = {
   render: (args) => ({
     components: {
@@ -60,7 +60,7 @@ export const Subtle: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: `
       <Button v-bind="args">
@@ -72,7 +72,7 @@ export const Subtle: Story = {
     size: 'md',
     type: 'subtle'
   }
-}
+};
 export const Ghost: Story = {
   render: (args) => ({
     components: {
@@ -81,7 +81,7 @@ export const Ghost: Story = {
     setup() {
       return {
         args
-      }
+      };
     },
     template: `
       <Button v-bind="args">
@@ -93,4 +93,4 @@ export const Ghost: Story = {
     size: 'md',
     type: 'ghost'
   }
-}
+};

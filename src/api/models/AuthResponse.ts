@@ -1,6 +1,6 @@
-import type User from './User'
+import type User from './User';
 
 export default interface AuthResponse {
-  accessToken: string
-  user: User
+  accessToken: string;
+  user: User;
 }

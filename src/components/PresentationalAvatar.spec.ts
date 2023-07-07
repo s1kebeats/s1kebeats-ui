@@ -1,12 +1,12 @@
-import PresentationalAvatar from './PresentationalAvatar.vue'
-import { describe, it, expect } from 'vitest'
-import { mount } from '@vue/test-utils'
+import PresentationalAvatar from './PresentationalAvatar.vue';
+import { describe, it, expect } from 'vitest';
+import { mount } from '@vue/test-utils';
 
-const presentationalAvatarSelector = '[data-testid=presentationalAvatar]'
+const presentationalAvatarSelector = '[data-testid=presentationalAvatar]';
 const presentationalAvatarImageSelector =
-  '[data-testid=presentationalAvatarImage]'
+  '[data-testid=presentationalAvatarImage]';
 const presentationalAvatarAbbrSelector =
-  '[data-testid=presentationalAvatarAbbr]'
+  '[data-testid=presentationalAvatarAbbr]';
 
 describe('PresentationalAvatar', () => {
   describe('props', () => {
@@ -16,66 +16,68 @@ describe('PresentationalAvatar', () => {
           username: 'testUsername',
           image: 'testImage'
         }
-      })
+      });
 
       expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(
         true
-      )
-    })
+      );
+    });
     it('image - should not render username abbr when provided', () => {
       const wrapper = mount(PresentationalAvatar, {
         props: {
           username: 'testUsername',
           image: 'testImage'
         }
-      })
+      });
 
       expect(wrapper.find(presentationalAvatarAbbrSelector).exists()).toBe(
         false
-      )
-    })
+      );
+    });
     it('image - should render username abbr when set to null', () => {
       const wrapper = mount(PresentationalAvatar, {
         props: {
           username: 'testUsername',
           image: null
         }
-      })
+      });
 
-      expect(wrapper.find(presentationalAvatarAbbrSelector).exists()).toBe(true)
-    })
+      expect(wrapper.find(presentationalAvatarAbbrSelector).exists()).toBe(
+        true
+      );
+    });
     it('image - should not render image when set to null', () => {
       const wrapper = mount(PresentationalAvatar, {
         props: {
           username: 'testUsername',
           image: null
         }
-      })
+      });
 
       expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(
         false
-      )
-    })
+      );
+    });
     it('username - should render valid username abbr', () => {
-      const testUsername = 'testUsername'
+      const testUsername = 'testUsername';
       const wrapper = mount(PresentationalAvatar, {
         props: {
           username: testUsername,
           image: null
         }
-      })
+      });
       expect(wrapper.get(presentationalAvatarAbbrSelector).text()).toBe(
         testUsername.slice(0, 2).toUpperCase()
-      )
-    })
-  })
+      );
+    });
+  });
   it('snaphshot - should match the snapshot', () => {
     const wrapper = mount(PresentationalAvatar, {
       props: {
         username: 'testUsername',
         image: null
       }
-    })
+    });
 
     expect(wrapper.get(presentationalAvatarSelector)).toMatchInlineSnapshot(`
           DOMWrapper {
@@ -92,6 +94,6 @@ describe('PresentationalAvatar', () => {
               </span>
             </div>,
           }
-        `)
-  })
-})
+        `);
+  });
+});

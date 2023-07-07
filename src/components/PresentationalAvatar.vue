@@ -18,11 +18,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from 'vue';
 
 const props = defineProps<{
-  username: string
-  image: string | null
-}>()
-const cutUsername = computed(() => props.username.slice(0, 2).toUpperCase())
+  username: string;
+  image: string | null;
+}>();
+const cutUsername = computed(() => props.username.slice(0, 2).toUpperCase());
 </script>
