@@ -49,7 +49,14 @@
       </div>
 
       <!-- TODO: Show close icon when focused is true -->
-      <template v-if="focused"> CLEAR_ICON </template>
+      <Icon
+        icon="material-symbols:close-rounded"
+        :class="{
+          'text-[19px]': size === 'sm',
+          'text-[22px]': size === 'md' || size === 'lg',
+          'text-[24px]': size === 'xl'
+        }"
+      />
     </div>
     <span
       v-show="message"
@@ -63,6 +70,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 
 interface Props {

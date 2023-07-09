@@ -1,5 +1,6 @@
 <template>
   <button
+    data-testid="button"
     class="flex items-center justify-center link transition-all"
     :class="{
       'desktop-text-xs rounded-lg min-h-[48px] px-4 gap-3': size === 'sm',

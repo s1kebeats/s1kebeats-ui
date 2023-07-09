@@ -526,10 +526,6 @@ video {
   margin: 4px;
 }
 
-.inline-block {
-  display: inline-block;
-}
-
 .flex {
   display: flex;
 }
@@ -560,6 +556,10 @@ video {
 
 .min-h-\[60px\] {
   min-height: 60px;
+}
+
+.w-\[100px\] {
+  width: 100px;
 }
 
 .w-\[48px\] {
@@ -702,6 +702,30 @@ video {
 .py-\[5px\] {
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.text-\[100px\] {
+  font-size: 100px;
+}
+
+.text-\[24px\] {
+  font-size: 24px;
+}
+
+.text-\[22px\] {
+  font-size: 22px;
+}
+
+.text-\[20px\] {
+  font-size: 20px;
+}
+
+.text-\[19px\] {
+  font-size: 19px;
+}
+
+.text-\[18px\] {
+  font-size: 18px;
 }
 
 .\!text-danger-default_strong {

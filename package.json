@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
-    "test:unit": "vitest",
+    "test": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
+    "@iconify/vue": "^4.1.1",
     "@rushstack/eslint-patch": "^1.2.0",
     "@storybook/addon-essentials": "7.0.25",
     "@storybook/addon-interactions": "7.0.25",
