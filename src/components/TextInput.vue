@@ -1,102 +1,215 @@
 <template>
-  <div
-    class="flex flex-col"
-    :class="{
-      'desktop-text-xs': size === 'sm',
-      'desktop-text-sm gap-1': size === 'md' || size === 'lg',
-      'desktop-text-md gap-2': size === 'xl'
-    }"
-  >
+  <div class="flex flex-col" :class="inputContainerClasses" data-testid="textInputContainer">
     <div
-      class="bg-grayscale-input flex items-center transition-all"
-      :class="{
-        'rounded-lg min-h-[48px] px-4 gap-3': size === 'sm',
-        'rounded-xl min-h-[52px] px-6 gap-3': size === 'md',
-        'rounded-xl min-h-[56px] px-8 gap-4': size === 'lg',
-        'rounded-2xl min-h-[60px] px-8 gap-4': size === 'xl',
-        '!bg-grayscale-bg outline-grayscale-header outline outline-[2px]':
-          focused,
-        'opacity-50': disabled,
-        'outline-success outline outline-[2px] !bg-success-bg':
-          state === 'success',
-        'outline-danger outline outline-[2px] !bg-danger-bg': state === 'error'
-      }"
-      @click="focusOnClick"
+      class="flex items-center transition-all"
+      data-testid="presentationalInput"
+      :class="[
+        inputPresentationalSizingClasses,
+        inputPresentationalStateClasses,
+        {
+          'opacity-50': disabled,
+          'bg-grayscale-bg outline-grayscale-header outline outline-[2px]':
+            focused,
+          'bg-grayscale-input': !focused
+        }
+      ]"
+      @focusin="focused = true"
+      @focusout="focused = false"
     >
-      <!-- TODO: Show loading spinner if loading props provided -->
-      <template v-if="loading"> LOADING_ICON </template>
+      <button
+        data-testid="optionalIconButton"
+        :disabled="disabled"
+        v-if="icon"
+        @click="callback ? callback() : null"
+      >
+        <Icon
+          data-testid="optionalIcon"
+          :icon="icon"
+          class="transition-all hover:text-black"
+          :class="[
+            inputIconClasses,
+            coloredIconClasses,
+            {
+              '!text-black': focused
+            }
+          ]"
+        />
+      </button>
       <div class="flex flex-col justify-center">
         <span
+          data-testid="upperLabel"
           v-show="value"
-          class="desktop-text-xs text-grayscale-label"
-          :class="{
-            '!text-success-default_strong': state === 'success',
-            '!text-danger-default_strong': state === 'error'
-          }"
+          class="desktop-text-xs"
+          :class="inputLabelClasses"
           >{{ label }}</span
         >
         <input
+          data-testid="textInput"
           type="text"
           :name="name"
           ref="textInput"
           :placeholder="label"
           class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label"
-          @focus="focused = true"
-          @blur="focused = false"
           v-model="value"
           :disabled="disabled"
         />
       </div>
 
-      <!-- TODO: Show close icon when focused is true -->
-      <Icon
-        icon="material-symbols:close-rounded"
+      <button
         :class="{
-          'text-[19px]': size === 'sm',
-          'text-[22px]': size === 'md' || size === 'lg',
-          'text-[24px]': size === 'xl'
+          'w-[19px]': size === 'sm',
+          'w-[22px]': size === 'md' || size === 'lg',
+          'w-[24px]': size === 'xl'
         }"
-      />
+        data-testid="clearButton"
+        @click="focused ? clearInputValue() : null"
+        :disabled="disabled"
+      >
+        <Icon
+          data-testid="clearButtonIcon"
+          v-show="focused"
+          icon="material-symbols:close-rounded"
+          :class="inputIconClasses"
+        />
+      </button>
     </div>
-    <span
-      v-show="message"
-      class="text-grayscale-header"
-      :class="{
-        '!text-success-default_strong': state === 'success',
-        '!text-danger-default_strong': state === 'error'
-      }"
-      >{{ message }}</span
-    >
+    <span data-testid="messageHint" v-if="message" :class="messageClasses">{{
+      message
+    }}</span>
   </div>
 </template>
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 interface Props {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   name: string;
   label: string;
-  loading?: boolean;
+  icon?: string;
   value?: string;
   disabled?: boolean;
   message?: string;
   state?: 'success' | 'error';
+  callback?: Function;
+  debounce?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
-  loading: false,
-  disabled: false
+  disabled: false,
+  debounce: false
 });
 
-const value = ref(props.value);
+const emit = defineEmits<{
+  (e: 'updateValue', value: string): void;
+}>();
 
-const textInput = ref();
+const value = ref(props.value ? props.value : '');
+
+const textInput = ref<HTMLInputElement | null>(null);
 const focused = ref(false);
 
-function focusOnClick() {
-  if (focused.value) return;
-  focused.value = true;
-  textInput.value.focus();
+const messageClasses = computed(() => {
+  switch (props.state) {
+    case 'success':
+      return 'text-success-default_strong';
+    case 'error':
+      return 'text-danger-default_strong';
+    default:
+      return 'text-grayscale-header';
+  }
+});
+
+const inputIconClasses = computed(() => {
+  switch (props.size) {
+    case 'sm':
+      return 'text-[19px]';
+    case 'md':
+    case 'lg':
+      return 'text-[22px]';
+    case 'xl':
+      return 'text-[24px]';
+  }
+});
+
+const inputContainerClasses = computed(() => {
+  switch (props.size) {
+    case 'sm':
+      return 'desktop-text-xs';
+    case 'md':
+    case 'lg':
+      return 'desktop-text-sm gap-1';
+    case 'xl':
+      return 'desktop-text-md gap-2';
+  }
+});
+
+const inputLabelClasses = computed(() => {
+  switch (props.state) {
+    case 'success':
+      return 'text-success-default_strong';
+    case 'error':
+      return 'text-danger-default_strong';
+    default:
+      return 'text-grayscale-label';
+  }
+});
+
+const inputPresentationalSizingClasses = computed(() => {
+  switch (props.size) {
+    case 'sm':
+      return 'rounded-lg min-h-[48px] px-4 gap-3';
+    case 'md':
+      return 'rounded-xl min-h-[52px] px-6 gap-3';
+    case 'lg':
+      return 'rounded-xl min-h-[56px] px-8 gap-4';
+    case 'xl':
+      return 'rounded-2xl min-h-[60px] px-8 gap-4';
+  }
+});
+
+const inputPresentationalStateClasses = computed(() => {
+  switch (props.state) {
+    case 'success':
+      return '!outline-success outline outline-[2px] !bg-success-bg';
+    case 'error':
+      return '!outline-danger outline outline-[2px] !bg-danger-bg';
+  }
+});
+
+const coloredIconClasses = computed(() => {
+  switch (props.state) {
+    case 'success':
+      return 'text-success-default_strong';
+    case 'error':
+      return 'text-danger-default_strong';
+    default:
+      return 'text-grayscale-label';
+  }
+});
+
+// function focusOnClick(e: Event) {
+//   if (focused.value) return
+//   focused.value = true;
+//   textInput.value.focus()
+// }
+
+function clearInputValue() {
+  value.value = '';
+  textInput.value!.focus();
 }
+
+let timeOut: NodeJS.Timeout;
+watch(value, () => {
+  if (!props.debounce) {
+    emit('updateValue', value.value);
+    return;
+  }
+  if (timeOut) {
+    clearTimeout(timeOut);
+  }
+  timeOut = setTimeout(() => {
+    emit('updateValue', value.value);
+  }, 500);
+});
 </script>

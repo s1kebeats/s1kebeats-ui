@@ -19,11 +19,11 @@ export const Primary: Story = {
     template: `
     <div class="flex flex-col gap-5">
       <div class="flex gap-4 items-start">
-        <TextInput type="primary" message="Hinty" size="sm" name="input" label="sm Text Input" />
+        <TextInput @update-value="() => { console.log('update') }" :debounce="true" :callback="() => { console.log('boo') }" icon="material-symbols:search-rounded" type="primary" message="Hinty" size="sm" name="input" label="sm Text Input" />
         <Button size="sm">Button</Button>
       </div>
       <div class="flex gap-4 items-start">
-        <TextInput state="success" message="Hinty" size="md" name="input" label="md Text Input" />
+        <TextInput @update-value="() => { console.log('update') }" icon="material-symbols:search-rounded" state="success" message="Hinty" size="md" name="input" label="md Text Input" />
         <Button size="md">Button</Button>
       </div>
       <div class="flex gap-4 items-start">
