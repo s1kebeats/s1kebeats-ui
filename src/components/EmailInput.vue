@@ -1,5 +1,6 @@
 <template>
   <TextInput
+    data-testid="textInputComponent"
     :size="size"
     :name="name"
     label="Введите электронную почту"
@@ -15,30 +16,25 @@
 <script setup lang="ts">
 import TextInput from './TextInput.vue';
 import * as EmailValidator from 'email-validator';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import type TextInputProps from './TextInput.props';
 
 const emit = defineEmits<{
   (e: 'updateValue', value: string): void;
 }>();
 
-const props = defineProps<{
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  name: string;
-  preset?: string;
-  disabled?: boolean;
-  message?: string;
-  state?: 'success' | 'error';
-}>();
+const props =
+  defineProps<Omit<TextInputProps, 'label' | 'icon' | 'debounce'>>();
 
 const localMessage = ref(props.message ? props.message : '');
-const localState = ref(props.state ? props.state : undefined);
+const localState = ref(props.state ? props.state : null);
 
 // don't forget to reset prop-provided message and state after emit (in form component)
 
-async function updateValue(emitted: string) {
+function updateValue(emitted: string) {
   if (!emitted) {
     localMessage.value = '';
-    localState.value = undefined;
+    localState.value = null;
     emit('updateValue', emitted);
     return;
   }
@@ -51,4 +47,10 @@ async function updateValue(emitted: string) {
   localMessage.value = 'Введите настоящую электронную почту';
   localState.value = 'error';
 }
+
+onMounted(() => {
+  if (props.preset) {
+    updateValue(props.preset);
+  }
+});
 </script>

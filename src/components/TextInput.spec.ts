@@ -1,6 +1,6 @@
 import TextInput from './TextInput.vue';
 import { shallowMount } from '@vue/test-utils';
-import { describe, it, expect, vi, afterAll, beforeAll } from 'vitest';
+import { describe, it, expect, vi, afterEach, beforeAll } from 'vitest';
 
 const defaultMountOptions = {
   props: {
@@ -22,7 +22,7 @@ describe('TextInput', () => {
   beforeAll(() => {
     vi.useFakeTimers();
   });
-  afterAll(() => {
+  afterEach(() => {
     vi.restoreAllMocks();
   });
   describe('User Interactions', () => {
@@ -279,7 +279,7 @@ describe('TextInput', () => {
           >
             <!--v-if-->
             <div
-              class="flex flex-col justify-center"
+              class="grow flex flex-col justify-center"
             >
               <span
                 class="desktop-text-xs text-grayscale-label"

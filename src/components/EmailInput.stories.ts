@@ -26,6 +26,7 @@ export const Primary: Story = {
     `
   }),
   args: {
-    name: 'email'
+    name: 'email',
+    preset: 'email@example.com'
   }
 };

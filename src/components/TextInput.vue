@@ -91,19 +91,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { computed, ref, watch, watchEffect } from 'vue';
-
-interface Props {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  name: string;
-  label: string;
-  icon?: string;
-  preset?: string;
-  disabled?: boolean;
-  message?: string;
-  state?: 'success' | 'error';
-  callback?: Function;
-  debounce?: boolean;
-}
+import type Props from './TextInput.props';
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   disabled: false,
@@ -195,12 +183,6 @@ const coloredIconClasses = computed(() => {
       return 'text-grayscale-label';
   }
 });
-
-// function focusOnClick(e: Event) {
-//   if (focused.value) return
-//   focused.value = true;
-//   textInput.value.focus()
-// }
 
 function clearInputValue() {
   value.value = '';
