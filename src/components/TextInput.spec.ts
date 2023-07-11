@@ -110,31 +110,31 @@ describe('TextInput', () => {
         testIcon
       );
     });
-    it('value - should render with empty value by default', () => {
+    it('preset - should render with empty preset by default', () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
       expect(
         (wrapper.get(textInputSelector).element as HTMLInputElement).value
       ).toBe('');
     });
-    it('value - should not render upper label when not provided', () => {
+    it('preset - should not render upper label when not provided', () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
       expect(wrapper.get(upperLabelSelector).isVisible()).toBe(false);
     });
-    it('value - should render upper label when provided', () => {
+    it('preset - should render upper label when provided', () => {
       const wrapper = shallowMount(TextInput, {
         props: {
           ...defaultMountOptions.props,
-          value: 'testValue'
+          preset: 'testValue'
         }
       });
       expect(wrapper.get(upperLabelSelector).isVisible()).toBe(true);
     });
-    it('value - should render with set value', () => {
+    it('preset - should render with set value', () => {
       const testValue = 'testValue';
       const wrapper = shallowMount(TextInput, {
         props: {
           ...defaultMountOptions.props,
-          value: testValue
+          preset: testValue
         }
       });
       expect(
@@ -300,17 +300,24 @@ describe('TextInput', () => {
               class="w-[22px]"
               data-testid="clearButton"
             >
-              <anonymous-stub
-                class="text-[22px]"
-                data-testid="clearButtonIcon"
-                icon="material-symbols:close-rounded"
-                style="display: none;"
-              />
+              <transition-stub
+                appear="false"
+                css="true"
+                name="fade"
+                persisted="true"
+              >
+                <anonymous-stub
+                  class="text-[22px]"
+                  data-testid="clearButtonIcon"
+                  icon="material-symbols:close-rounded"
+                  style="display: none;"
+                />
+              </transition-stub>
             </button>
           </div>
           <!--v-if-->
         </div>,
       }
-    `)
-  })
+    `);
+  });
 });

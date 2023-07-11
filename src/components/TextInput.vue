@@ -1,5 +1,9 @@
 <template>
-  <div class="flex flex-col" :class="inputContainerClasses" data-testid="textInputContainer">
+  <div
+    class="flex flex-col"
+    :class="inputContainerClasses"
+    data-testid="textInputContainer"
+  >
     <div
       class="flex items-center transition-all"
       data-testid="presentationalInput"
@@ -21,21 +25,25 @@
         :disabled="disabled"
         v-if="icon"
         @click="callback ? callback() : null"
+        :class="{
+          'cursor-default': !callback
+        }"
       >
         <Icon
           data-testid="optionalIcon"
           :icon="icon"
-          class="transition-all hover:text-black"
+          class="transition-all"
           :class="[
             inputIconClasses,
             coloredIconClasses,
             {
-              '!text-black': focused
+              '!text-black': focused,
+              'hover:text-black': callback
             }
           ]"
         />
       </button>
-      <div class="flex flex-col justify-center">
+      <div class="grow flex flex-col justify-center">
         <span
           data-testid="upperLabel"
           v-show="value"
@@ -65,12 +73,14 @@
         @click="focused ? clearInputValue() : null"
         :disabled="disabled"
       >
-        <Icon
-          data-testid="clearButtonIcon"
-          v-show="focused"
-          icon="material-symbols:close-rounded"
-          :class="inputIconClasses"
-        />
+        <transition name="fade">
+          <Icon
+            data-testid="clearButtonIcon"
+            v-show="focused"
+            icon="material-symbols:close-rounded"
+            :class="inputIconClasses"
+          />
+        </transition>
       </button>
     </div>
     <span data-testid="messageHint" v-if="message" :class="messageClasses">{{
@@ -80,14 +90,14 @@
 </template>
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, watchEffect } from 'vue';
 
 interface Props {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   name: string;
   label: string;
   icon?: string;
-  value?: string;
+  preset?: string;
   disabled?: boolean;
   message?: string;
   state?: 'success' | 'error';
@@ -104,7 +114,7 @@ const emit = defineEmits<{
   (e: 'updateValue', value: string): void;
 }>();
 
-const value = ref(props.value ? props.value : '');
+const value = ref('');
 
 const textInput = ref<HTMLInputElement | null>(null);
 const focused = ref(false);
@@ -124,11 +134,10 @@ const inputIconClasses = computed(() => {
   switch (props.size) {
     case 'sm':
       return 'text-[19px]';
-    case 'md':
-    case 'lg':
-      return 'text-[22px]';
     case 'xl':
       return 'text-[24px]';
+    default:
+      return 'text-[22px]';
   }
 });
 
@@ -136,11 +145,10 @@ const inputContainerClasses = computed(() => {
   switch (props.size) {
     case 'sm':
       return 'desktop-text-xs';
-    case 'md':
-    case 'lg':
-      return 'desktop-text-sm gap-1';
     case 'xl':
       return 'desktop-text-md gap-2';
+    default:
+      return 'desktop-text-sm gap-1';
   }
 });
 
@@ -159,12 +167,12 @@ const inputPresentationalSizingClasses = computed(() => {
   switch (props.size) {
     case 'sm':
       return 'rounded-lg min-h-[48px] px-4 gap-3';
-    case 'md':
-      return 'rounded-xl min-h-[52px] px-6 gap-3';
     case 'lg':
       return 'rounded-xl min-h-[56px] px-8 gap-4';
     case 'xl':
       return 'rounded-2xl min-h-[60px] px-8 gap-4';
+    default:
+      return 'rounded-xl min-h-[52px] px-6 gap-3';
   }
 });
 
@@ -211,5 +219,9 @@ watch(value, () => {
   timeOut = setTimeout(() => {
     emit('updateValue', value.value);
   }, 500);
+});
+
+watchEffect(() => {
+  value.value = props.preset ? props.preset : '';
 });
 </script>
