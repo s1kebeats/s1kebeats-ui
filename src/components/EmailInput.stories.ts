@@ -22,6 +22,8 @@ export const Primary: Story = {
     template: `
     <div class="flex flex-col gap-5">
         <EmailInput v-bind="args" />
+        <EmailInput name="email2" preset="notAnEmail" />
+        <EmailInput name="email3" />
     </div>
     `
   }),

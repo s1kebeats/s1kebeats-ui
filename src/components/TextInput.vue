@@ -53,7 +53,7 @@
         >
         <input
           data-testid="textInput"
-          type="text"
+          :type="type"
           :name="name"
           ref="textInput"
           :placeholder="label"
@@ -95,7 +95,8 @@ import type Props from './TextInput.props';
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   disabled: false,
-  debounce: false
+  debounce: false,
+  type: 'text'
 });
 
 const emit = defineEmits<{

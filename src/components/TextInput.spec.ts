@@ -75,6 +75,20 @@ describe('TextInput', () => {
     });
   });
   describe('props', () => {
+    it('type - should render with type "text" by default', () => {
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+      expect(wrapper.get(textInputSelector).attributes('type')).toBe('text');
+    });
+    it('type - should render with set type', () => {
+      const testType = 'email';
+      const wrapper = shallowMount(TextInput, {
+        props: {
+          ...defaultMountOptions.props,
+          type: testType
+        }
+      });
+      expect(wrapper.get(textInputSelector).attributes('type')).toBe(testType);
+    });
     it('name - should render with set name', () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
       expect(wrapper.get(textInputSelector).attributes('name')).toBe(

@@ -11,6 +11,7 @@
     :state="state || localState"
     :debounce="true"
     @update-value="updateValue"
+    type="email"
   />
 </template>
 <script setup lang="ts">

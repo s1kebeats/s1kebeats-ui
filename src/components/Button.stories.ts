@@ -20,7 +20,16 @@ export const Primary: Story = {
       };
     },
     template: `
-      <Button v-bind="args">
+      <Button icon="material-symbols:alternate-email-rounded" v-bind="args">
+        Кнопка
+      </Button>
+      <Button icon="material-symbols:alternate-email-rounded">
+        Кнопка
+      </Button>
+      <Button icon="material-symbols:alternate-email-rounded" size="lg">
+        Кнопка
+      </Button>
+      <Button icon="material-symbols:alternate-email-rounded" size="xl">
         Кнопка
       </Button>
     `
@@ -49,7 +58,8 @@ export const Secondary: Story = {
   }),
   args: {
     size: 'md',
-    type: 'secondary'
+    type: 'secondary',
+    icon: 'material-symbols:alternate-email-rounded'
   }
 };
 export const Subtle: Story = {
@@ -70,7 +80,8 @@ export const Subtle: Story = {
   }),
   args: {
     size: 'md',
-    type: 'subtle'
+    type: 'subtle',
+    icon: 'material-symbols:alternate-email-rounded'
   }
 };
 export const Ghost: Story = {
@@ -91,6 +102,7 @@ export const Ghost: Story = {
   }),
   args: {
     size: 'md',
-    type: 'ghost'
+    type: 'ghost',
+    icon: 'material-symbols:alternate-email-rounded'
   }
 };

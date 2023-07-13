@@ -132,4 +132,26 @@ describe('EmailInput', () => {
       );
     });
   });
+  it('snapshot - should match the snapshot', () => {
+    const wrapper = shallowMount(EmailInput, defaultMountOptions);
+
+    expect(wrapper.get(textInputComponentSelector)).toMatchInlineSnapshot(`
+      DOMWrapper {
+        "isDisabled": [Function],
+        "wrapperElement": <text-input-stub
+          data-testid="textInputComponent"
+          debounce="true"
+          disabled="false"
+          icon="material-symbols:alternate-email-rounded"
+          label="Введите электронную почту"
+          message="message"
+          name="emailInput"
+          preset="preset"
+          size="xl"
+          state="success"
+          type="email"
+        />,
+      }
+    `);
+  });
 });
