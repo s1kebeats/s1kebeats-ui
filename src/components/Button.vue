@@ -37,7 +37,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
-  type: 'secondary',
+  type: 'primary',
   position: 'left'
 });
 
