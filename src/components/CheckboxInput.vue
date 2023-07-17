@@ -1,20 +1,36 @@
 <template>
-  <div>
+  <div class="flex items-center" :class="[checkboxInputContainerSizingClasses]">
+    <label
+      data-testid="checkboxInputLabelLeft"
+      v-if="label && position === 'left'"
+      :for="name"
+      :class="[checkboxInputLabelSizingClasses]"
+      >{{ label }}</label
+    >
     <input
+      data-testid="realCheckboxInput"
       :name="name"
       type="checkbox"
       :checked="checked"
       :value="value"
       class="hidden"
+      :disabled="disabled"
     />
     <div
+      data-testid="customCheckboxInput"
       tabindex="0"
-      @click="toggleValue"
-      class="flex items-center justify-center transition-all focus:outline-[rgba(0,0,0,.1)] focus:outline focus:outline-[8px]"
-      @keydown.enter="toggleValue"
+      @click="disabled ? null : toggleValue"
+      class="flex items-center justify-center transition-all focus:outline-[rgba(0,0,0,.1)] focus:outline focus:outline-[8px] disabled:opacity-50"
+      @keydown.enter="disabled ? null : toggleValue"
       role="checkbox"
       :aria-checked="value"
-      :class="[checkboxInputSizingClasses, checkboxInputColorClasses]"
+      :class="[
+        checkboxInputSizingClasses,
+        checkboxInputColorClasses,
+        {
+          'cursor-not-allowed': disabled
+        }
+      ]"
     >
       <transition name="fade">
         <Icon
@@ -25,7 +41,13 @@
         />
       </transition>
     </div>
-    <label v-if="label" :for="name">{{ label }}</label>
+    <label
+      data-testid="checkboxInputLabelRight"
+      v-if="label && position === 'right'"
+      :for="name"
+      :class="[checkboxInputLabelSizingClasses]"
+      >{{ label }}</label
+    >
   </div>
 </template>
 <script setup lang="ts">
@@ -38,10 +60,12 @@ interface Props {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   label?: string;
   disabled?: boolean;
+  position?: 'left' | 'right';
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: 'md'
+  size: 'md',
+  position: 'left'
 });
 const emit = defineEmits<{
   (e: 'updateValue', value: boolean): void;
@@ -80,9 +104,32 @@ const iconSizingClasses = computed(() => {
   }
 });
 
+const checkboxInputContainerSizingClasses = computed(() => {
+  switch (props.size) {
+    case 'sm':
+    case 'md':
+      return 'gap-2';
+    default:
+      return 'gap-3';
+  }
+});
+
+const checkboxInputLabelSizingClasses = computed(() => {
+  switch (props.size) {
+    case 'sm':
+      return 'desktop-text-xs';
+    case 'lg':
+      return 'desktop-text-sm';
+    case 'xl':
+      return 'desktop-text-md';
+    default:
+      return 'desktop-text-sm';
+  }
+});
+
 const checkboxInputColorClasses = computed(() => {
   if (value.value) {
-    return 'bg-primary hover:bg-primary-default_strong disabled:opacity-50';
+    return 'bg-primary hover:bg-primary-default_strong';
   }
   return 'bg-grayscale-line hover:bg-grayscale-placehold';
 });

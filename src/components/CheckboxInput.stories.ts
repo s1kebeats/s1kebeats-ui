@@ -20,10 +20,10 @@ export const Primary: Story = {
     },
     template: `
     <div class="flex flex-col gap-5">
-        <div class="flex items-center gap-2"> <TextInput size="sm" name="textInput" label="Type here" /> <Button size="sm"> Button </Button> <CheckboxInput size="sm" name="first" /> </div>
-        <div class="flex items-center gap-2"> <TextInput size="md" name="textInput" label="Type here" /> <Button size="md"> Button </Button> <CheckboxInput size="md" name="first" /> </div>
-        <div class="flex items-center gap-2"> <TextInput size="lg" name="textInput" label="Type here" /> <Button size="lg"> Button </Button> <CheckboxInput size="lg" name="first" /> </div>
-        <div class="flex items-center gap-2"> <TextInput size="xl" name="textInput" label="Type here" /> <Button size="xl"> Button </Button> <CheckboxInput size="xl" name="first" /> </div>
+        <div class="flex items-center gap-2"> <TextInput size="sm" name="textInput" label="Type here" /> <Button size="sm"> Button </Button> <CheckboxInput :disabled="true" size="sm" name="first" label="Remember me?" /> </div>
+        <div class="flex items-center gap-2"> <TextInput size="md" name="textInput" label="Type here" /> <Button size="md"> Button </Button> <CheckboxInput @update-value="console.log('value')" size="md" name="first" label="Remember me?" /> </div>
+        <div class="flex items-center gap-2"> <TextInput size="lg" name="textInput" label="Type here" /> <Button size="lg"> Button </Button> <CheckboxInput size="lg" name="first" label="Remember me?" /> </div>
+        <div class="flex items-center gap-2"> <TextInput size="xl" name="textInput" label="Type here" /> <Button size="xl"> Button </Button> <CheckboxInput size="xl" name="first" label="Remember me?" /> </div>
     </div>
     `
   })

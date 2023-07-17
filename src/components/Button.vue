@@ -4,24 +4,14 @@
     class="flex items-center justify-center link transition-all"
     :class="[buttonSizingClasses, buttonTypeClasses]"
   >
-    <template v-if="position === 'left'">
-      <Icon
-        v-if="icon"
-        data-testid="buttonIcon"
-        :icon="icon"
-        :class="[iconSizingClasses]"
-      />
-      <slot />
-    </template>
-    <template v-else>
-      <slot />
-      <Icon
-        v-if="icon"
-        data-testid="buttonIcon"
-        :icon="icon"
-        :class="[iconSizingClasses]"
-      />
-    </template>
+    <slot v-if="position === 'left'" />
+    <Icon
+      v-if="icon"
+      data-testid="buttonIcon"
+      :icon="icon"
+      :class="[iconSizingClasses]"
+    />
+    <slot v-if="position === 'right'" />
   </button>
 </template>
 <script setup lang="ts">
