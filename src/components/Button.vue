@@ -1,7 +1,6 @@
 <template>
   <button
-    data-testid="button"
-    class="flex items-center justify-center link transition-all"
+    class="flex items-center justify-center link transition-all disabled:cursor-not-allowed"
     :class="[buttonSizingClasses, buttonTypeClasses]"
   >
     <slot v-if="position === 'left'" />
