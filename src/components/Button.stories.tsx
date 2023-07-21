@@ -28,16 +28,33 @@ export const Presentation = () => (
           {buttonSizes.map((size) => {
             return (
               <div class="flex gap-5">
-                <Button icon="material-symbols:add-rounded" position="right" type={type} size={size} key={size! + type!}>
+                <Button
+                  icon="material-symbols:add-rounded"
+                  position="right"
+                  type={type}
+                  size={size}
+                  key={size! + type!}
+                >
                   Button
                 </Button>
                 <Button type={type} size={size} key={size! + type!}>
                   Button
                 </Button>
-                <Button icon="material-symbols:add-rounded" position="left" type={type} size={size} key={size! + type!}>
+                <Button
+                  icon="material-symbols:add-rounded"
+                  position="left"
+                  type={type}
+                  size={size}
+                  key={size! + type!}
+                >
                   Button
                 </Button>
-                <Button icon="material-symbols:add-rounded" type={type} size={size} key={size! + type!} />
+                <Button
+                  icon="material-symbols:add-rounded"
+                  type={type}
+                  size={size}
+                  key={size! + type!}
+                />
               </div>
             );
           })}

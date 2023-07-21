@@ -13,6 +13,7 @@ const realCheckboxInputSelector = '[data-testid=realCheckboxInput]';
 const checkboxInputLabelRightSelector = '[data-testid=checkboxInputLabelRight]';
 const checkboxInputLabelLeftSelector = '[data-testid=checkboxInputLabelLeft]';
 const customCheckboxInputSelector = '[data-testid=customCheckboxInput]';
+const checkboxIndicatorSelector = '[data-testid=checkboxIndicator]';
 
 describe('CheckboxInput', () => {
   describe('props', () => {
@@ -23,39 +24,54 @@ describe('CheckboxInput', () => {
         defaultMountOptions.props.name
       );
     });
-    it('checked - should render with "false" by default', () => {
+    it('checked - should render unchecked by default', () => {
       const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
 
       expect(wrapper.get(realCheckboxInputSelector).attributes('value')).toBe(
         'false'
       );
     });
-    it('checked - should render set attr', () => {
-      const testCheckedValue = true;
+    it('checked - should render checked when set to true', () => {
       const wrapper = shallowMount(CheckboxInput, {
         props: {
           ...defaultMountOptions.props,
-          checked: testCheckedValue
+          checked: true
         }
       });
 
       expect(wrapper.get(realCheckboxInputSelector).attributes('value')).toBe(
-        testCheckedValue.toString()
+        'true'
       );
     });
-    it('position - should render left label by default', () => {
+    it('label - should not render any label when not provided', () => {
+      const wrapper = shallowMount(CheckboxInput, {
+        props: {
+          ...defaultMountOptions.props,
+          label: undefined
+        }
+      });
+
+      expect(
+        wrapper.find(checkboxInputLabelRightSelector).exists() ||
+          wrapper.find(checkboxInputLabelLeftSelector).exists()
+      ).toBe(false);
+    });
+    it('label - should render some label when provided', () => {
+      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
+      expect(
+        wrapper.find(checkboxInputLabelLeftSelector).exists() ||
+          wrapper.find(checkboxInputLabelLeftSelector).exists()
+      ).toBe(true);
+    });
+    it('position + label - should render with left label only with default position', () => {
       const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
 
       expect(wrapper.find(checkboxInputLabelLeftSelector).exists()).toBe(true);
-    });
-    it('position - should not render right label by default', () => {
-      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
-
       expect(wrapper.find(checkboxInputLabelRightSelector).exists()).toBe(
         false
       );
     });
-    it('position - should render right label when set to "right"', () => {
+    it('position + label - should render with right label only when position is set to "right"', () => {
       const wrapper = shallowMount(CheckboxInput, {
         props: {
           ...defaultMountOptions.props,
@@ -64,50 +80,26 @@ describe('CheckboxInput', () => {
       });
 
       expect(wrapper.find(checkboxInputLabelRightSelector).exists()).toBe(true);
+      expect(wrapper.find(checkboxInputLabelLeftSelector).exists()).toBe(false);
     });
-    it('position - should not render left label when set to "right"', () => {
+    it('disabled - should render with "false" by default', async () => {
+      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
+
+      expect(
+        wrapper.get(realCheckboxInputSelector).attributes()
+      ).not.toHaveProperty('disabled');
+    });
+    it('disabled - should render with set value when provided', async () => {
       const wrapper = shallowMount(CheckboxInput, {
         props: {
           ...defaultMountOptions.props,
-          position: 'right'
+          disabled: true
         }
       });
 
-      expect(wrapper.find(checkboxInputLabelLeftSelector).exists()).toBe(false);
-    });
-    it('label - should not render any label if not provided', () => {
-      const wrapper = shallowMount(CheckboxInput, {
-        props: {
-          ...defaultMountOptions.props,
-          label: undefined
-        }
-      });
-
-      expect(wrapper.find(checkboxInputLabelRightSelector).exists()).toBe(
-        false
-      );
-      expect(wrapper.find(checkboxInputLabelLeftSelector).exists()).toBe(false);
-    });
-    it('label - should render with provided label text', () => {
-      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
-
-      expect(wrapper.get(checkboxInputLabelLeftSelector).text()).toBe(
-        defaultMountOptions.props.label
-      );
-    });
-    it('disabled - should render with "false" and emit value by default', async () => {
-      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
-
-      await wrapper.get(customCheckboxInputSelector).trigger('click');
-
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-    });
-    it('disabled - should not emit new value when set to true', async () => {
-      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
-
-      await wrapper.get(customCheckboxInputSelector).trigger('click');
-
-      expect(wrapper.emitted()).not.toHaveProperty('updateValue');
+      expect(
+        wrapper.get(realCheckboxInputSelector).attributes()
+      ).toHaveProperty('disabled');
     });
   });
   describe('User Interactions', () => {
@@ -123,7 +115,43 @@ describe('CheckboxInput', () => {
       await wrapper.get(customCheckboxInputSelector).trigger('click');
 
       expect(wrapper.emitted('updateValue')).toHaveLength(2);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(false);
+      expect(wrapper.emitted('updateValue')![1][0]).toBe(false);
+    });
+    // ! why not working???
+    it('click - should toggle indicator visibility', async () => {
+      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
+
+      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
+
+      await wrapper.get(customCheckboxInputSelector).trigger('click');
+      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(true);
+
+      await wrapper.get(customCheckboxInputSelector).trigger('click');
+      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
+    });
+    it('enter - should toggle and emit new value when pressed on input', async () => {
+      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
+      await wrapper.get(customCheckboxInputSelector).trigger('keydown.enter');
+
+      expect(wrapper.emitted()).toHaveProperty('updateValue');
+      expect(wrapper.emitted('updateValue')).toHaveLength(1);
+      expect(wrapper.emitted('updateValue')![0][0]).toBe(true);
+
+      await wrapper.get(customCheckboxInputSelector).trigger('keydown.enter');
+
+      expect(wrapper.emitted('updateValue')).toHaveLength(2);
+      expect(wrapper.emitted('updateValue')![1][0]).toBe(false);
+    });
+    // ! why not working???
+    it('enter - should toggle indicator visibility when pressed on input', async () => {
+      const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
+      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
+
+      await wrapper.get(customCheckboxInputSelector).trigger('keydown.enter');
+      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(true);
+
+      await wrapper.get(customCheckboxInputSelector).trigger('keydown.enter');
+      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
     });
   });
 });

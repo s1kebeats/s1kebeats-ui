@@ -19,9 +19,9 @@
     <div
       data-testid="customCheckboxInput"
       tabindex="0"
-      @click="disabled ? null : toggleValue"
+      @click="disabled ? null : toggleValue()"
       class="flex items-center justify-center transition-all focus:outline-[rgba(0,0,0,.1)] focus:outline focus:outline-[8px] disabled:opacity-50"
-      @keydown.enter="disabled ? null : toggleValue"
+      @keydown.enter="disabled ? null : toggleValue()"
       role="checkbox"
       :aria-checked="value"
       :class="[
@@ -34,6 +34,7 @@
     >
       <transition name="fade">
         <Icon
+          data-testid="checkboxIndicator"
           v-show="value"
           class="text-grayscale-bg"
           :class="[iconSizingClasses]"
