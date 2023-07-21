@@ -154,4 +154,50 @@ describe('CheckboxInput', () => {
       expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
     });
   });
+  it('snapshot - should match the snapshot', () => {
+    const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
+
+    expect(wrapper.element).toMatchInlineSnapshot(`
+      <div
+        class="flex items-center gap-2"
+      >
+        <label
+          class="desktop-text-sm"
+          data-testid="checkboxInputLabelLeft"
+          for="testName"
+        >
+          testLabel
+        </label>
+        <input
+          class="hidden"
+          data-testid="realCheckboxInput"
+          name="testName"
+          type="checkbox"
+          value="false"
+        />
+        <div
+          aria-checked="false"
+          class="flex items-center justify-center transition-all focus:outline-[rgba(0,0,0,.1)] focus:outline focus:outline-[8px] disabled:opacity-50 w-[30px] h-[30px] rounded-lg bg-grayscale-line hover:bg-grayscale-placehold"
+          data-testid="customCheckboxInput"
+          role="checkbox"
+          tabindex="0"
+        >
+          <transition-stub
+            appear="false"
+            css="true"
+            name="fade"
+            persisted="true"
+          >
+            <anonymous-stub
+              class="text-grayscale-bg text-[22px]"
+              data-testid="checkboxIndicator"
+              icon="material-symbols:check-small-rounded"
+              style="display: none;"
+            />
+          </transition-stub>
+        </div>
+        <!--v-if-->
+      </div>
+    `);
+  });
 });

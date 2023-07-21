@@ -31,7 +31,8 @@
         v-if="icon"
         @click="callback ? callback() : null"
         :class="{
-          'cursor-default': !callback
+          'cursor-default': !callback,
+          'cursor-not-allowed': disabled
         }"
       >
         <Icon
@@ -65,6 +66,9 @@
           class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label"
           v-model="value"
           :disabled="disabled"
+          :class="{
+            'cursor-not-allowed': disabled
+          }"
         />
       </div>
 
@@ -72,7 +76,8 @@
         :class="{
           'w-[19px]': size === 'sm',
           'w-[22px]': size === 'md' || size === 'lg',
-          'w-[24px]': size === 'xl'
+          'w-[24px]': size === 'xl',
+          'cursor-not-allowed': disabled
         }"
         data-testid="toggleValueButton"
         @click="toggleValueVisibility"

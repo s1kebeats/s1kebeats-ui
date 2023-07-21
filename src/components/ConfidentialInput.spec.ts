@@ -276,4 +276,50 @@ describe('ConfidentialInput', () => {
       expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue);
     });
   });
+  it('snapshot - should match the snapshot', () => {
+    const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
+
+    expect(wrapper.element).toMatchInlineSnapshot(`
+      <div
+        class="flex flex-col desktop-text-sm gap-1"
+        data-testid="confidentialInputContainer"
+      >
+        <div
+          class="flex items-center transition-all rounded-xl min-h-[52px] px-6 gap-3 bg-grayscale-input"
+          data-testid="presentationalInput"
+        >
+          <!--v-if-->
+          <div
+            class="grow flex flex-col justify-center"
+          >
+            <span
+              class="desktop-text-xs text-grayscale-label"
+              data-testid="upperLabel"
+              style="display: none;"
+            >
+              testLabel
+            </span>
+            <input
+              class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label"
+              data-testid="confidentialInput"
+              name="testName"
+              placeholder="testLabel"
+              type="password"
+            />
+          </div>
+          <button
+            class="w-[22px]"
+            data-testid="toggleValueButton"
+          >
+            <anonymous-stub
+              class="transition-all hover:text-black text-[22px] text-grayscale-label"
+              data-testid="toggleValueButtonIcon"
+              icon="material-symbols:visibility-off-outline-rounded"
+            />
+          </button>
+        </div>
+        <!--v-if-->
+      </div>
+    `);
+  });
 });
