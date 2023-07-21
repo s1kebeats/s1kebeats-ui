@@ -1,5 +1,4 @@
 import CheckboxInput from './CheckboxInput.vue';
-import TextInput from './TextInput.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof CheckboxInput> = {
@@ -17,21 +16,21 @@ export const Presentation = () => (
     {checkboxInputSizes.map((size) => {
       return (
         <div class="flex gap-5">
-          <CheckboxInput name="input" size={size} key={size!} />
+          <CheckboxInput name="input" size={size} key={size} />
 
           <CheckboxInput
             label="Receive notifications?"
             name="input"
             position="right"
             size={size}
-            key={size! + 'right'}
+            key={size + 'right'}
           />
           <CheckboxInput
             label="Receive notifications?"
             name="input"
             position="left"
             size={size}
-            key={size! + 'left'}
+            key={size + 'left'}
           />
         </div>
       );

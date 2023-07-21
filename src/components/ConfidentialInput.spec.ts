@@ -9,6 +9,8 @@ const defaultMountOptions = {
   }
 };
 
+const testIcon = 'testIcon';
+
 const confidentialInputSelector = '[data-testid=confidentialInput]';
 const confidentialInputContainerSelector =
   '[data-testid=confidentialInputContainer]';
@@ -42,16 +44,27 @@ describe('ConfidentialInput', () => {
     it('label - should render with set upper label text', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
-          ...defaultMountOptions.props,
-          value: 'testValue'
+          ...defaultMountOptions.props
         }
       });
       expect(wrapper.get(upperLabelSelector).text()).toBe(
         defaultMountOptions.props.label
       );
     });
+    it('icon - should not render icon when not provided', () => {
+      const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
+      expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(false);
+    });
+    it('icon - should render icon when provided', () => {
+      const wrapper = shallowMount(ConfidentialInput, {
+        props: {
+          ...defaultMountOptions.props,
+          icon: testIcon
+        }
+      });
+      expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(true);
+    });
     it('icon - should render with set icon', () => {
-      const testIcon = 'testIcon';
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
@@ -95,19 +108,19 @@ describe('ConfidentialInput', () => {
           .value
       ).toBe(testValue);
     });
-    it('disabled - should render with "false" disabled attr on confidential input by default', () => {
+    it('disabled - should render without disabled attr on confidential input by default', () => {
       const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
       expect(
         wrapper.get(confidentialInputSelector).attributes()
       ).not.toHaveProperty('disabled');
     });
-    it('disabled - should render with "false" disabled attr on toggleValue button by default', () => {
+    it('disabled - should render without disabled attr on toggleValue button by default', () => {
       const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
       expect(
         wrapper.get(toggleValueButtonSelector).attributes()
       ).not.toHaveProperty('disabled');
     });
-    it('disabled - should render with "false" disabled attr on optional icon button by default', () => {
+    it('disabled - should render without disabled attr on optional icon button by default', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
@@ -118,7 +131,7 @@ describe('ConfidentialInput', () => {
         wrapper.get(optionalIconButtonSelector).attributes()
       ).not.toHaveProperty('disabled');
     });
-    it('disabled - should render with "true" disabled attr on confidential input when provided', () => {
+    it('disabled - should render with disabled attr on confidential input when provided', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
@@ -129,7 +142,7 @@ describe('ConfidentialInput', () => {
         wrapper.get(confidentialInputSelector).attributes()
       ).toHaveProperty('disabled');
     });
-    it('disabled - should render with "true" disabled attr on toggleValue button when provided', () => {
+    it('disabled - should render with disabled attr on toggleValue button when provided', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
@@ -140,7 +153,7 @@ describe('ConfidentialInput', () => {
         wrapper.get(toggleValueButtonSelector).attributes()
       ).toHaveProperty('disabled');
     });
-    it('disabled - should render with "true" disabled attr on optional icon button when provided', () => {
+    it('disabled - should render with disabled attr on optional icon button when provided', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
@@ -165,7 +178,7 @@ describe('ConfidentialInput', () => {
       });
       expect(wrapper.find(messageHintSelector).exists()).toBe(true);
     });
-    it('message - should render valid message when provided', () => {
+    it('message - should render provided message hint text', () => {
       const testMessage = 'testMessage';
       const wrapper = shallowMount(ConfidentialInput, {
         props: {

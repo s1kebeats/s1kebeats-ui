@@ -1,7 +1,12 @@
 <template>
   <div
     class="flex flex-col"
-    :class="inputContainerClasses"
+    :class="[
+      inputContainerClasses,
+      {
+        'cursor-not-allowed': disabled
+      }
+    ]"
     data-testid="confidentialInputContainer"
   >
     <div
