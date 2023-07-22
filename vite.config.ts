@@ -5,13 +5,14 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from "path";
 
-import typescript from '@rollup/plugin-typescript';
+import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
+    dts()
   ],
   resolve: {
     alias: {
@@ -36,7 +37,6 @@ export default defineConfig({
           vue: "Vue",
         },
       },
-      plugins: [ typescript() ]
     },
   },
 })

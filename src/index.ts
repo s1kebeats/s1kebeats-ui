@@ -1,13 +1,9 @@
-import type { App } from 'vue';
-import * as components from './components';
+import Button from "./components/Button/Button.vue";
+import CheckboxInput from "./components/CheckboxInput/CheckboxInput.vue";
+import ConfidentialInput from "./components/ConfidentialInput/ConfidentialInput.vue";
+import EmailInput from "./components/EmailInput/EmailInput.vue";
+import PresentationalAvatar from "./components/PresentationalAvatar/PresentationalAvatar.vue";
+import PresentationalAvatarLabeled from "./components/PresentationalAvatar/PresentationalAvatarLabeled.vue";
+import TextInput from "./components/TextInput/TextInput.vue";
 
-const componentsList = components.default;
-const s1kebeatsUi = {
-    install(Vue: App) {
-        (Object.keys(componentsList) as unknown as Array<keyof typeof componentsList>).forEach((name) => {
-            Vue.component(name, componentsList[name]);
-        })
-    }
-}
-
-export default s1kebeatsUi;
+export { Button, CheckboxInput, ConfidentialInput, EmailInput, PresentationalAvatar, PresentationalAvatarLabeled, TextInput }
