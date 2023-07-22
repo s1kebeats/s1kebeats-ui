@@ -10,7 +10,7 @@ const presentationalAvatarAbbrSelector =
 
 describe('PresentationalAvatar', () => {
   describe('props', () => {
-    it('image - should render image when provided', () => {
+    it('image - should render image without abbr when provided', () => {
       const wrapper = mount(PresentationalAvatar, {
         props: {
           username: 'testUsername',
@@ -21,20 +21,11 @@ describe('PresentationalAvatar', () => {
       expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(
         true
       );
-    });
-    it('image - should not render username abbr when provided', () => {
-      const wrapper = mount(PresentationalAvatar, {
-        props: {
-          username: 'testUsername',
-          image: 'testImage'
-        }
-      });
-
       expect(wrapper.find(presentationalAvatarAbbrSelector).exists()).toBe(
         false
       );
     });
-    it('image - should render username abbr when set to null', () => {
+    it('image - should render username abbr without image when not', () => {
       const wrapper = mount(PresentationalAvatar, {
         props: {
           username: 'testUsername',
@@ -45,15 +36,6 @@ describe('PresentationalAvatar', () => {
       expect(wrapper.find(presentationalAvatarAbbrSelector).exists()).toBe(
         true
       );
-    });
-    it('image - should not render image when set to null', () => {
-      const wrapper = mount(PresentationalAvatar, {
-        props: {
-          username: 'testUsername',
-          image: null
-        }
-      });
-
       expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(
         false
       );

@@ -22,7 +22,7 @@ import { computed } from 'vue';
 
 const props = defineProps<{
   username: string;
-  image: string | null;
+  image?: string | null;
 }>();
 const cutUsername = computed(() => props.username.slice(0, 2).toUpperCase());
 </script>
