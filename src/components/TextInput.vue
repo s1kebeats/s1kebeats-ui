@@ -57,7 +57,7 @@
           :name="name"
           ref="textInput"
           :placeholder="label"
-          class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label"
+          class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
           v-model="value"
           :disabled="disabled"
         />

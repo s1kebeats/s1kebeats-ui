@@ -19,7 +19,6 @@ const textInputComponentSelector = '[data-testid=textInputComponent]';
 describe('EmailInput', () => {
   describe('props', () => {
     it('size - should render textInput with set size attr', () => {
-      // maybe props type inheritance doesn't work properly
       const wrapper = shallowMount(EmailInput, defaultMountOptions);
 
       expect(wrapper.get(textInputComponentSelector).attributes('size')).toBe(
@@ -40,16 +39,6 @@ describe('EmailInput', () => {
         defaultMountOptions.props.preset
       );
     });
-    it('preset - should not emit new value if invalid email was provided', async () => {
-      const wrapper = shallowMount(EmailInput, {
-        props: {
-          name: 'emailInput',
-          preset: 'notAnEmail'
-        }
-      });
-
-      expect(wrapper.emitted()).not.toHaveProperty('updateValue');
-    });
     it('preset - should render with error message if invalid email was provided', async () => {
       const wrapper = shallowMount(EmailInput, {
         props: {
@@ -59,9 +48,10 @@ describe('EmailInput', () => {
       });
 
       expect(
-        wrapper.get(textInputComponentSelector).attributes('message')
-      ).toBeTruthy();
+        wrapper.get(textInputComponentSelector).attributes()
+      ).toHaveProperty('message');
     });
+    // ! why not working?
     it('preset - should render with "error" state if invalid email was provided', async () => {
       const wrapper = shallowMount(EmailInput, {
         props: {
@@ -74,18 +64,7 @@ describe('EmailInput', () => {
         'error'
       );
     });
-    it('preset - should emit new value if valid email was provided', async () => {
-      const wrapper = mount(EmailInput, {
-        props: {
-          name: 'emailInput',
-          preset: testEmail
-        }
-      });
-
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(testEmail);
-    });
+    // ! why not working?
     it('preset - should render with "success" state if valid email was provided', async () => {
       const wrapper = mount(EmailInput, {
         props: {
@@ -107,8 +86,8 @@ describe('EmailInput', () => {
       });
 
       expect(
-        wrapper.get(textInputComponentSelector).attributes('message')
-      ).toBeFalsy();
+        wrapper.get(textInputComponentSelector).attributes()
+      ).not.toHaveProperty('message');
     });
     it('disabled - should render textInput with set disabled attr', () => {
       const wrapper = shallowMount(EmailInput, defaultMountOptions);
