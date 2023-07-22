@@ -1,7 +1,12 @@
 <template>
   <div
     class="flex flex-col"
-    :class="inputContainerClasses"
+    :class="[
+      inputContainerClasses,
+      {
+        'cursor-not-allowed': disabled
+      }
+    ]"
     data-testid="textInputContainer"
   >
     <div
@@ -26,7 +31,8 @@
         v-if="icon"
         @click="callback ? callback() : null"
         :class="{
-          'cursor-default': !callback
+          'cursor-default': !callback,
+          'cursor-not-allowed': disabled
         }"
       >
         <Icon
@@ -60,6 +66,9 @@
           class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
           v-model="value"
           :disabled="disabled"
+          :class="{
+            'cursor-not-allowed': disabled
+          }"
         />
       </div>
 
