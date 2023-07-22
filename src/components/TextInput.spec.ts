@@ -10,13 +10,13 @@ const defaultMountOptions = {
 };
 
 const textInputSelector = '[data-testid=textInput]';
-const textInputContainerSelector = '[data-testid=textInputContainer]';
-const clearButtonSelector = '[data-testid=clearButton]';
-const clearButtonIconSelector = '[data-testid=clearButtonIcon]';
+const clearValueButtonSelector = '[data-testid=clearValueButton]';
+const clearValueButtonIconSelector = '[data-testid=clearValueButtonIcon]';
 const upperLabelSelector = '[data-testid=upperLabel]';
 const optionalIconSelector = '[data-testid=optionalIcon]';
 const optionalIconButtonSelector = '[data-testid=optionalIconButton]';
 const messageHintSelector = '[data-testid=messageHint]';
+const testIcon = 'testIcon';
 
 describe('TextInput', () => {
   beforeAll(() => {
@@ -25,70 +25,7 @@ describe('TextInput', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
-  describe('User Interactions', () => {
-    it('input - should emit new value', async () => {
-      const testValue = 'testValue';
-      const wrapper = shallowMount(TextInput, defaultMountOptions);
-
-      await wrapper.get(textInputSelector).setValue(testValue);
-
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue);
-    });
-    it('focusin - should render clear button icon when focused', async () => {
-      const wrapper = shallowMount(TextInput, defaultMountOptions);
-
-      await wrapper.get(textInputSelector).trigger('focusin');
-
-      expect(wrapper.get(clearButtonIconSelector).isVisible()).toBe(true);
-    });
-    it('focusin + click - should clear input value when focused on clear button click', async () => {
-      const wrapper = shallowMount(TextInput, defaultMountOptions);
-
-      await wrapper.get(textInputSelector).trigger('focusin');
-      await wrapper.get(textInputSelector).setValue('newValue');
-      await wrapper.get(clearButtonSelector).trigger('click');
-
-      expect(
-        (wrapper.get(textInputSelector).element as HTMLInputElement).value
-      ).toBe('');
-    });
-    it('focusout - should not render clear button icon when not focused', async () => {
-      const wrapper = shallowMount(TextInput, defaultMountOptions);
-
-      await wrapper.get(textInputSelector).trigger('focusout');
-
-      expect(wrapper.get(clearButtonIconSelector).isVisible()).toBe(false);
-    });
-    it('focusout + click - should not clear input value when not focused on clear button click', async () => {
-      const testValue = 'testValue';
-      const wrapper = shallowMount(TextInput, defaultMountOptions);
-
-      await wrapper.get(textInputSelector).trigger('focusout');
-      await wrapper.get(textInputSelector).setValue(testValue);
-      await wrapper.get(clearButtonSelector).trigger('click');
-
-      expect(
-        (wrapper.get(textInputSelector).element as HTMLInputElement).value
-      ).toBe(testValue);
-    });
-  });
   describe('props', () => {
-    it('type - should render with type "text" by default', () => {
-      const wrapper = shallowMount(TextInput, defaultMountOptions);
-      expect(wrapper.get(textInputSelector).attributes('type')).toBe('text');
-    });
-    it('type - should render with set type', () => {
-      const testType = 'email';
-      const wrapper = shallowMount(TextInput, {
-        props: {
-          ...defaultMountOptions.props,
-          type: testType
-        }
-      });
-      expect(wrapper.get(textInputSelector).attributes('type')).toBe(testType);
-    });
     it('name - should render with set name', () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
       expect(wrapper.get(textInputSelector).attributes('name')).toBe(
@@ -104,16 +41,27 @@ describe('TextInput', () => {
     it('label - should render with set upper label text', () => {
       const wrapper = shallowMount(TextInput, {
         props: {
-          ...defaultMountOptions.props,
-          value: 'testValue'
+          ...defaultMountOptions.props
         }
       });
       expect(wrapper.get(upperLabelSelector).text()).toBe(
         defaultMountOptions.props.label
       );
     });
+    it('icon - should not render icon when not provided', () => {
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+      expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(false);
+    });
+    it('icon - should render icon when provided', () => {
+      const wrapper = shallowMount(TextInput, {
+        props: {
+          ...defaultMountOptions.props,
+          icon: testIcon
+        }
+      });
+      expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(true);
+    });
     it('icon - should render with set icon', () => {
-      const testIcon = 'testIcon';
       const wrapper = shallowMount(TextInput, {
         props: {
           ...defaultMountOptions.props,
@@ -155,19 +103,19 @@ describe('TextInput', () => {
         (wrapper.get(textInputSelector).element as HTMLInputElement).value
       ).toBe(testValue);
     });
-    it('disabled - should render with "false" disabled attr on text input by default', () => {
+    it('disabled - should render without disabled attr on text input by default', () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
       expect(wrapper.get(textInputSelector).attributes()).not.toHaveProperty(
         'disabled'
       );
     });
-    it('disabled - should render with "false" disabled attr on clear button by default', () => {
+    it('disabled - should render without disabled attr on clearValue button by default', () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
-      expect(wrapper.get(clearButtonSelector).attributes()).not.toHaveProperty(
-        'disabled'
-      );
+      expect(
+        wrapper.get(clearValueButtonSelector).attributes()
+      ).not.toHaveProperty('disabled');
     });
-    it('disabled - should render with "false" disabled attr on optional icon button by default', () => {
+    it('disabled - should render without disabled attr on optional icon button by default', () => {
       const wrapper = shallowMount(TextInput, {
         props: {
           ...defaultMountOptions.props,
@@ -178,7 +126,7 @@ describe('TextInput', () => {
         wrapper.get(optionalIconButtonSelector).attributes()
       ).not.toHaveProperty('disabled');
     });
-    it('disabled - should render with "true" disabled attr on text input when provided', () => {
+    it('disabled - should render with disabled attr on text input when provided', () => {
       const wrapper = shallowMount(TextInput, {
         props: {
           ...defaultMountOptions.props,
@@ -189,18 +137,18 @@ describe('TextInput', () => {
         'disabled'
       );
     });
-    it('disabled - should render with "true" disabled attr on clear button when provided', () => {
+    it('disabled - should render with disabled attr on clearValue button when provided', () => {
       const wrapper = shallowMount(TextInput, {
         props: {
           ...defaultMountOptions.props,
           disabled: true
         }
       });
-      expect(wrapper.get(clearButtonSelector).attributes()).toHaveProperty(
+      expect(wrapper.get(clearValueButtonSelector).attributes()).toHaveProperty(
         'disabled'
       );
     });
-    it('disabled - should render with "true" disabled attr on optional icon button when provided', () => {
+    it('disabled - should render with disabled attr on optional icon button when provided', () => {
       const wrapper = shallowMount(TextInput, {
         props: {
           ...defaultMountOptions.props,
@@ -225,7 +173,7 @@ describe('TextInput', () => {
       });
       expect(wrapper.find(messageHintSelector).exists()).toBe(true);
     });
-    it('message - should render valid message when provided', () => {
+    it('message - should render provided message hint text', () => {
       const testMessage = 'testMessage';
       const wrapper = shallowMount(TextInput, {
         props: {
@@ -241,7 +189,7 @@ describe('TextInput', () => {
         props: {
           ...defaultMountOptions.props,
           callback,
-          icon: 'testIcon'
+          icon: testIcon
         }
       });
 
@@ -276,62 +224,123 @@ describe('TextInput', () => {
       expect(wrapper.emitted('updateValue')).toHaveLength(1);
       expect(wrapper.emitted('updateValue')![0][0]).toBe('3');
     });
+    it('type - should render with "text" by default', () => {
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+
+      expect(wrapper.get(textInputSelector).attributes('type')).toBe('text');
+    });
+    it('type - should render with set type', () => {
+      const testType = 'email';
+      const wrapper = shallowMount(TextInput, {
+        props: {
+          ...defaultMountOptions.props,
+          type: testType
+        }
+      });
+
+      expect(wrapper.get(textInputSelector).attributes('type')).toBe(testType);
+    });
+  });
+  describe('User Interactions', () => {
+    it('focusout - should not render clearValue button icon when not focused', () => {
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+
+      expect(wrapper.find(clearValueButtonIconSelector).isVisible()).toBe(
+        false
+      );
+    });
+    it('focusin - should render clearValue button icon when focused', async () => {
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+
+      await wrapper.get(textInputSelector).trigger('focusin');
+
+      expect(wrapper.find(clearValueButtonIconSelector).isVisible()).toBe(true);
+    });
+    it('input - should emit new value', async () => {
+      const testValue = 'testValue';
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+
+      await wrapper.get(textInputSelector).setValue(testValue);
+
+      expect(wrapper.emitted()).toHaveProperty('updateValue');
+      expect(wrapper.emitted('updateValue')).toHaveLength(1);
+      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue);
+    });
+    it('clearValue button click + focusin - should clear input value when clicked and focused', async () => {
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+
+      await wrapper.get(textInputSelector).setValue('value');
+      await wrapper.get(textInputSelector).trigger('focusin');
+      await wrapper.get(clearValueButtonSelector).trigger('click');
+
+      expect(
+        (wrapper.get(textInputSelector).element as HTMLInputElement).value
+      ).toBe('');
+    });
+    it('clearValue button click + focusout - should not clear input value when clicked but unfocused', async () => {
+      const testValue = 'testValue';
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+
+      await wrapper.get(textInputSelector).setValue(testValue);
+      await wrapper.get(clearValueButtonSelector).trigger('click');
+
+      expect(
+        (wrapper.get(textInputSelector).element as HTMLInputElement).value
+      ).toBe(testValue);
+    });
   });
   it('snapshot - should match the snapshot', () => {
     const wrapper = shallowMount(TextInput, defaultMountOptions);
 
-    expect(wrapper.get(textInputContainerSelector)).toMatchInlineSnapshot(`
-      DOMWrapper {
-        "isDisabled": [Function],
-        "wrapperElement": <div
-          class="flex flex-col desktop-text-sm gap-1"
-          data-testid="textInputContainer"
+    expect(wrapper.element).toMatchInlineSnapshot(`
+      <div
+        class="flex flex-col desktop-text-sm gap-1"
+        data-testid="textInputContainer"
+      >
+        <div
+          class="flex items-center transition-all rounded-xl min-h-[52px] px-6 gap-3 bg-grayscale-input"
+          data-testid="presentationalInput"
         >
-          <div
-            class="flex items-center transition-all rounded-xl min-h-[52px] px-6 gap-3 bg-grayscale-input"
-            data-testid="presentationalInput"
-          >
-            <!--v-if-->
-            <div
-              class="grow flex flex-col justify-center"
-            >
-              <span
-                class="desktop-text-xs text-grayscale-label"
-                data-testid="upperLabel"
-                style="display: none;"
-              >
-                testLabel
-              </span>
-              <input
-                class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label"
-                data-testid="textInput"
-                name="testName"
-                placeholder="testLabel"
-                type="text"
-              />
-            </div>
-            <button
-              class="w-[22px]"
-              data-testid="clearButton"
-            >
-              <transition-stub
-                appear="false"
-                css="true"
-                name="fade"
-                persisted="true"
-              >
-                <anonymous-stub
-                  class="text-[22px]"
-                  data-testid="clearButtonIcon"
-                  icon="material-symbols:close-rounded"
-                  style="display: none;"
-                />
-              </transition-stub>
-            </button>
-          </div>
           <!--v-if-->
-        </div>,
-      }
+          <div
+            class="grow flex flex-col justify-center"
+          >
+            <span
+              class="desktop-text-xs text-grayscale-label"
+              data-testid="upperLabel"
+              style="display: none;"
+            >
+              testLabel
+            </span>
+            <input
+              class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
+              data-testid="textInput"
+              name="testName"
+              placeholder="testLabel"
+              type="text"
+            />
+          </div>
+          <button
+            class="w-[22px]"
+            data-testid="clearValueButton"
+          >
+            <transition-stub
+              appear="false"
+              css="true"
+              name="fade"
+              persisted="true"
+            >
+              <anonymous-stub
+                class="text-[22px]"
+                data-testid="clearValueButtonIcon"
+                icon="material-symbols:close-rounded"
+                style="display: none;"
+              />
+            </transition-stub>
+          </button>
+        </div>
+        <!--v-if-->
+      </div>
     `);
   });
 });

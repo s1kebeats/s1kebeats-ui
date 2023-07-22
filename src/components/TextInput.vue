@@ -69,13 +69,13 @@
           'w-[22px]': size === 'md' || size === 'lg',
           'w-[24px]': size === 'xl'
         }"
-        data-testid="clearButton"
+        data-testid="clearValueButton"
         @click="focused ? clearInputValue() : null"
         :disabled="disabled"
       >
         <transition name="fade">
           <Icon
-            data-testid="clearButtonIcon"
+            data-testid="clearValueButtonIcon"
             v-show="focused"
             icon="material-symbols:close-rounded"
             :class="inputIconClasses"
