@@ -15,10 +15,10 @@
   />
 </template>
 <script setup lang="ts">
-import TextInput from './TextInput.vue';
+import TextInput from '../TextInput/TextInput.vue';
 import * as EmailValidator from 'email-validator';
 import { onMounted, ref } from 'vue';
-import type TextInputProps from './TextInput.props';
+import type TextInputProps from '../TextInput/TextInput.props';
 
 const emit = defineEmits<{
   (e: 'updateValue', value: string): void;

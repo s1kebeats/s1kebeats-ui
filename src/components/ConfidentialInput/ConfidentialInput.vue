@@ -110,7 +110,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { computed, ref, watch, watchEffect } from 'vue';
-import type Props from './TextInput.props';
+import type Props from '../TextInput/TextInput.props';
 const props = withDefaults(defineProps<Omit<Props, 'type'>>(), {
   size: 'md',
   disabled: false,
