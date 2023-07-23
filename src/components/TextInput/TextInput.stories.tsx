@@ -29,7 +29,6 @@ export const Presentation = () => (
               <div class="flex gap-5">
                 <TextInput
                   name="input"
-                  disabled={true}
                   label="Type in your username"
                   icon="material-symbols:account-circle"
                   state={state}

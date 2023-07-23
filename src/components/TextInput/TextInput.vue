@@ -49,11 +49,13 @@
           ]"
         />
       </button>
-      <div class="grow flex flex-col justify-center">
+      <div
+        class="flex grow flex-col items-start justify-center overflow-hidden"
+      >
         <span
           data-testid="upperLabel"
           v-show="value"
-          class="desktop-text-xs"
+          class="w-full desktop-text-xs truncate"
           :class="inputLabelClasses"
           >{{ label }}</span
         >
@@ -63,7 +65,7 @@
           :name="name"
           ref="textInput"
           :placeholder="label"
-          class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
+          class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
           v-model="value"
           :disabled="disabled"
           :class="{
@@ -74,9 +76,9 @@
 
       <button
         :class="{
-          'w-[19px]': size === 'sm',
-          'w-[22px]': size === 'md' || size === 'lg',
-          'w-[24px]': size === 'xl'
+          'min-w-[19px]': size === 'sm',
+          'min-w-[22px]': size === 'md' || size === 'lg',
+          'min-w-[24px]': size === 'xl'
         }"
         data-testid="clearValueButton"
         @click="focused ? clearInputValue() : null"
