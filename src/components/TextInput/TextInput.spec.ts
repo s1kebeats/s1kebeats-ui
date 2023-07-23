@@ -197,6 +197,20 @@ describe('TextInput', () => {
 
       expect(callback).toHaveBeenCalled();
     });
+    it('callback - should call provided callback on input enter press', async () => {
+      const callback = vi.fn();
+      const wrapper = shallowMount(TextInput, {
+        props: {
+          ...defaultMountOptions.props,
+          callback,
+          icon: testIcon
+        }
+      });
+
+      await wrapper.get(textInputSelector).trigger('keypress.enter');
+
+      expect(callback).toHaveBeenCalled();
+    });
     it('debounce - should emit without a debounce by default', async () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
 

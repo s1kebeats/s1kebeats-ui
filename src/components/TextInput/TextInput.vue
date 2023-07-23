@@ -60,6 +60,7 @@
           >{{ label }}</span
         >
         <input
+          @keypress.enter="callback ? callback() : null"
           data-testid="textInput"
           :type="type"
           :name="name"
