@@ -1,12 +1,7 @@
 <template>
   <div
     class="flex flex-col"
-    :class="[
-      inputContainerClasses,
-      {
-        'cursor-not-allowed': disabled
-      }
-    ]"
+    :class="[inputContainerClasses]"
     data-testid="textInputContainer"
   >
     <div
@@ -19,7 +14,8 @@
           'opacity-50': disabled,
           'bg-grayscale-bg outline-grayscale-header outline outline-[2px]':
             focused,
-          'bg-grayscale-input': !focused
+          'bg-grayscale-input': !focused,
+          'cursor-not-allowed': disabled
         }
       ]"
       @focusin="focused = true"
@@ -60,8 +56,8 @@
           >{{ label }}</span
         >
         <input
-          @keypress.enter="callback ? callback() : null"
           data-testid="textInput"
+          @keypress.enter="callback ? callback() : null"
           :type="type"
           :name="name"
           ref="textInput"
@@ -95,9 +91,13 @@
         </transition>
       </button>
     </div>
-    <span data-testid="messageHint" v-if="message" :class="messageClasses">{{
-      message
-    }}</span>
+    <span
+      data-testid="messageHint"
+      class="cursor-default"
+      v-if="message"
+      :class="messageClasses"
+      >{{ message }}</span
+    >
   </div>
 </template>
 <script setup lang="ts">

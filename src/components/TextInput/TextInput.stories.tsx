@@ -30,7 +30,6 @@ export const Presentation = () => (
                 <TextInput
                   name="input"
                   label="Type in your username"
-                  callback={() => alert('bogus')}
                   icon="material-symbols:account-circle"
                   state={state}
                   size={size}
