@@ -8,10 +8,10 @@
   ],
   "types": "./dist/index.d.ts",
   "main": "./dist/s1kebeats-ui.umd.cjs",
-  "module": "./dist/s1kebeats-ui.js",
+  "module": "./dist/s1kebeats-ui.mjs",
   "exports": {
     ".": {
-      "import": "./dist/s1kebeats-ui.js",
+      "import": "./dist/s1kebeats-ui.mjs",
       "require": "./dist/s1kebeats-ui.umd.cjs"
     }
   },

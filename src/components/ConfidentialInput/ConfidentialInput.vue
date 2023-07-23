@@ -194,6 +194,8 @@ const inputPresentationalStateClasses = computed(() => {
       return '!outline-success outline outline-[2px] !bg-success-bg';
     case 'error':
       return '!outline-danger outline outline-[2px] !bg-danger-bg';
+    default:
+      return '';
   }
 });
 

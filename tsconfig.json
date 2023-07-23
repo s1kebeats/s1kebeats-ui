@@ -14,6 +14,23 @@
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "./",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "strict": true,
+    "jsx": "preserve",
+    "allowJs": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    "lib": ["esnext", "dom"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["src/api/**/*", "src/**/*.spec.ts", "src/**/*.stories.ts", "src/**/*.spec.tsx", "src/**/*.stories.tsx"]

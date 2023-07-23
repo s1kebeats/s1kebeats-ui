@@ -12,8 +12,6 @@ const defaultMountOptions = {
 const testIcon = 'testIcon';
 
 const confidentialInputSelector = '[data-testid=confidentialInput]';
-const confidentialInputContainerSelector =
-  '[data-testid=confidentialInputContainer]';
 const toggleValueButtonSelector = '[data-testid=toggleValueButton]';
 const toggleValueButtonIconSelector = '[data-testid=toggleValueButtonIcon]';
 const upperLabelSelector = '[data-testid=upperLabel]';

@@ -8,10 +8,6 @@ const meta: Meta<typeof PresentationalAvatarLabeled> = {
 
 export default meta;
 
-const presentationalAvatarPositions: InstanceType<
-  typeof PresentationalAvatarLabeled
->['$props']['position'][] = ['left', 'right'];
-
 export const Presentation = () => (
   <div>
     <div class="flex gap-5">
