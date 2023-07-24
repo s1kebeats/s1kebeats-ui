@@ -16,13 +16,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
-
-interface Props {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  type?: 'primary' | 'secondary' | 'subtle' | 'ghost';
-  icon?: string;
-  position?: 'left' | 'right';
-}
+import Props from './Button.props';
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
