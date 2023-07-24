@@ -12,3 +12,5 @@ module.exports = {
   ...
 }
 ```
+
+3. connect output css file - ```~/node_modules/@s1kebeats/s1kebeats-ui/dist/style.css``` (nuxt.config.ts css)
