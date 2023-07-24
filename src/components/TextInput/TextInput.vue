@@ -1,12 +1,7 @@
 <template>
   <div
     class="flex flex-col"
-    :class="[
-      inputContainerClasses,
-      {
-        'cursor-not-allowed': disabled
-      }
-    ]"
+    :class="[inputContainerClasses]"
     data-testid="textInputContainer"
   >
     <div
@@ -19,7 +14,8 @@
           'opacity-50': disabled,
           'bg-grayscale-bg outline-grayscale-header outline outline-[2px]':
             focused,
-          'bg-grayscale-input': !focused
+          'bg-grayscale-input': !focused,
+          'cursor-not-allowed': disabled
         }
       ]"
       @focusin="focused = true"
@@ -49,21 +45,24 @@
           ]"
         />
       </button>
-      <div class="grow flex flex-col justify-center">
+      <div
+        class="flex grow flex-col items-start justify-center overflow-hidden"
+      >
         <span
           data-testid="upperLabel"
           v-show="value"
-          class="desktop-text-xs"
+          class="w-full desktop-text-xs truncate"
           :class="inputLabelClasses"
           >{{ label }}</span
         >
         <input
           data-testid="textInput"
+          @keypress.enter="callback ? callback() : null"
           :type="type"
           :name="name"
           ref="textInput"
           :placeholder="label"
-          class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
+          class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
           v-model="value"
           :disabled="disabled"
           :class="{
@@ -74,9 +73,9 @@
 
       <button
         :class="{
-          'w-[19px]': size === 'sm',
-          'w-[22px]': size === 'md' || size === 'lg',
-          'w-[24px]': size === 'xl'
+          'min-w-[19px]': size === 'sm',
+          'min-w-[22px]': size === 'md' || size === 'lg',
+          'min-w-[24px]': size === 'xl'
         }"
         data-testid="clearValueButton"
         @click="focused ? clearInputValue() : null"
@@ -92,9 +91,13 @@
         </transition>
       </button>
     </div>
-    <span data-testid="messageHint" v-if="message" :class="messageClasses">{{
-      message
-    }}</span>
+    <span
+      data-testid="messageHint"
+      class="cursor-default"
+      v-if="message"
+      :class="messageClasses"
+      >{{ message }}</span
+    >
   </div>
 </template>
 <script setup lang="ts">

@@ -197,6 +197,20 @@ describe('TextInput', () => {
 
       expect(callback).toHaveBeenCalled();
     });
+    it('callback - should call provided callback on input enter press', async () => {
+      const callback = vi.fn();
+      const wrapper = shallowMount(TextInput, {
+        props: {
+          ...defaultMountOptions.props,
+          callback,
+          icon: testIcon
+        }
+      });
+
+      await wrapper.get(textInputSelector).trigger('keypress.enter');
+
+      expect(callback).toHaveBeenCalled();
+    });
     it('debounce - should emit without a debounce by default', async () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
 
@@ -303,17 +317,17 @@ describe('TextInput', () => {
         >
           <!--v-if-->
           <div
-            class="grow flex flex-col justify-center"
+            class="flex grow flex-col items-start justify-center overflow-hidden"
           >
             <span
-              class="desktop-text-xs text-grayscale-label"
+              class="w-full desktop-text-xs truncate text-grayscale-label"
               data-testid="upperLabel"
               style="display: none;"
             >
               testLabel
             </span>
             <input
-              class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
+              class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
               data-testid="textInput"
               name="testName"
               placeholder="testLabel"
@@ -321,7 +335,7 @@ describe('TextInput', () => {
             />
           </div>
           <button
-            class="w-[22px]"
+            class="min-w-[22px]"
             data-testid="clearValueButton"
           >
             <transition-stub
