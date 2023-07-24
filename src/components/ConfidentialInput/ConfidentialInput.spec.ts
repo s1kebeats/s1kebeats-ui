@@ -286,17 +286,17 @@ describe('ConfidentialInput', () => {
             />
           </button>
           <div
-            class="grow flex flex-col justify-center"
+            class="flex grow flex-col items-start justify-center overflow-hidden"
           >
             <span
-              class="desktop-text-xs text-grayscale-label"
+              class="w-full desktop-text-xs truncate text-grayscale-label"
               data-testid="upperLabel"
               style="display: none;"
             >
               testLabel
             </span>
             <input
-              class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label"
+              class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
               data-testid="confidentialInput"
               name="testName"
               placeholder="testLabel"
