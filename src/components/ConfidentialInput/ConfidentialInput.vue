@@ -29,7 +29,7 @@
         data-testid="optionalIconButton"
         :disabled="disabled"
         v-if="icon"
-        @click="callback ? callback() : null"
+        @click.prevent="callback ? callback() : null"
         :class="{
           'cursor-default': !callback,
           'cursor-not-allowed': disabled
@@ -82,7 +82,7 @@
           'cursor-not-allowed': disabled
         }"
         data-testid="toggleValueButton"
-        @click="toggleValueVisibility"
+        @click.prevent="toggleValueVisibility"
         :disabled="disabled"
       >
         <Icon

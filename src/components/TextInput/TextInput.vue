@@ -25,7 +25,7 @@
         data-testid="optionalIconButton"
         :disabled="disabled"
         v-if="icon"
-        @click="callback ? callback() : null"
+        @click.prevent="callback ? callback() : null"
         :class="{
           'cursor-default': !callback,
           'cursor-not-allowed': disabled
@@ -78,7 +78,7 @@
           'min-w-[24px]': size === 'xl'
         }"
         data-testid="clearValueButton"
-        @click="focused ? clearInputValue() : null"
+        @click.prevent="focused ? clearInputValue() : null"
         :disabled="disabled"
       >
         <transition name="fade">
