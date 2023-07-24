@@ -3,8 +3,8 @@
     data-testid="textInputComponent"
     :size="size"
     :name="name"
-    label="Введите электронную почту"
-    :icon="icon ? 'material-symbols:alternate-email-rounded' : null"
+    label="Введите имя пользователя"
+    :icon="icon ? 'material-symbols:account-circle' : null"
     :preset="preset"
     :disabled="disabled"
     :message="message"
@@ -12,7 +12,6 @@
     :debounce="debounce"
     @update-value="updateValue"
     :autocomplete="autocomplete"
-    type="email"
   />
 </template>
 <script setup lang="ts">
