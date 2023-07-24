@@ -37,7 +37,7 @@
       >
         <Icon
           data-testid="optionalIcon"
-          :icon="icon"
+          icon="material-symbols:lock"
           class="transition-all"
           :class="[
             inputIconClasses,
@@ -111,11 +111,15 @@
 import { Icon } from '@iconify/vue';
 import { computed, ref, watch, watchEffect } from 'vue';
 import type Props from '../TextInput/TextInput.props';
-const props = withDefaults(defineProps<Omit<Props, 'type'>>(), {
-  size: 'md',
-  disabled: false,
-  debounce: false
-});
+const props = withDefaults(
+  defineProps<Omit<Props, 'type' | 'icon'> & { icon: boolean }>(),
+  {
+    size: 'md',
+    disabled: false,
+    debounce: false,
+    icon: true
+  }
+);
 
 const emit = defineEmits<{
   (e: 'updateValue', value: string): void;
