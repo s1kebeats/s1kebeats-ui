@@ -60,6 +60,7 @@
           >{{ label }}</span
         >
         <input
+          :autocomplete="autocomplete"
           data-testid="confidentialInput"
           :type="showValue ? 'text' : 'password'"
           :name="name"
@@ -119,7 +120,8 @@ const props = withDefaults(
     size: 'md',
     disabled: false,
     debounce: false,
-    icon: true
+    icon: true,
+    autocomplete: 'off'
   }
 );
 

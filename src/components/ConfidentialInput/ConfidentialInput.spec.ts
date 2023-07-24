@@ -27,6 +27,24 @@ describe('ConfidentialInput', () => {
     vi.restoreAllMocks();
   });
   describe('props', () => {
+    it('autocomplete - should render with "off" by default', () => {
+      const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
+      expect(
+        wrapper.get(confidentialInputSelector).attributes('autocomplete')
+      ).toBe('off');
+    });
+    it('autocomplete - should render with set value', () => {
+      const testValue = 'on';
+      const wrapper = shallowMount(ConfidentialInput, {
+        props: {
+          ...defaultMountOptions.props,
+          autocomplete: testValue
+        }
+      });
+      expect(
+        wrapper.get(confidentialInputSelector).attributes('autocomplete')
+      ).toBe(testValue);
+    });
     it('name - should render with set name', () => {
       const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
       expect(wrapper.get(confidentialInputSelector).attributes('name')).toBe(
@@ -296,6 +314,7 @@ describe('ConfidentialInput', () => {
               testLabel
             </span>
             <input
+              autocomplete="off"
               class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
               data-testid="confidentialInput"
               name="testName"

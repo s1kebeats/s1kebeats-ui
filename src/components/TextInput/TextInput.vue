@@ -56,6 +56,7 @@
           >{{ label }}</span
         >
         <input
+          :autocomplete="autocomplete"
           data-testid="textInput"
           @keypress.enter="callback ? callback() : null"
           :type="type"
@@ -108,7 +109,8 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   disabled: false,
   debounce: false,
-  type: 'text'
+  type: 'text',
+  autocomplete: 'off'
 });
 
 const emit = defineEmits<{

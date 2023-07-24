@@ -10,4 +10,5 @@ export default interface Props {
   callback?: Function;
   debounce?: boolean;
   type?: 'text' | 'email';
+  autocomplete?: string;
 }

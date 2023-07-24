@@ -26,6 +26,24 @@ describe('TextInput', () => {
     vi.restoreAllMocks();
   });
   describe('props', () => {
+    it('autocomplete - should render with "off" by default', () => {
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+      expect(wrapper.get(textInputSelector).attributes('autocomplete')).toBe(
+        'off'
+      );
+    });
+    it('autocomplete - should render with set value', () => {
+      const testValue = 'on';
+      const wrapper = shallowMount(TextInput, {
+        props: {
+          ...defaultMountOptions.props,
+          autocomplete: testValue
+        }
+      });
+      expect(wrapper.get(textInputSelector).attributes('autocomplete')).toBe(
+        testValue
+      );
+    });
     it('name - should render with set name', () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
       expect(wrapper.get(textInputSelector).attributes('name')).toBe(
@@ -327,6 +345,7 @@ describe('TextInput', () => {
               testLabel
             </span>
             <input
+              autocomplete="off"
               class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
               data-testid="textInput"
               name="testName"

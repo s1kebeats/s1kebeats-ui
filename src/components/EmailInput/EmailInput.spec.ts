@@ -17,6 +17,18 @@ const textInputComponentSelector = '[data-testid=textInputComponent]';
 
 describe('EmailInput', () => {
   describe('props', () => {
+    it('autocomplete - should render textInput with set value', () => {
+      const testValue = 'on';
+      const wrapper = shallowMount(EmailInput, {
+        props: {
+          ...defaultMountOptions.props,
+          autocomplete: testValue
+        }
+      });
+      expect(
+        wrapper.get(textInputComponentSelector).attributes('autocomplete')
+      ).toBe(testValue);
+    });
     it('size - should render textInput with set size attr', () => {
       const wrapper = shallowMount(EmailInput, defaultMountOptions);
 
@@ -84,6 +96,7 @@ describe('EmailInput', () => {
       DOMWrapper {
         "isDisabled": [Function],
         "wrapperElement": <text-input-stub
+          autocomplete="off"
           data-testid="textInputComponent"
           debounce="true"
           disabled="false"

@@ -11,6 +11,7 @@
     :state="state"
     :debounce="true"
     @update-value="updateValue"
+    :autocomplete="autocomplete"
     type="email"
   />
 </template>
