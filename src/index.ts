@@ -5,6 +5,7 @@ import EmailInput from './components/EmailInput/EmailInput.vue';
 import PresentationalAvatar from './components/PresentationalAvatar/PresentationalAvatar.vue';
 import PresentationalAvatarLabeled from './components/PresentationalAvatar/PresentationalAvatarLabeled.vue';
 import TextInput from './components/TextInput/TextInput.vue';
+import UsernameInput from './components/UsernameInput/UsernameInput.vue'
 
 export {
   Button,
@@ -13,5 +14,6 @@ export {
   EmailInput,
   PresentationalAvatar,
   PresentationalAvatarLabeled,
-  TextInput
+  TextInput,
+  UsernameInput
 };
