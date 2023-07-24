@@ -4,6 +4,7 @@
     :class="[buttonSizingClasses, buttonTypeClasses]"
   >
     <div
+      data-testid="buttonContentWrapper"
       class="flex items-center justify-center"
       :class="[buttonElementsContainerSizingClasses, { 'opacity-0': loading }]"
     >
@@ -16,7 +17,12 @@
       />
       <slot v-if="position === 'right'" />
     </div>
-    <LoadingSpinner class="absolute" v-if="loading" :size="size" />
+    <LoadingSpinner
+      data-testid="loadingSpinner"
+      class="absolute"
+      v-if="loading"
+      :size="size"
+    />
   </button>
 </template>
 <script setup lang="ts">
