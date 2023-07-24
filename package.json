@@ -1,6 +1,6 @@
 {
   "name": "@s1kebeats/s1kebeats-ui",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "author": "Arthur Datsenko-Boos",
   "description": "@s1kebeats 2023",
   "files": [
@@ -30,7 +30,6 @@
     "build-publish": "pnpm run build && npm publish"
   },
   "dependencies": {
-    "email-validator": "^2.0.4",
     "vue": "^3.3.4"
   },
   "devDependencies": {
