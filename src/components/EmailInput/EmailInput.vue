@@ -4,7 +4,7 @@
     :size="size"
     :name="name"
     label="Введите электронную почту"
-    icon="material-symbols:alternate-email-rounded"
+    :icon="icon ? 'material-symbols:alternate-email-rounded' : null"
     :preset="preset"
     :disabled="disabled"
     :message="message || localMessage"
@@ -24,8 +24,14 @@ const emit = defineEmits<{
   (e: 'updateValue', value: string): void;
 }>();
 
-const props =
-  defineProps<Omit<TextInputProps, 'label' | 'icon' | 'debounce'>>();
+const props = withDefaults(
+  defineProps<
+    Omit<TextInputProps, 'label' | 'icon' | 'debounce'> & { icon: boolean }
+  >(),
+  {
+    icon: true
+  }
+);
 
 const localMessage = ref(props.message ? props.message : '');
 const localState = ref(props.state ? props.state : null);

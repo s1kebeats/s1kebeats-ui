@@ -25,7 +25,6 @@ export const Presentation = () => (
                 <ConfidentialInput
                   name="input"
                   label="Type in your password"
-                  icon="material-symbols:lock"
                   state={state}
                   size={size}
                   key={size! + state!}
@@ -33,6 +32,7 @@ export const Presentation = () => (
                 <ConfidentialInput
                   name="input"
                   label="Type in your password"
+                  icon={false}
                   state={state}
                   size={size}
                   key={size! + state!}

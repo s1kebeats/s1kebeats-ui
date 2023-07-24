@@ -49,29 +49,18 @@ describe('ConfidentialInput', () => {
         defaultMountOptions.props.label
       );
     });
-    it('icon - should not render icon when not provided', () => {
+    it('icon - should render icon by default', () => {
       const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
-      expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(false);
-    });
-    it('icon - should render icon when provided', () => {
-      const wrapper = shallowMount(ConfidentialInput, {
-        props: {
-          ...defaultMountOptions.props,
-          icon: testIcon
-        }
-      });
       expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(true);
     });
-    it('icon - should render with set icon', () => {
+    it('icon - should not render icon when set to "false"', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          icon: testIcon
+          icon: false
         }
       });
-      expect(wrapper.get(optionalIconSelector).attributes('icon')).toBe(
-        testIcon
-      );
+      expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(false);
     });
     it('preset - should render with empty preset by default', () => {
       const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
@@ -286,7 +275,16 @@ describe('ConfidentialInput', () => {
           class="flex items-center transition-all rounded-xl min-h-[52px] px-6 gap-3 bg-grayscale-input"
           data-testid="presentationalInput"
         >
-          <!--v-if-->
+          <button
+            class="cursor-default"
+            data-testid="optionalIconButton"
+          >
+            <anonymous-stub
+              class="transition-all text-[22px] text-grayscale-label"
+              data-testid="optionalIcon"
+              icon="material-symbols:lock"
+            />
+          </button>
           <div
             class="grow flex flex-col justify-center"
           >

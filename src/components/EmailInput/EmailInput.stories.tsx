@@ -26,12 +26,21 @@ export const Presentation = () => (
         <div class="flex flex-col gap-5 items-start">
           {emailInputSizes.map((size) => {
             return (
-              <EmailInput
-                name="input"
-                state={state}
-                size={size}
-                key={size! + state!}
-              />
+              <div class="flex items-center gap-5">
+                <EmailInput
+                  name="input"
+                  state={state}
+                  size={size}
+                  key={size! + state!}
+                />
+                <EmailInput
+                  icon={false}
+                  name="input"
+                  state={state}
+                  size={size}
+                  key={size! + state!}
+                />
+              </div>
             );
           })}
         </div>

@@ -39,6 +39,23 @@ describe('EmailInput', () => {
         defaultMountOptions.props.preset
       );
     });
+    it('icon - should render with provided icon by default', () => {
+      const wrapper = shallowMount(EmailInput, defaultMountOptions);
+      expect(
+        wrapper.find(textInputComponentSelector).attributes('icon')
+      ).toBeTruthy();
+    });
+    it('icon - should render without provided icon when set to "false"', () => {
+      const wrapper = shallowMount(EmailInput, {
+        props: {
+          ...defaultMountOptions.props,
+          icon: false
+        }
+      });
+      expect(
+        wrapper.find(textInputComponentSelector).attributes('icon')
+      ).toBeFalsy();
+    });
     it('preset - should render with error message if invalid email was provided', async () => {
       const wrapper = shallowMount(EmailInput, {
         props: {
