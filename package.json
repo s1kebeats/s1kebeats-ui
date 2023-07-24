@@ -26,7 +26,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build-tailwind": "pnpm dlx tailwindcss -o .storybook/tailwind.css",
-    "dev-tailwind": "pnpm dlx tailwindcss -i ./src/assets/main.css -o .storybook/tailwind.css --watch"
+    "dev-tailwind": "pnpm dlx tailwindcss -i ./src/assets/main.css -o .storybook/tailwind.css --watch",
+    "build-publish": "pnpm run build && npm publish"
   },
   "dependencies": {
     "email-validator": "^2.0.4",
