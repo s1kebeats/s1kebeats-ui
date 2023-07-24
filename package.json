@@ -23,7 +23,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "conc \"storybook dev -p 6006\" \"pnpm run dev-tailwind\"",
     "build-storybook": "storybook build",
     "build-tailwind": "pnpm dlx tailwindcss -o .storybook/tailwind.css",
     "dev-tailwind": "pnpm dlx tailwindcss -i ./src/assets/main.css -o .storybook/tailwind.css --watch",

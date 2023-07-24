@@ -3,4 +3,5 @@ export default interface Props {
   type?: 'primary' | 'secondary' | 'subtle' | 'ghost';
   icon?: string | null;
   position?: 'left' | 'right';
+  loading: boolean;
 }

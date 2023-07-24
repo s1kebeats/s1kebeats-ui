@@ -1,19 +1,26 @@
 <template>
   <button
-    class="flex items-center justify-center link transition-all disabled:cursor-not-allowed"
+    class="relative flex items-center justify-center link transition-all disabled:cursor-not-allowed"
     :class="[buttonSizingClasses, buttonTypeClasses]"
   >
-    <slot v-if="position === 'left'" />
-    <Icon
-      v-if="icon"
-      data-testid="buttonIcon"
-      :icon="icon"
-      :class="[iconSizingClasses]"
-    />
-    <slot v-if="position === 'right'" />
+    <div
+      class="flex items-center justify-center"
+      :class="[buttonElementsContainerSizingClasses, { 'opacity-0': loading }]"
+    >
+      <slot v-if="position === 'left'" />
+      <Icon
+        v-if="icon"
+        data-testid="buttonIcon"
+        :icon="icon"
+        :class="[iconSizingClasses, { 'opacity-0': loading }]"
+      />
+      <slot v-if="position === 'right'" />
+    </div>
+    <LoadingSpinner class="absolute" v-if="loading" :size="size" />
   </button>
 </template>
 <script setup lang="ts">
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.vue';
 import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import Props from './Button.props';
@@ -21,7 +28,8 @@ import Props from './Button.props';
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   type: 'primary',
-  position: 'left'
+  position: 'left',
+  loading: false
 });
 
 const buttonSizingClasses = computed(() => {
@@ -34,6 +42,16 @@ const buttonSizingClasses = computed(() => {
       return 'desktop-text-md rounded-2xl min-h-[60px] px-8 gap-4';
     default:
       return 'desktop-text-sm rounded-xl min-h-[52px] px-6 gap-3';
+  }
+});
+
+const buttonElementsContainerSizingClasses = computed(() => {
+  switch (props.size) {
+    case 'lg':
+    case 'xl':
+      return 'gap-4';
+    default:
+      return 'gap-3';
   }
 });
 

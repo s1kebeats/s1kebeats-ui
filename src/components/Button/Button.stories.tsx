@@ -30,6 +30,7 @@ export const Presentation = () => (
               <div class="flex gap-5">
                 <Button
                   icon="material-symbols:add-rounded"
+                  loading={true}
                   position="right"
                   type={type}
                   size={size}
