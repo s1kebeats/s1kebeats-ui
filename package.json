@@ -1,6 +1,6 @@
 {
   "name": "@s1kebeats/s1kebeats-ui",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "author": "Arthur Datsenko-Boos",
   "description": "@s1kebeats 2023",
   "files": [
@@ -24,7 +24,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "storybook": "conc \"pnpm run format\" \"storybook dev -p 6006\" \"pnpm run dev-tailwind\"",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build -o docs",
     "build-tailwind": "pnpm dlx tailwindcss -o .storybook/tailwind.css",
     "dev-tailwind": "pnpm dlx tailwindcss -i ./src/assets/main.css -o .storybook/tailwind.css --watch",
     "build-publish": "pnpm run build && npm publish"

@@ -15,6 +15,7 @@
       :username="username"
       :image="image"
       class="m-[4px]"
+      :size="size"
     />
     <span
       v-if="position === 'left'"
@@ -27,13 +28,16 @@
 </template>
 <script setup lang="ts">
 import PresentationalAvatar from './PresentationalAvatar.vue';
+import type Props from './PresentationalAvatar.props';
 
-interface Props {
-  username: string;
-  image?: string | null;
-  position?: 'right' | 'left';
-}
-const props = withDefaults(defineProps<Props>(), {
-  position: 'left'
-});
+const props = withDefaults(
+  defineProps<
+    Props & {
+      position?: 'right' | 'left';
+    }
+  >(),
+  {
+    position: 'left'
+  }
+);
 </script>

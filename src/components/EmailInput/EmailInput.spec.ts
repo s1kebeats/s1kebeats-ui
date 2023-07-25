@@ -10,7 +10,7 @@ const defaultMountOptions = {
     disabled: false,
     message: 'message',
     state: 'success'
-  }
+  } as const
 };
 
 const textInputComponentSelector = '[data-testid=textInputComponent]';
