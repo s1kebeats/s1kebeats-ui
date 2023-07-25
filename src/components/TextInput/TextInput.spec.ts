@@ -298,6 +298,16 @@ describe('TextInput', () => {
       expect(wrapper.emitted('updateValue')).toHaveLength(1);
       expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue);
     });
+    it('input - should emit trimmed value', async () => {
+      const testValue = '   testValue   ';
+      const wrapper = shallowMount(TextInput, defaultMountOptions);
+
+      await wrapper.get(textInputSelector).setValue(testValue);
+
+      expect(wrapper.emitted()).toHaveProperty('updateValue');
+      expect(wrapper.emitted('updateValue')).toHaveLength(1);
+      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue.trim());
+    });
     it('clearValue button click + focusin - should clear input value when clicked and focused', async () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
 

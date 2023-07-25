@@ -126,12 +126,7 @@ describe('ConfidentialInput', () => {
       ).not.toHaveProperty('disabled');
     });
     it('disabled - should render without disabled attr on optional icon button by default', () => {
-      const wrapper = shallowMount(ConfidentialInput, {
-        props: {
-          ...defaultMountOptions.props,
-          icon: 'test'
-        }
-      });
+      const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
       expect(
         wrapper.get(optionalIconButtonSelector).attributes()
       ).not.toHaveProperty('disabled');
@@ -162,8 +157,7 @@ describe('ConfidentialInput', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          disabled: true,
-          icon: 'test'
+          disabled: true
         }
       });
       expect(
@@ -198,8 +192,7 @@ describe('ConfidentialInput', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          callback,
-          icon: 'testIcon'
+          callback
         }
       });
 
@@ -279,6 +272,16 @@ describe('ConfidentialInput', () => {
       expect(wrapper.emitted()).toHaveProperty('updateValue');
       expect(wrapper.emitted('updateValue')).toHaveLength(1);
       expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue);
+    });
+    it('input - should emit trimmed value', async () => {
+      const testValue = '  testValue   ';
+      const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
+
+      await wrapper.get(confidentialInputSelector).setValue(testValue);
+
+      expect(wrapper.emitted()).toHaveProperty('updateValue');
+      expect(wrapper.emitted('updateValue')).toHaveLength(1);
+      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue.trim());
     });
   });
   it('snapshot - should match the snapshot', () => {

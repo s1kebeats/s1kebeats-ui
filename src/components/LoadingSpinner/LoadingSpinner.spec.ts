@@ -6,11 +6,11 @@ describe('LoadingSpinner', () => {
   it('snapshot - should match the snapshot', () => {
     const wrapper = shallowMount(LoadingSpinner);
     expect(wrapper.element).toMatchInlineSnapshot(`
-          <div
-            class="spinner border-[2px] border-current aspect-square w-[24px]"
-            data-testid="loadingSpinner"
-            data-v-bbf2ec71=""
-          />
-        `);
+      <div
+        class="spinner border-[2px] border-current aspect-square transition-all w-[24px]"
+        data-testid="loadingSpinner"
+        data-v-bbf2ec71=""
+      />
+    `);
   });
 });

@@ -64,7 +64,7 @@
           ref="textInput"
           :placeholder="label"
           class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
-          v-model="value"
+          v-model.trim="value"
           :disabled="disabled"
           :class="{
             'cursor-not-allowed': disabled
