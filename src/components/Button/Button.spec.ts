@@ -4,9 +4,27 @@ import { describe, it, expect } from 'vitest';
 
 const buttonIconSelector = '[data-testid=buttonIcon]';
 const testIcon = 'testIcon';
+const buttonContentWrapperSelector = '[data-testid=buttonContentWrapper]';
+const loadingSpinnerSelector = '[data-testid=loadingSpinner]';
 
 describe('Button', () => {
   describe('props', () => {
+    it('loading - should render button content without loadingSpinner by default', () => {
+      const wrapper = shallowMount(Button);
+      expect(wrapper.find(buttonContentWrapperSelector).isVisible()).toBe(true);
+      expect(wrapper.find(loadingSpinnerSelector).exists()).toBe(false);
+    });
+    it('loading - should render loadingSpinner without button content when set to "true"', () => {
+      const wrapper = shallowMount(Button, {
+        props: {
+          loading: true
+        }
+      });
+      expect(wrapper.find(buttonContentWrapperSelector).classes()).toContain(
+        'opacity-0'
+      );
+      expect(wrapper.find(loadingSpinnerSelector).exists()).toBe(true);
+    });
     it('icon - should render icon when provided', () => {
       const wrapper = shallowMount(Button, {
         props: {
@@ -32,11 +50,17 @@ describe('Button', () => {
     const wrapper = shallowMount(Button);
     expect(wrapper.element).toMatchInlineSnapshot(`
       <button
-        class="flex items-center justify-center link transition-all disabled:cursor-not-allowed desktop-text-sm rounded-xl min-h-[52px] px-6 gap-3 text-grayscale-bg bg-primary hover:bg-primary-default_strong focus:outline-8 focus:outline focus:outline-primary-bg_strong disabled:opacity-50 active:bg-grayscale-header"
+        class="relative flex items-center justify-center link transition-all disabled:cursor-not-allowed desktop-text-sm rounded-xl min-h-[52px] px-6 gap-3 text-grayscale-bg bg-primary hover:bg-primary-default_strong focus:outline-8 focus:outline focus:outline-primary-bg_strong disabled:opacity-50 active:bg-grayscale-header"
       >
-        
-        
-        <!--v-if-->
+        <div
+          class="flex items-center justify-center gap-3"
+          data-testid="buttonContentWrapper"
+        >
+          
+          
+          <!--v-if-->
+          <!--v-if-->
+        </div>
         <!--v-if-->
       </button>
     `);

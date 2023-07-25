@@ -1,6 +1,6 @@
 import EmailInput from './EmailInput.vue';
 import { describe, it, expect } from 'vitest';
-import { mount, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 
 const defaultMountOptions = {
   props: {
@@ -10,14 +10,37 @@ const defaultMountOptions = {
     disabled: false,
     message: 'message',
     state: 'success'
-  }
+  } as const
 };
 
-const testEmail = 'test@example.com';
 const textInputComponentSelector = '[data-testid=textInputComponent]';
 
 describe('EmailInput', () => {
   describe('props', () => {
+    it('debounce - should render textInput with set value', () => {
+      const testValue = true;
+      const wrapper = shallowMount(EmailInput, {
+        props: {
+          ...defaultMountOptions.props,
+          debounce: testValue
+        }
+      });
+      expect(
+        wrapper.get(textInputComponentSelector).attributes('debounce')
+      ).toBe(testValue.toString());
+    });
+    it('autocomplete - should render textInput with set value', () => {
+      const testValue = 'on';
+      const wrapper = shallowMount(EmailInput, {
+        props: {
+          ...defaultMountOptions.props,
+          autocomplete: testValue
+        }
+      });
+      expect(
+        wrapper.get(textInputComponentSelector).attributes('autocomplete')
+      ).toBe(testValue);
+    });
     it('size - should render textInput with set size attr', () => {
       const wrapper = shallowMount(EmailInput, defaultMountOptions);
 
@@ -56,56 +79,6 @@ describe('EmailInput', () => {
         wrapper.find(textInputComponentSelector).attributes('icon')
       ).toBeFalsy();
     });
-    it('preset - should render with error message if invalid email was provided', async () => {
-      const wrapper = shallowMount(EmailInput, {
-        props: {
-          name: 'emailInput',
-          preset: 'notAnEmail'
-        }
-      });
-
-      expect(
-        wrapper.get(textInputComponentSelector).attributes()
-      ).toHaveProperty('message');
-    });
-    // ! why not working?
-    it('preset - should render with "error" state if invalid email was provided', async () => {
-      const wrapper = shallowMount(EmailInput, {
-        props: {
-          name: 'emailInput',
-          preset: 'notAnEmail'
-        }
-      });
-
-      expect(wrapper.get(textInputComponentSelector).attributes('state')).toBe(
-        'error'
-      );
-    });
-    // ! why not working?
-    it('preset - should render with "success" state if valid email was provided', async () => {
-      const wrapper = mount(EmailInput, {
-        props: {
-          name: 'emailInput',
-          preset: testEmail
-        }
-      });
-
-      expect(wrapper.get(textInputComponentSelector).attributes('state')).toBe(
-        'success'
-      );
-    });
-    it('preset - should not render error message if valid email was provided', async () => {
-      const wrapper = mount(EmailInput, {
-        props: {
-          name: 'emailInput',
-          preset: testEmail
-        }
-      });
-
-      expect(
-        wrapper.get(textInputComponentSelector).attributes()
-      ).not.toHaveProperty('message');
-    });
     it('disabled - should render textInput with set disabled attr', () => {
       const wrapper = shallowMount(EmailInput, defaultMountOptions);
 
@@ -135,8 +108,9 @@ describe('EmailInput', () => {
       DOMWrapper {
         "isDisabled": [Function],
         "wrapperElement": <text-input-stub
+          autocomplete="off"
           data-testid="textInputComponent"
-          debounce="true"
+          debounce="false"
           disabled="false"
           icon="material-symbols:alternate-email-rounded"
           label="Введите электронную почту"

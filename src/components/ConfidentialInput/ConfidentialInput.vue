@@ -29,7 +29,7 @@
         data-testid="optionalIconButton"
         :disabled="disabled"
         v-if="icon"
-        @click="callback ? callback() : null"
+        @click.prevent="callback ? callback() : null"
         :class="{
           'cursor-default': !callback,
           'cursor-not-allowed': disabled
@@ -49,22 +49,25 @@
           ]"
         />
       </button>
-      <div class="grow flex flex-col justify-center">
+      <div
+        class="flex grow flex-col items-start justify-center overflow-hidden"
+      >
         <span
           data-testid="upperLabel"
           v-show="value"
-          class="desktop-text-xs"
+          class="w-full desktop-text-xs truncate"
           :class="inputLabelClasses"
           >{{ label }}</span
         >
         <input
+          :autocomplete="autocomplete"
           data-testid="confidentialInput"
           :type="showValue ? 'text' : 'password'"
           :name="name"
           ref="confidentialInput"
           :placeholder="label"
-          class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label"
-          v-model="value"
+          class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
+          v-model.trim="value"
           :disabled="disabled"
           :class="{
             'cursor-not-allowed': disabled
@@ -80,7 +83,7 @@
           'cursor-not-allowed': disabled
         }"
         data-testid="toggleValueButton"
-        @click="toggleValueVisibility"
+        @click.prevent="toggleValueVisibility"
         :disabled="disabled"
       >
         <Icon
@@ -117,7 +120,8 @@ const props = withDefaults(
     size: 'md',
     disabled: false,
     debounce: false,
-    icon: true
+    icon: true,
+    autocomplete: 'off'
   }
 );
 

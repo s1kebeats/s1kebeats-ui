@@ -27,6 +27,24 @@ describe('ConfidentialInput', () => {
     vi.restoreAllMocks();
   });
   describe('props', () => {
+    it('autocomplete - should render with "off" by default', () => {
+      const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
+      expect(
+        wrapper.get(confidentialInputSelector).attributes('autocomplete')
+      ).toBe('off');
+    });
+    it('autocomplete - should render with set value', () => {
+      const testValue = 'on';
+      const wrapper = shallowMount(ConfidentialInput, {
+        props: {
+          ...defaultMountOptions.props,
+          autocomplete: testValue
+        }
+      });
+      expect(
+        wrapper.get(confidentialInputSelector).attributes('autocomplete')
+      ).toBe(testValue);
+    });
     it('name - should render with set name', () => {
       const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
       expect(wrapper.get(confidentialInputSelector).attributes('name')).toBe(
@@ -108,12 +126,7 @@ describe('ConfidentialInput', () => {
       ).not.toHaveProperty('disabled');
     });
     it('disabled - should render without disabled attr on optional icon button by default', () => {
-      const wrapper = shallowMount(ConfidentialInput, {
-        props: {
-          ...defaultMountOptions.props,
-          icon: 'test'
-        }
-      });
+      const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
       expect(
         wrapper.get(optionalIconButtonSelector).attributes()
       ).not.toHaveProperty('disabled');
@@ -144,8 +157,7 @@ describe('ConfidentialInput', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          disabled: true,
-          icon: 'test'
+          disabled: true
         }
       });
       expect(
@@ -180,8 +192,7 @@ describe('ConfidentialInput', () => {
       const wrapper = shallowMount(ConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          callback,
-          icon: 'testIcon'
+          callback
         }
       });
 
@@ -262,6 +273,16 @@ describe('ConfidentialInput', () => {
       expect(wrapper.emitted('updateValue')).toHaveLength(1);
       expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue);
     });
+    it('input - should emit trimmed value', async () => {
+      const testValue = '  testValue   ';
+      const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
+
+      await wrapper.get(confidentialInputSelector).setValue(testValue);
+
+      expect(wrapper.emitted()).toHaveProperty('updateValue');
+      expect(wrapper.emitted('updateValue')).toHaveLength(1);
+      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue.trim());
+    });
   });
   it('snapshot - should match the snapshot', () => {
     const wrapper = shallowMount(ConfidentialInput, defaultMountOptions);
@@ -286,17 +307,18 @@ describe('ConfidentialInput', () => {
             />
           </button>
           <div
-            class="grow flex flex-col justify-center"
+            class="flex grow flex-col items-start justify-center overflow-hidden"
           >
             <span
-              class="desktop-text-xs text-grayscale-label"
+              class="w-full desktop-text-xs truncate text-grayscale-label"
               data-testid="upperLabel"
               style="display: none;"
             >
               testLabel
             </span>
             <input
-              class="bg-transparent focus:outline-none text-grayscale-header placeholder:text-grayscale-label"
+              autocomplete="off"
+              class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
               data-testid="confidentialInput"
               name="testName"
               placeholder="testLabel"

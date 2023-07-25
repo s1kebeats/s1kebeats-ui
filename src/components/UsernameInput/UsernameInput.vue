@@ -1,0 +1,42 @@
+<template>
+  <TextInput
+    data-testid="textInputComponent"
+    :size="size"
+    :name="name"
+    label="Введите имя пользователя"
+    :icon="icon ? 'material-symbols:account-circle' : null"
+    :preset="preset"
+    :disabled="disabled"
+    :message="message"
+    :state="state"
+    :debounce="debounce"
+    @update-value="updateValue"
+    :autocomplete="autocomplete"
+  />
+</template>
+<script setup lang="ts">
+import TextInput from '../TextInput/TextInput.vue';
+import { onMounted } from 'vue';
+import type TextInputProps from '../TextInput/TextInput.props';
+
+const emit = defineEmits<{
+  (e: 'updateValue', value: string): void;
+}>();
+
+const props = withDefaults(
+  defineProps<Omit<TextInputProps, 'label' | 'icon'> & { icon: boolean }>(),
+  {
+    icon: true
+  }
+);
+
+function updateValue(value: string) {
+  emit('updateValue', value);
+}
+
+onMounted(() => {
+  if (props.preset) {
+    updateValue(props.preset);
+  }
+});
+</script>

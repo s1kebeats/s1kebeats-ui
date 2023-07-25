@@ -25,7 +25,7 @@
         data-testid="optionalIconButton"
         :disabled="disabled"
         v-if="icon"
-        @click="callback ? callback() : null"
+        @click.prevent="callback ? callback() : null"
         :class="{
           'cursor-default': !callback,
           'cursor-not-allowed': disabled
@@ -56,6 +56,7 @@
           >{{ label }}</span
         >
         <input
+          :autocomplete="autocomplete"
           data-testid="textInput"
           @keypress.enter="callback ? callback() : null"
           :type="type"
@@ -63,7 +64,7 @@
           ref="textInput"
           :placeholder="label"
           class="bg-transparent w-full truncate focus:outline-none text-grayscale-header placeholder:text-grayscale-label placeholder:truncate"
-          v-model="value"
+          v-model.trim="value"
           :disabled="disabled"
           :class="{
             'cursor-not-allowed': disabled
@@ -78,7 +79,7 @@
           'min-w-[24px]': size === 'xl'
         }"
         data-testid="clearValueButton"
-        @click="focused ? clearInputValue() : null"
+        @click.prevent="focused ? clearInputValue() : null"
         :disabled="disabled"
       >
         <transition name="fade">
@@ -108,7 +109,8 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   disabled: false,
   debounce: false,
-  type: 'text'
+  type: 'text',
+  autocomplete: 'off'
 });
 
 const emit = defineEmits<{

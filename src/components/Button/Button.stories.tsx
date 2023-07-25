@@ -21,7 +21,7 @@ const buttonSizes: InstanceType<typeof Button>['$props']['size'][] = [
 ];
 
 export const Presentation = () => (
-  <div class="inline-grid grid-cols-2 gap-5">
+  <div class="grid gap-5">
     {buttonTypes.map((type) => {
       return (
         <div class="flex flex-col gap-5 items-start">
@@ -37,7 +37,25 @@ export const Presentation = () => (
                 >
                   Button
                 </Button>
+                <Button
+                  icon="material-symbols:add-rounded"
+                  loading={true}
+                  position="right"
+                  type={type}
+                  size={size}
+                  key={size! + type!}
+                >
+                  Button
+                </Button>
                 <Button type={type} size={size} key={size! + type!}>
+                  Button
+                </Button>
+                <Button
+                  loading={true}
+                  type={type}
+                  size={size}
+                  key={size! + type!}
+                >
                   Button
                 </Button>
                 <Button
@@ -50,6 +68,23 @@ export const Presentation = () => (
                   Button
                 </Button>
                 <Button
+                  loading={true}
+                  icon="material-symbols:add-rounded"
+                  position="left"
+                  type={type}
+                  size={size}
+                  key={size! + type!}
+                >
+                  Button
+                </Button>
+                <Button
+                  icon="material-symbols:add-rounded"
+                  type={type}
+                  size={size}
+                  key={size! + type!}
+                />
+                <Button
+                  loading={true}
                   icon="material-symbols:add-rounded"
                   type={type}
                   size={size}

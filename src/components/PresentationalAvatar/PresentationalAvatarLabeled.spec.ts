@@ -5,8 +5,9 @@ import { shallowMount } from '@vue/test-utils';
 const defaultMountOptions = {
   props: {
     username: 'testUsername',
-    image: 'testImage'
-  }
+    image: 'testImage',
+    size: 'sm'
+  } as const
 };
 
 const presentationalAvatarSelector = '[data-testid=presentationalAvatar]';
@@ -28,6 +29,16 @@ describe('PresentationalAvatarLabeled', () => {
       expect(
         wrapper.get(presentationalAvatarSelector).attributes('username')
       ).toBe(defaultMountOptions.props.username);
+    });
+    it('size - should render avatar with set size', () => {
+      const wrapper = shallowMount(
+        PresentationalAvatarLabeled,
+        defaultMountOptions
+      );
+
+      expect(wrapper.get(presentationalAvatarSelector).attributes('size')).toBe(
+        defaultMountOptions.props.size
+      );
     });
     it('username - should render label with set username', () => {
       const wrapper = shallowMount(
@@ -97,6 +108,7 @@ describe('PresentationalAvatarLabeled', () => {
               class="m-[4px]"
               data-testid="presentationalAvatar"
               image="testImage"
+              size="sm"
               username="testUsername"
             />
             <span

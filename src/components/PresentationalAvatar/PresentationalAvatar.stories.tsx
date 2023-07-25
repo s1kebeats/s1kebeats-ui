@@ -8,9 +8,23 @@ const meta: Meta<typeof PresentationalAvatar> = {
 
 export default meta;
 
+const avatarSizes: InstanceType<
+  typeof PresentationalAvatar
+>['$props']['size'][] = ['sm', 'md'];
+
 export const Presentation = () => (
-  <div class="flex gap-5">
-    <PresentationalAvatar username="JohnDoe" />
-    <PresentationalAvatar username="JohnDoe" image={faker.image.avatar()} />
+  <div class="flex flex-col gap-5">
+    {avatarSizes.map((size) => {
+      return (
+        <div class="flex gap-5">
+          <PresentationalAvatar size={size} username="JohnDoe" />
+          <PresentationalAvatar
+            size={size}
+            username="JohnDoe"
+            image={faker.image.avatar()}
+          />
+        </div>
+      );
+    })}
   </div>
 );
