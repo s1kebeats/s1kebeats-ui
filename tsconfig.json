@@ -26,12 +26,15 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "types": [
-      "node",
-      "vite/client"
-    ],
+    "types": ["node", "vite/client"],
     "lib": ["esnext", "dom"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["src/api/**/*", "src/**/*.spec.ts", "src/**/*.stories.ts", "src/**/*.spec.tsx", "src/**/*.stories.tsx"]
+  "exclude": [
+    "src/api/**/*",
+    "src/**/*.spec.ts",
+    "src/**/*.stories.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.stories.tsx"
+  ]
 }

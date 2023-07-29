@@ -62,20 +62,20 @@ describe('PresentationalAvatar', () => {
     });
 
     expect(wrapper.get(presentationalAvatarSelector)).toMatchInlineSnapshot(`
-          DOMWrapper {
-            "isDisabled": [Function],
-            "wrapperElement": <div
-              class="flex items-center justify-center bg-primary w-[48px] h-[48px] rounded-full"
-              data-testid="presentationalAvatar"
-            >
-              <span
-                class="desktop-text-xs link text-grayscale-bg"
-                data-testid="presentationalAvatarAbbr"
-              >
-                TE
-              </span>
-            </div>,
-          }
-        `);
+      DOMWrapper {
+        "isDisabled": [Function],
+        "wrapperElement": <div
+          class="aspect-square flex items-center justify-center bg-primary rounded-full desktop-text-xs w-[48px]"
+          data-testid="presentationalAvatar"
+        >
+          <span
+            class="link text-grayscale-bg"
+            data-testid="presentationalAvatarAbbr"
+          >
+            TE
+          </span>
+        </div>,
+      }
+    `);
   });
 });

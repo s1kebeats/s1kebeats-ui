@@ -1,7 +1,7 @@
 <template>
   <div
     data-testid="presentationalAvatar"
-    class="flex items-center justify-center bg-primary rounded-full"
+    class="aspect-square flex items-center justify-center bg-primary rounded-full"
     :class="[avatarSizingClasses]"
   >
     <img
@@ -13,7 +13,7 @@
     <span
       data-testid="presentationalAvatarAbbr"
       v-else
-      class="desktop-text-xs link text-grayscale-bg"
+      class="link text-grayscale-bg"
       >{{ cutUsername }}</span
     >
   </div>
@@ -30,9 +30,11 @@ const cutUsername = computed(() => props.username.slice(0, 2).toUpperCase());
 const avatarSizingClasses = computed(() => {
   switch (props.size) {
     case 'sm':
-      return 'w-[40px] h-[40px]';
+      return 'desktop-text-xs w-[40px]';
+    case 'custom':
+      return '';
     default:
-      return 'w-[48px] h-[48px]';
+      return 'desktop-text-xs w-[48px]';
   }
 });
 </script>

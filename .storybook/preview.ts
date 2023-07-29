@@ -1,7 +1,6 @@
-import { type Preview } from '@storybook/vue3'
+import { type Preview } from '@storybook/vue3';
 
-import './tailwind.css'
-import '../src/assets/main.scss'
+import './tailwind.css';
 
 const preview: Preview = {
   parameters: {
@@ -12,7 +11,7 @@ const preview: Preview = {
         date: /Date$/
       }
     }
-  },
-}
+  }
+};
 
-export default preview
+export default preview;
