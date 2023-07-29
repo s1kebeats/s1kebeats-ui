@@ -1,0 +1,15 @@
+# Nuxt dev/build outputs
+.github
+.vscode
+dist
+docs
+
+# Node dependencies
+node_modules
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+pnpm-lock.yaml

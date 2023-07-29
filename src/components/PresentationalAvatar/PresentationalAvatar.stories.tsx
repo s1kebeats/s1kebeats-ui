@@ -10,11 +10,28 @@ export default meta;
 
 const avatarSizes: InstanceType<
   typeof PresentationalAvatar
->['$props']['size'][] = ['sm', 'md'];
+>['$props']['size'][] = ['sm', 'md', 'custom'];
 
 export const Presentation = () => (
   <div class="flex flex-col gap-5">
     {avatarSizes.map((size) => {
+      if (size === 'custom') {
+        return (
+          <div class="flex gap-5">
+            <PresentationalAvatar
+              class="desktop-text-lg w-[100px]"
+              size={size}
+              username="JohnDoe"
+            />
+            <PresentationalAvatar
+              class="desktop-text-lg w-[100px]"
+              size={size}
+              username="JohnDoe"
+              image={faker.image.avatar()}
+            />
+          </div>
+        );
+      }
       return (
         <div class="flex gap-5">
           <PresentationalAvatar size={size} username="JohnDoe" />

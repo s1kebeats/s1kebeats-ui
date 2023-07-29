@@ -1,6 +1,6 @@
 {
   "name": "@s1kebeats/s1kebeats-ui",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "author": "Arthur Datsenko-Boos",
   "description": "@s1kebeats 2023",
   "files": [
@@ -16,18 +16,20 @@
     }
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "storybook": "conc \"pnpm run format\" \"storybook dev -p 6006\" \"pnpm run dev-tailwind\"",
-    "build-storybook": "storybook build -o docs",
-    "build-tailwind": "pnpm dlx tailwindcss -o .storybook/tailwind.css",
-    "dev-tailwind": "pnpm dlx tailwindcss -i ./src/assets/main.css -o .storybook/tailwind.css --watch",
-    "build-publish": "pnpm run build && npm publish"
+    "build": "vite build",
+    "build:publish": "pnpm run build && npm publish",
+    "build:main-scss": "sass ./src/assets/styles/main.scss ./src/assets/styles/main.css",
+    "build:tailwind": "pnpm run build:main-scss && pnpm dlx tailwindcss -i ./src/assets/styles/main.css -o .storybook/tailwind.css",
+    "build:storybook": "storybook build -o docs",
+    "dev": "conc \"pnpm run format:mod\" \"vite\"",
+    "dev:tailwind": "pnpm run build:tailwind -- --watch",
+    "dev:storybook": "conc \"pnpm run format:mod\" \"storybook dev -p 6006\" \"pnpm run dev:tailwind\"",
+    "format:mod": "npx pretty-quick",
+    "format:all": "prettier --write .",
+    "lint": "eslint --fix .",
+    "test": "vitest"
   },
   "dependencies": {
     "vue": "^3.3.4"
