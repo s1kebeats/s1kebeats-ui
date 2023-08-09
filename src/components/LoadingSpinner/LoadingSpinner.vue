@@ -9,7 +9,7 @@
 import { computed } from 'vue';
 
 const props = withDefaults(
-  defineProps<{ size?: 'sm' | 'md' | 'lg' | 'xl' }>(),
+  defineProps<{ size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' }>(),
   {
     size: 'md'
   }
@@ -17,6 +17,8 @@ const props = withDefaults(
 
 const spinnerSizingClasses = computed(() => {
   switch (props.size) {
+    case 'xs':
+      return 'w-[12px]';
     case 'sm':
       return 'w-[16px]';
     default:

@@ -1,28 +1,33 @@
 <template>
   <button
-    class="relative flex items-center justify-center font-semibold transition-all disabled:cursor-not-allowed"
+    class="font-semibold transition-all disabled:cursor-not-allowed"
     :class="[buttonSizingClasses, buttonTypeClasses]"
   >
-    <div
-      data-testid="buttonContentWrapper"
-      class="flex items-center justify-center"
-      :class="[buttonElementsContainerSizingClasses, { 'opacity-0': loading }]"
-    >
-      <slot v-if="position === 'left'" />
-      <Icon
-        v-if="icon"
-        data-testid="buttonIcon"
-        :icon="icon"
-        :class="[iconSizingClasses, { 'opacity-0': loading }]"
+    <div class="relative flex items-center justify-center">
+      <div
+        data-testid="buttonContentWrapper"
+        class="flex items-center justify-center"
+        :class="[
+          buttonElementsContainerSizingClasses,
+          { 'opacity-0': loading }
+        ]"
+      >
+        <slot v-if="position === 'left'" />
+        <Icon
+          v-if="icon"
+          data-testid="buttonIcon"
+          :icon="icon"
+          :class="[iconSizingClasses, { 'opacity-0': loading }]"
+        />
+        <slot v-if="position === 'right'" />
+      </div>
+      <LoadingSpinner
+        data-testid="loadingSpinner"
+        class="absolute"
+        v-if="loading"
+        :size="size"
       />
-      <slot v-if="position === 'right'" />
     </div>
-    <LoadingSpinner
-      data-testid="loadingSpinner"
-      class="absolute"
-      v-if="loading"
-      :size="size"
-    />
   </button>
 </template>
 <script setup lang="ts">
@@ -40,19 +45,23 @@ const props = withDefaults(defineProps<Props>(), {
 
 const buttonSizingClasses = computed(() => {
   switch (props.size) {
+    case 'xs':
+      return 'text-xs rounded-md min-h-[32px] px-2';
     case 'sm':
-      return 'text-sm rounded-lg min-h-[48px] px-4 gap-3';
+      return 'text-sm rounded-lg min-h-[48px] px-4';
     case 'lg':
-      return 'text-base rounded-xl min-h-[56px] px-8 gap-4';
+      return 'text-base rounded-xl min-h-[56px] px-8';
     case 'xl':
-      return 'text-lg rounded-2xl min-h-[60px] px-8 gap-4';
+      return 'text-lg rounded-2xl min-h-[60px] px-8';
     default:
-      return 'text-base rounded-xl min-h-[52px] px-6 gap-3';
+      return 'text-base rounded-xl min-h-[52px] px-6';
   }
 });
 
 const buttonElementsContainerSizingClasses = computed(() => {
   switch (props.size) {
+    case 'xs':
+      return 'gap-1';
     case 'lg':
     case 'xl':
       return 'gap-4';
@@ -76,6 +85,7 @@ const buttonTypeClasses = computed(() => {
 
 const iconSizingClasses = computed(() => {
   switch (props.size) {
+    case 'xs':
     case 'sm':
       return 'text-[16px]';
     default:

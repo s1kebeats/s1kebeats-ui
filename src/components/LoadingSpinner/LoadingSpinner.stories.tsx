@@ -9,7 +9,7 @@ export default meta;
 
 const loadingSpinnerSizes: InstanceType<
   typeof LoadingSpinner
->['$props']['size'][] = ['sm', 'md', 'lg', 'xl'];
+>['$props']['size'][] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 export const Presentation = () => (
   <div class="flex flex-col gap-5 items-start">

@@ -14,6 +14,7 @@ const buttonTypes: InstanceType<typeof Button>['$props']['type'][] = [
   'ghost'
 ];
 const buttonSizes: InstanceType<typeof Button>['$props']['size'][] = [
+  'xs',
   'sm',
   'md',
   'lg',
@@ -78,7 +79,7 @@ export const Presentation = () => (
                   Button
                 </Button>
                 <Button
-                  icon="material-symbols:add-rounded"
+                  icon="material-symbols:close-rounded"
                   type={type}
                   size={size}
                   key={size! + type!}
