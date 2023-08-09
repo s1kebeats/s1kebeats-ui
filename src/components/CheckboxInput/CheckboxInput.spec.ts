@@ -120,14 +120,19 @@ describe('CheckboxInput', () => {
     // ! why not working???
     it('click - should toggle indicator visibility', async () => {
       const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
-
-      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
-
-      await wrapper.get(customCheckboxInputSelector).trigger('click');
-      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(true);
+      expect(wrapper.get(checkboxIndicatorSelector).attributes('style')).toBe(
+        'display: none;'
+      );
 
       await wrapper.get(customCheckboxInputSelector).trigger('click');
-      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
+      expect(
+        wrapper.get(checkboxIndicatorSelector).attributes('style')
+      ).not.toBe('display: none;');
+
+      await wrapper.get(customCheckboxInputSelector).trigger('click');
+      expect(wrapper.get(checkboxIndicatorSelector).attributes('style')).toBe(
+        'display: none;'
+      );
     });
     it('enter - should toggle and emit new value when pressed on input', async () => {
       const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
@@ -142,16 +147,21 @@ describe('CheckboxInput', () => {
       expect(wrapper.emitted('updateValue')).toHaveLength(2);
       expect(wrapper.emitted('updateValue')![1][0]).toBe(false);
     });
-    // ! why not working???
     it('enter - should toggle indicator visibility when pressed on input', async () => {
       const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
-      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
+      expect(wrapper.get(checkboxIndicatorSelector).attributes('style')).toBe(
+        'display: none;'
+      );
 
       await wrapper.get(customCheckboxInputSelector).trigger('keydown.enter');
-      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(true);
+      expect(
+        wrapper.get(checkboxIndicatorSelector).attributes('style')
+      ).not.toBe('display: none;');
 
       await wrapper.get(customCheckboxInputSelector).trigger('keydown.enter');
-      expect(wrapper.get(checkboxIndicatorSelector).isVisible()).toBe(false);
+      expect(wrapper.get(checkboxIndicatorSelector).attributes('style')).toBe(
+        'display: none;'
+      );
     });
   });
   it('snapshot - should match the snapshot', () => {
