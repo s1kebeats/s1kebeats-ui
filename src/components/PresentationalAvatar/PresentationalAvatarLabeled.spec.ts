@@ -112,7 +112,7 @@ describe('PresentationalAvatarLabeled', () => {
               username="testUsername"
             />
             <span
-              class="link desktop-text-xs text-grayscale-body py-[5px] px-[10px]"
+              class="font-semibold text-sm text-grayscale-body py-[5px] px-[10px]"
               data-testid="presentationalAvatarLabelLeft"
             >
                @testUsername

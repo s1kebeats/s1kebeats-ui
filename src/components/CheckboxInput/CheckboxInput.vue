@@ -118,13 +118,13 @@ const checkboxInputContainerSizingClasses = computed(() => {
 const checkboxInputLabelSizingClasses = computed(() => {
   switch (props.size) {
     case 'sm':
-      return 'desktop-text-xs';
+      return 'text-sm';
     case 'lg':
-      return 'desktop-text-sm';
+      return 'text-base';
     case 'xl':
-      return 'desktop-text-md';
+      return 'text-lg';
     default:
-      return 'desktop-text-sm';
+      return 'text-base';
   }
 });
 

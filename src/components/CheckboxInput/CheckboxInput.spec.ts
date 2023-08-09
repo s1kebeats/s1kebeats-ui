@@ -162,7 +162,7 @@ describe('CheckboxInput', () => {
         class="flex items-center gap-2"
       >
         <label
-          class="desktop-text-sm"
+          class="text-base"
           data-testid="checkboxInputLabelLeft"
           for="testName"
         >

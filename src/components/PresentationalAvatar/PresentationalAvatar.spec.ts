@@ -65,11 +65,11 @@ describe('PresentationalAvatar', () => {
       DOMWrapper {
         "isDisabled": [Function],
         "wrapperElement": <div
-          class="aspect-square flex items-center justify-center bg-primary rounded-full desktop-text-xs w-[48px]"
+          class="aspect-square flex items-center justify-center bg-primary rounded-full text-sm w-[48px]"
           data-testid="presentationalAvatar"
         >
           <span
-            class="link text-grayscale-bg"
+            class="font-semibold text-grayscale-bg"
             data-testid="presentationalAvatarAbbr"
           >
             TE

@@ -13,7 +13,7 @@
     <span
       data-testid="presentationalAvatarAbbr"
       v-else
-      class="link text-grayscale-bg"
+      class="font-semibold text-grayscale-bg"
       >{{ cutUsername }}</span
     >
   </div>
@@ -30,11 +30,11 @@ const cutUsername = computed(() => props.username.slice(0, 2).toUpperCase());
 const avatarSizingClasses = computed(() => {
   switch (props.size) {
     case 'sm':
-      return 'desktop-text-xs w-[40px]';
+      return 'text-sm w-[40px]';
     case 'custom':
       return '';
     default:
-      return 'desktop-text-xs w-[48px]';
+      return 'text-sm w-[48px]';
   }
 });
 </script>
