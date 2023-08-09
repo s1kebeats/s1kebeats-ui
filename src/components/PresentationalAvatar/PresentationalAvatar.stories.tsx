@@ -19,12 +19,12 @@ export const Presentation = () => (
         return (
           <div class="flex gap-5">
             <PresentationalAvatar
-              class="desktop-text-lg w-[100px]"
+              class="text-2xl w-[100px]"
               size={size}
               username="JohnDoe"
             />
             <PresentationalAvatar
-              class="desktop-text-lg w-[100px]"
+              class="text-2xl w-[100px]"
               size={size}
               username="JohnDoe"
               image={faker.image.avatar()}

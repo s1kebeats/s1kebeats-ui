@@ -289,7 +289,7 @@ describe('ConfidentialInput', () => {
 
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div
-        class="flex flex-col desktop-text-sm gap-1"
+        class="flex flex-col text-base gap-1"
         data-testid="confidentialInputContainer"
       >
         <div
@@ -310,7 +310,7 @@ describe('ConfidentialInput', () => {
             class="flex grow flex-col items-start justify-center overflow-hidden"
           >
             <span
-              class="w-full desktop-text-xs truncate text-grayscale-label"
+              class="w-full text-sm truncate text-grayscale-label"
               data-testid="upperLabel"
               style="display: none;"
             >

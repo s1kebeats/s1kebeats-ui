@@ -55,7 +55,7 @@
         <span
           data-testid="upperLabel"
           v-show="value"
-          class="w-full desktop-text-xs truncate"
+          class="w-full text-sm truncate"
           :class="inputLabelClasses"
           >{{ label }}</span
         >
@@ -164,11 +164,11 @@ const inputIconClasses = computed(() => {
 const inputContainerClasses = computed(() => {
   switch (props.size) {
     case 'sm':
-      return 'desktop-text-xs';
+      return 'text-sm';
     case 'xl':
-      return 'desktop-text-md gap-2';
+      return 'text-lg gap-2';
     default:
-      return 'desktop-text-sm gap-1';
+      return 'text-base gap-1';
   }
 });
 
