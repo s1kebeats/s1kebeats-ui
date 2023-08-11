@@ -13,3 +13,5 @@ node_modules
 !.env.example
 
 pnpm-lock.yaml
+.storybook/tailwind.css
+.storybook/tailwind.css.map

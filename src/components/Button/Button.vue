@@ -2,6 +2,7 @@
   <button
     class="font-semibold transition-all disabled:cursor-not-allowed"
     :class="[buttonSizingClasses, buttonTypeClasses]"
+    :type="type"
   >
     <div class="relative flex items-center justify-center">
       <div
@@ -38,9 +39,10 @@ import Props from './Button.props';
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
-  type: 'primary',
+  uiType: 'primary',
   position: 'left',
-  loading: false
+  loading: false,
+  type: 'button'
 });
 
 const buttonSizingClasses = computed(() => {
@@ -71,7 +73,7 @@ const buttonElementsContainerSizingClasses = computed(() => {
 });
 
 const buttonTypeClasses = computed(() => {
-  switch (props.type) {
+  switch (props.uiType) {
     case 'secondary':
       return 'border-2 border-primary text-primary hover:text-primary-default_strong hover:border-primary-default_strong focus:border-white focus:outline-8 focus:outline focus:outline-primary-bg_strong disabled:opacity-50 active:text-grayscale-header active:border-grayscale-header';
     case 'subtle':
