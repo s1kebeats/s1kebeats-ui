@@ -45,12 +45,31 @@ describe('Button', () => {
       });
       expect(wrapper.get(buttonIconSelector).attributes('icon')).toBe(testIcon);
     });
+    it('type - should render with type "button" by default', () => {
+      const wrapper = shallowMount(Button, {
+        props: {
+          icon: testIcon
+        }
+      });
+      expect(wrapper.get('button').attributes('type')).toBe('button');
+    });
+    it('type - should render with set value', () => {
+      const testValue = 'submit';
+      const wrapper = shallowMount(Button, {
+        props: {
+          icon: testIcon,
+          type: testValue
+        }
+      });
+      expect(wrapper.get('button').attributes('type')).toBe(testValue);
+    });
   });
   it('snapshot - should match the snapshot', () => {
     const wrapper = shallowMount(Button);
     expect(wrapper.element).toMatchInlineSnapshot(`
       <button
         class="font-semibold transition-all disabled:cursor-not-allowed text-base rounded-xl min-h-[52px] px-6 text-grayscale-bg bg-primary hover:bg-primary-default_strong focus:outline-8 focus:outline focus:outline-primary-bg_strong disabled:opacity-50 active:bg-grayscale-header"
+        type="button"
       >
         <div
           class="relative flex items-center justify-center"

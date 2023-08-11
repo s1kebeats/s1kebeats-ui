@@ -7,7 +7,7 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-const buttonTypes: InstanceType<typeof Button>['$props']['type'][] = [
+const buttonUiTypes: InstanceType<typeof Button>['$props']['uiType'][] = [
   'primary',
   'secondary',
   'subtle',
@@ -23,7 +23,7 @@ const buttonSizes: InstanceType<typeof Button>['$props']['size'][] = [
 
 export const Presentation = () => (
   <div class="grid gap-5">
-    {buttonTypes.map((type) => {
+    {buttonUiTypes.map((uiType) => {
       return (
         <div class="flex flex-col gap-5 items-start">
           {buttonSizes.map((size) => {
@@ -32,9 +32,9 @@ export const Presentation = () => (
                 <Button
                   icon="material-symbols:add-rounded"
                   position="right"
-                  type={type}
+                  ui-type={uiType}
                   size={size}
-                  key={size! + type!}
+                  key={size! + uiType!}
                 >
                   Button
                 </Button>
@@ -42,29 +42,29 @@ export const Presentation = () => (
                   icon="material-symbols:add-rounded"
                   loading={true}
                   position="right"
-                  type={type}
+                  ui-type={uiType}
                   size={size}
-                  key={size! + type!}
+                  key={size! + uiType!}
                 >
                   Button
                 </Button>
-                <Button type={type} size={size} key={size! + type!}>
+                <Button ui-type={uiType} size={size} key={size! + uiType!}>
                   Button
                 </Button>
                 <Button
                   loading={true}
-                  type={type}
+                  ui-type={uiType}
                   size={size}
-                  key={size! + type!}
+                  key={size! + uiType!}
                 >
                   Button
                 </Button>
                 <Button
                   icon="material-symbols:add-rounded"
                   position="left"
-                  type={type}
+                  ui-type={uiType}
                   size={size}
-                  key={size! + type!}
+                  key={size! + uiType!}
                 >
                   Button
                 </Button>
@@ -72,24 +72,24 @@ export const Presentation = () => (
                   loading={true}
                   icon="material-symbols:add-rounded"
                   position="left"
-                  type={type}
+                  ui-type={uiType}
                   size={size}
-                  key={size! + type!}
+                  key={size! + uiType!}
                 >
                   Button
                 </Button>
                 <Button
                   icon="material-symbols:close-rounded"
-                  type={type}
+                  ui-type={uiType}
                   size={size}
-                  key={size! + type!}
+                  key={size! + uiType!}
                 />
                 <Button
                   loading={true}
                   icon="material-symbols:add-rounded"
-                  type={type}
+                  ui-type={uiType}
                   size={size}
-                  key={size! + type!}
+                  key={size! + uiType!}
                 />
               </div>
             );
