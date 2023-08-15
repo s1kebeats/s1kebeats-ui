@@ -115,7 +115,7 @@ import { Icon } from '@iconify/vue';
 import { computed, ref, watch, watchEffect } from 'vue';
 import type Props from '../TextInput/TextInput.props';
 const props = withDefaults(
-  defineProps<Omit<Props, 'type' | 'icon'> & { icon: boolean }>(),
+  defineProps<Omit<Props, 'type' | 'icon'> & { icon?: boolean }>(),
   {
     size: 'md',
     disabled: false,
@@ -126,7 +126,7 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{
-  (e: 'updateValue', value: string): void;
+  (e: 'update:value', value: string): void;
 }>();
 
 const value = ref('');
@@ -221,14 +221,14 @@ const coloredIconClasses = computed(() => {
 let timeOut: NodeJS.Timeout;
 watch(value, () => {
   if (!props.debounce) {
-    emit('updateValue', value.value);
+    emit('update:value', value.value);
     return;
   }
   if (timeOut) {
     clearTimeout(timeOut);
   }
   timeOut = setTimeout(() => {
-    emit('updateValue', value.value);
+    emit('update:value', value.value);
   }, 500);
 });
 

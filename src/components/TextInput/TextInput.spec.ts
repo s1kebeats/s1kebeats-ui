@@ -236,7 +236,7 @@ describe('TextInput', () => {
       await wrapper.get(textInputSelector).setValue('2');
       await wrapper.get(textInputSelector).setValue('3');
 
-      expect(wrapper.emitted('updateValue')).toHaveLength(3);
+      expect(wrapper.emitted('update:value')).toHaveLength(3);
     });
     it('debounce - should emit with debounce when set to "true"', async () => {
       const wrapper = shallowMount(TextInput, {
@@ -252,9 +252,9 @@ describe('TextInput', () => {
 
       vi.runAllTimers();
 
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe('3');
+      expect(wrapper.emitted()).toHaveProperty('update:value');
+      expect(wrapper.emitted('update:value')).toHaveLength(1);
+      expect(wrapper.emitted('update:value')![0][0]).toBe('3');
     });
     it('type - should render with "text" by default', () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);
@@ -294,9 +294,9 @@ describe('TextInput', () => {
 
       await wrapper.get(textInputSelector).setValue(testValue);
 
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue);
+      expect(wrapper.emitted()).toHaveProperty('update:value');
+      expect(wrapper.emitted('update:value')).toHaveLength(1);
+      expect(wrapper.emitted('update:value')![0][0]).toBe(testValue);
     });
     it('input - should emit trimmed value', async () => {
       const testValue = '   testValue   ';
@@ -304,9 +304,9 @@ describe('TextInput', () => {
 
       await wrapper.get(textInputSelector).setValue(testValue);
 
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue.trim());
+      expect(wrapper.emitted()).toHaveProperty('update:value');
+      expect(wrapper.emitted('update:value')).toHaveLength(1);
+      expect(wrapper.emitted('update:value')![0][0]).toBe(testValue.trim());
     });
     it('clearValue button click + focusin - should clear input value when clicked and focused', async () => {
       const wrapper = shallowMount(TextInput, defaultMountOptions);

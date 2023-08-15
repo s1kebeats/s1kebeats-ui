@@ -114,7 +114,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'updateValue', value: string): void;
+  (e: 'update:value', value: string): void;
 }>();
 
 const value = ref('');
@@ -209,14 +209,14 @@ function clearInputValue() {
 let timeOut: NodeJS.Timeout;
 watch(value, () => {
   if (!props.debounce) {
-    emit('updateValue', value.value);
+    emit('update:value', value.value);
     return;
   }
   if (timeOut) {
     clearTimeout(timeOut);
   }
   timeOut = setTimeout(() => {
-    emit('updateValue', value.value);
+    emit('update:value', value.value);
   }, 500);
 });
 
