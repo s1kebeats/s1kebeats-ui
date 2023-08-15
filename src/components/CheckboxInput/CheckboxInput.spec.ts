@@ -108,14 +108,14 @@ describe('CheckboxInput', () => {
 
       await wrapper.get(customCheckboxInputSelector).trigger('click');
 
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(true);
+      expect(wrapper.emitted()).toHaveProperty('update:value');
+      expect(wrapper.emitted('update:value')).toHaveLength(1);
+      expect(wrapper.emitted('update:value')![0][0]).toBe(true);
 
       await wrapper.get(customCheckboxInputSelector).trigger('click');
 
-      expect(wrapper.emitted('updateValue')).toHaveLength(2);
-      expect(wrapper.emitted('updateValue')![1][0]).toBe(false);
+      expect(wrapper.emitted('update:value')).toHaveLength(2);
+      expect(wrapper.emitted('update:value')![1][0]).toBe(false);
     });
     // ! why not working???
     it('click - should toggle indicator visibility', async () => {
@@ -138,14 +138,14 @@ describe('CheckboxInput', () => {
       const wrapper = shallowMount(CheckboxInput, defaultMountOptions);
       await wrapper.get(customCheckboxInputSelector).trigger('keydown.enter');
 
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(true);
+      expect(wrapper.emitted()).toHaveProperty('update:value');
+      expect(wrapper.emitted('update:value')).toHaveLength(1);
+      expect(wrapper.emitted('update:value')![0][0]).toBe(true);
 
       await wrapper.get(customCheckboxInputSelector).trigger('keydown.enter');
 
-      expect(wrapper.emitted('updateValue')).toHaveLength(2);
-      expect(wrapper.emitted('updateValue')![1][0]).toBe(false);
+      expect(wrapper.emitted('update:value')).toHaveLength(2);
+      expect(wrapper.emitted('update:value')![1][0]).toBe(false);
     });
     it('enter - should toggle indicator visibility when pressed on input', async () => {
       const wrapper = shallowMount(CheckboxInput, defaultMountOptions);

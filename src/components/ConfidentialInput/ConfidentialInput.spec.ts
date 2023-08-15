@@ -207,7 +207,7 @@ describe('ConfidentialInput', () => {
       await wrapper.get(confidentialInputSelector).setValue('2');
       await wrapper.get(confidentialInputSelector).setValue('3');
 
-      expect(wrapper.emitted('updateValue')).toHaveLength(3);
+      expect(wrapper.emitted('update:value')).toHaveLength(3);
     });
     it('debounce - should emit with debounce when set to "true"', async () => {
       const wrapper = shallowMount(ConfidentialInput, {
@@ -223,9 +223,9 @@ describe('ConfidentialInput', () => {
 
       vi.runAllTimers();
 
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe('3');
+      expect(wrapper.emitted()).toHaveProperty('update:value');
+      expect(wrapper.emitted('update:value')).toHaveLength(1);
+      expect(wrapper.emitted('update:value')![0][0]).toBe('3');
     });
   });
   describe('User Interactions', () => {
@@ -269,9 +269,9 @@ describe('ConfidentialInput', () => {
 
       await wrapper.get(confidentialInputSelector).setValue(testValue);
 
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue);
+      expect(wrapper.emitted()).toHaveProperty('update:value');
+      expect(wrapper.emitted('update:value')).toHaveLength(1);
+      expect(wrapper.emitted('update:value')![0][0]).toBe(testValue);
     });
     it('input - should emit trimmed value', async () => {
       const testValue = '  testValue   ';
@@ -279,9 +279,9 @@ describe('ConfidentialInput', () => {
 
       await wrapper.get(confidentialInputSelector).setValue(testValue);
 
-      expect(wrapper.emitted()).toHaveProperty('updateValue');
-      expect(wrapper.emitted('updateValue')).toHaveLength(1);
-      expect(wrapper.emitted('updateValue')![0][0]).toBe(testValue.trim());
+      expect(wrapper.emitted()).toHaveProperty('update:value');
+      expect(wrapper.emitted('update:value')).toHaveLength(1);
+      expect(wrapper.emitted('update:value')![0][0]).toBe(testValue.trim());
     });
   });
   it('snapshot - should match the snapshot', () => {

@@ -69,14 +69,14 @@ const props = withDefaults(defineProps<Props>(), {
   position: 'left'
 });
 const emit = defineEmits<{
-  (e: 'updateValue', value: boolean): void;
+  (e: 'update:value', value: boolean): void;
 }>();
 
 const value = ref(false);
 
 function toggleValue() {
   value.value = !value.value;
-  emit('updateValue', value.value);
+  emit('update:value', value.value);
 }
 
 const checkboxInputSizingClasses = computed(() => {

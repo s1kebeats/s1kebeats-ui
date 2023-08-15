@@ -10,7 +10,7 @@
     :message="message"
     :state="state"
     :debounce="debounce"
-    @update-value="updateValue"
+    @update:value="updateValue"
     :autocomplete="autocomplete"
   />
 </template>
@@ -20,18 +20,18 @@ import { onMounted } from 'vue';
 import type TextInputProps from '../TextInput/TextInput.props';
 
 const emit = defineEmits<{
-  (e: 'updateValue', value: string): void;
+  (e: 'update:value', value: string): void;
 }>();
 
 const props = withDefaults(
-  defineProps<Omit<TextInputProps, 'label' | 'icon'> & { icon: boolean }>(),
+  defineProps<Omit<TextInputProps, 'label' | 'icon'> & { icon?: boolean }>(),
   {
     icon: true
   }
 );
 
 function updateValue(value: string) {
-  emit('updateValue', value);
+  emit('update:value', value);
 }
 
 onMounted(() => {
