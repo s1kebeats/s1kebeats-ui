@@ -1,8 +1,19 @@
 {
   "name": "@s1kebeats/s1kebeats-ui",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "Arthur Datsenko-Boos",
   "description": "@s1kebeats 2023",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s1kebeats/s1kebeats-ui.git"
+  },
+  "keywords": [
+    "vue",
+    "vue-components",
+    "tailwind-components",
+    "ui-library",
+    "design-system"
+  ],
   "files": [
     "dist"
   ],
