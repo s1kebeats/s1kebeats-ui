@@ -117,7 +117,6 @@ describe('SBCheckboxInput', () => {
       expect(wrapper.emitted('update:value')).toHaveLength(2);
       expect(wrapper.emitted('update:value')![1][0]).toBe(false);
     });
-    // ! why not working???
     it('click - should toggle indicator visibility', async () => {
       const wrapper = shallowMount(SBCheckboxInput, defaultMountOptions);
       expect(wrapper.get(checkboxIndicatorSelector).attributes('style')).toBe(
