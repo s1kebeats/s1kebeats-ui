@@ -1,2 +1,2 @@
-import SBUsernameInput from "./SBUsernameInput.vue";
+import SBUsernameInput from './SBUsernameInput.vue';
 export default SBUsernameInput;

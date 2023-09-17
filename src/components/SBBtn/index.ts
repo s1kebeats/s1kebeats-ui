@@ -1,2 +1,2 @@
-import SBBtn from "./SBBtn.vue";
+import SBBtn from './SBBtn.vue';
 export default SBBtn;

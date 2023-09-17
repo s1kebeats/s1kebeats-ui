@@ -1,2 +1,2 @@
-import SBEmailInput from "./SBEmailInput.vue";
+import SBEmailInput from './SBEmailInput.vue';
 export default SBEmailInput;

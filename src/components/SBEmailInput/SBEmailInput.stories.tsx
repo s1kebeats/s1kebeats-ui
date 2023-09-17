@@ -7,17 +7,11 @@ const meta: Meta<typeof SBEmailInput> = {
 
 export default meta;
 
-const SBEmailInputStates: InstanceType<typeof SBEmailInput>['$props']['state'][] = [
-  null,
-  'success',
-  'error'
-];
-const SBEmailInputSizes: InstanceType<typeof SBEmailInput>['$props']['size'][] = [
-  'sm',
-  'md',
-  'lg',
-  'xl'
-];
+const SBEmailInputStates: InstanceType<
+  typeof SBEmailInput
+>['$props']['state'][] = [null, 'success', 'error'];
+const SBEmailInputSizes: InstanceType<typeof SBEmailInput>['$props']['size'][] =
+  ['sm', 'md', 'lg', 'xl'];
 
 export const Presentation = () => (
   <div class="inline-grid grid-cols-2 gap-5">

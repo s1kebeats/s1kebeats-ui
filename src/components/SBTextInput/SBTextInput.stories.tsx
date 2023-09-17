@@ -7,11 +7,8 @@ const meta: Meta<typeof SBTextInput> = {
 
 export default meta;
 
-const SBTextInputStates: InstanceType<typeof SBTextInput>['$props']['state'][] = [
-  null,
-  'success',
-  'error'
-];
+const SBTextInputStates: InstanceType<typeof SBTextInput>['$props']['state'][] =
+  [null, 'success', 'error'];
 const SBTextInputSizes: InstanceType<typeof SBTextInput>['$props']['size'][] = [
   'sm',
   'md',

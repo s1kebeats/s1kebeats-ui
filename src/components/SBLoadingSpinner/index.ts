@@ -1,2 +1,2 @@
-import SBLoadingSpinner from "./SBLoadingSpinner.vue";
+import SBLoadingSpinner from './SBLoadingSpinner.vue';
 export default SBLoadingSpinner;

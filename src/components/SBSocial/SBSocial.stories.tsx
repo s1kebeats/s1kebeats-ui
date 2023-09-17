@@ -9,8 +9,9 @@ const meta: Meta<typeof SBInstagramLink> = {
 
 export default meta;
 
-const socialLinkSizes: InstanceType<typeof SBInstagramLink>['$props']['size'][] =
-  ['sm', 'md', 'lg'];
+const socialLinkSizes: InstanceType<
+  typeof SBInstagramLink
+>['$props']['size'][] = ['sm', 'md', 'lg'];
 
 export const Presentation = () => (
   <div class="flex flex-col gap-5">

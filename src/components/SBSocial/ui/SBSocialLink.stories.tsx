@@ -19,7 +19,12 @@ export const Presentation = () => (
     {socialLinkSizes.map((size) => {
       return (
         <div class="flex gap-5 items-center">
-          <SBSocialLink icon="mdi:vk" size={size} username="username" url="url" />
+          <SBSocialLink
+            icon="mdi:vk"
+            size={size}
+            username="username"
+            url="url"
+          />
           <SBBtn
             icon="material-symbols:add-rounded"
             position="right"
