@@ -1,25 +1,29 @@
-import Button from './components/Button/Button.vue';
-import CheckboxInput from './components/CheckboxInput/CheckboxInput.vue';
-import ConfidentialInput from './components/ConfidentialInput/ConfidentialInput.vue';
-import EmailInput from './components/EmailInput/EmailInput.vue';
-import PresentationalAvatar from './components/PresentationalAvatar/PresentationalAvatar.vue';
-import PresentationalAvatarLabeled from './components/PresentationalAvatar/PresentationalAvatarLabeled.vue';
-import TextInput from './components/TextInput/TextInput.vue';
-import UsernameInput from './components/UsernameInput/UsernameInput.vue';
-import InstagramLink from './components/Social/InstagramLink.vue';
-import VkLink from './components/Social/VkLink.vue';
-import YoutubeLink from './components/Social/YoutubeLink.vue';
+import SBBtn from './components/SBBtn';
+import SBCheckboxInput from './components/SBCheckboxInput';
+import SBConfidentialInput from './components/SBConfidentialInput';
+import SBEmailInput from './components/SBEmailInput';
+import {
+  SBPresentationalAvatar,
+  SBPresentationalAvatarLabeled
+} from './components/SBPresentationalAvatar';
+import SBTextInput from './components/SBTextInput';
+import SBUsernameInput from './components/SBUsernameInput';
+import {
+  SBInstagramLink,
+  SBVkLink,
+  SBYoutubeLink
+} from './components/SBSocial';
 
 export {
-  Button,
-  CheckboxInput,
-  ConfidentialInput,
-  EmailInput,
-  PresentationalAvatar,
-  PresentationalAvatarLabeled,
-  TextInput,
-  UsernameInput,
-  InstagramLink,
-  VkLink,
-  YoutubeLink
+  SBBtn,
+  SBCheckboxInput,
+  SBConfidentialInput,
+  SBEmailInput,
+  SBPresentationalAvatar,
+  SBPresentationalAvatarLabeled,
+  SBTextInput,
+  SBUsernameInput,
+  SBInstagramLink,
+  SBVkLink,
+  SBYoutubeLink
 };
