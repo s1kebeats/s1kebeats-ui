@@ -4,14 +4,14 @@ import SBConfidentialInput from './components/SBConfidentialInput';
 import SBEmailInput from './components/SBEmailInput';
 import {
   SBPresentationalAvatar,
-  SBPresentationalAvatarLabeled
+  SBPresentationalAvatarLabeled,
 } from './components/SBPresentationalAvatar';
 import SBTextInput from './components/SBTextInput';
 import SBUsernameInput from './components/SBUsernameInput';
 import {
   SBInstagramLink,
   SBVkLink,
-  SBYoutubeLink
+  SBYoutubeLink,
 } from './components/SBSocial';
 
 export {
@@ -25,5 +25,5 @@ export {
   SBUsernameInput,
   SBInstagramLink,
   SBVkLink,
-  SBYoutubeLink
+  SBYoutubeLink,
 };

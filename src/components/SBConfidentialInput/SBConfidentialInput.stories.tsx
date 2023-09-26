@@ -2,7 +2,7 @@ import SBConfidentialInput from './SBConfidentialInput.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof SBConfidentialInput> = {
-  component: SBConfidentialInput
+  component: SBConfidentialInput,
 };
 
 export default meta;

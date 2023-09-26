@@ -9,8 +9,8 @@ const defaultMountOptions = {
     preset: 'preset',
     disabled: false,
     message: 'message',
-    state: 'success'
-  } as const
+    state: 'success',
+  } as const,
 };
 
 const textInputComponentSelector = '[data-testid=textInputComponent]';
@@ -22,8 +22,8 @@ describe('SBEmailInput', () => {
       const wrapper = shallowMount(SBEmailInput, {
         props: {
           ...defaultMountOptions.props,
-          debounce: testValue
-        }
+          debounce: testValue,
+        },
       });
       expect(
         wrapper.get(textInputComponentSelector).attributes('debounce')
@@ -34,8 +34,8 @@ describe('SBEmailInput', () => {
       const wrapper = shallowMount(SBEmailInput, {
         props: {
           ...defaultMountOptions.props,
-          autocomplete: testValue
-        }
+          autocomplete: testValue,
+        },
       });
       expect(
         wrapper.get(textInputComponentSelector).attributes('autocomplete')
@@ -72,8 +72,8 @@ describe('SBEmailInput', () => {
       const wrapper = shallowMount(SBEmailInput, {
         props: {
           ...defaultMountOptions.props,
-          icon: false
-        }
+          icon: false,
+        },
       });
       expect(
         wrapper.find(textInputComponentSelector).attributes('icon')

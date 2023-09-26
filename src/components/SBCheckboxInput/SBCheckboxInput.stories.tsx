@@ -2,7 +2,7 @@ import SBCheckboxInput from './SBCheckboxInput.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof SBCheckboxInput> = {
-  component: SBCheckboxInput
+  component: SBCheckboxInput,
 };
 
 export default meta;

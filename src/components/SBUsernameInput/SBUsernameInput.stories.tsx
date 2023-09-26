@@ -2,7 +2,7 @@ import SBUsernameInput from './SBUsernameInput.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof SBUsernameInput> = {
-  component: SBUsernameInput
+  component: SBUsernameInput,
 };
 
 export default meta;

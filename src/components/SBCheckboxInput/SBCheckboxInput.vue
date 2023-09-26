@@ -28,8 +28,8 @@
         checkboxInputSizingClasses,
         checkboxInputColorClasses,
         {
-          'cursor-not-allowed': disabled
-        }
+          'cursor-not-allowed': disabled,
+        },
       ]"
     >
       <transition name="fade">
@@ -66,7 +66,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
-  position: 'left'
+  position: 'left',
 });
 const emit = defineEmits<{
   (e: 'update:value', value: boolean): void;

@@ -16,23 +16,23 @@ export default defineConfig({
       staticImport: true,
       insertTypesEntry: true,
       compilerOptions: {
-        declarationMap: true
-      }
+        declarationMap: true,
+      },
     }),
     vue(),
-    vueJsx()
+    vueJsx(),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
   build: {
     lib: {
       // src/indext.ts is where we have exported the component(s)
       entry: resolve(__dirname, 'src/index.ts'),
       name: 's1kebeatsUI',
-      fileName: 's1kebeats-ui'
+      fileName: 's1kebeats-ui',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
@@ -42,9 +42,9 @@ export default defineConfig({
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          vue: 'Vue'
-        }
-      }
-    }
-  }
+          vue: 'Vue',
+        },
+      },
+    },
+  },
 });

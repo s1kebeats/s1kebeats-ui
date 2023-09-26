@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/vue3';
 import { faker } from '@faker-js/faker';
 
 const meta: Meta<typeof SBPresentationalAvatar> = {
-  component: SBPresentationalAvatar
+  component: SBPresentationalAvatar,
 };
 
 export default meta;

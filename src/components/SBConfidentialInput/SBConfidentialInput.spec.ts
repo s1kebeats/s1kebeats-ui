@@ -5,8 +5,8 @@ import { describe, it, expect, vi, beforeAll, afterEach } from 'vitest';
 const defaultMountOptions = {
   props: {
     name: 'testName',
-    label: 'testLabel'
-  }
+    label: 'testLabel',
+  },
 };
 
 const confidentialInputSelector = '[data-testid=confidentialInput]';
@@ -36,8 +36,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          autocomplete: testValue
-        }
+          autocomplete: testValue,
+        },
       });
       expect(
         wrapper.get(confidentialInputSelector).attributes('autocomplete')
@@ -58,8 +58,8 @@ describe('SBConfidentialInput', () => {
     it('label - should render with set upper label text', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
-          ...defaultMountOptions.props
-        }
+          ...defaultMountOptions.props,
+        },
       });
       expect(wrapper.get(upperLabelSelector).text()).toBe(
         defaultMountOptions.props.label
@@ -73,8 +73,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          icon: false
-        }
+          icon: false,
+        },
       });
       expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(false);
     });
@@ -93,8 +93,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          preset: 'testValue'
-        }
+          preset: 'testValue',
+        },
       });
       expect(wrapper.get(upperLabelSelector).isVisible()).toBe(true);
     });
@@ -103,8 +103,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          preset: testValue
-        }
+          preset: testValue,
+        },
       });
       expect(
         (wrapper.get(confidentialInputSelector).element as HTMLInputElement)
@@ -133,8 +133,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          disabled: true
-        }
+          disabled: true,
+        },
       });
       expect(
         wrapper.get(confidentialInputSelector).attributes()
@@ -144,8 +144,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          disabled: true
-        }
+          disabled: true,
+        },
       });
       expect(
         wrapper.get(toggleValueButtonSelector).attributes()
@@ -155,8 +155,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          disabled: true
-        }
+          disabled: true,
+        },
       });
       expect(
         wrapper.get(optionalIconButtonSelector).attributes()
@@ -170,8 +170,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          message: 'testMessage'
-        }
+          message: 'testMessage',
+        },
       });
       expect(wrapper.find(messageHintSelector).exists()).toBe(true);
     });
@@ -180,8 +180,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          message: testMessage
-        }
+          message: testMessage,
+        },
       });
       expect(wrapper.find(messageHintSelector).text()).toBe(testMessage);
     });
@@ -190,8 +190,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          callback
-        }
+          callback,
+        },
       });
 
       await wrapper.get(optionalIconButtonSelector).trigger('click');
@@ -211,8 +211,8 @@ describe('SBConfidentialInput', () => {
       const wrapper = shallowMount(SBConfidentialInput, {
         props: {
           ...defaultMountOptions.props,
-          debounce: true
-        }
+          debounce: true,
+        },
       });
 
       await wrapper.get(confidentialInputSelector).setValue('1');

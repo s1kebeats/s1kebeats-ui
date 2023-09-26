@@ -26,7 +26,7 @@ const emit = defineEmits<{
 const props = withDefaults(
   defineProps<Omit<SBTextInputProps, 'label' | 'icon'> & { icon?: boolean }>(),
   {
-    icon: true
+    icon: true,
   }
 );
 

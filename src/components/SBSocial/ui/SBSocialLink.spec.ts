@@ -9,11 +9,11 @@ const defaultMountOptions = {
   props: {
     username: 'username',
     icon: 'icon',
-    url: 'url'
+    url: 'url',
   },
   getUrl(): string {
     return this.props.url + this.props.username;
-  }
+  },
 };
 
 describe('SBSocialLink', () => {

@@ -5,8 +5,8 @@ import { describe, it, expect, vi, afterEach, beforeAll } from 'vitest';
 const defaultMountOptions = {
   props: {
     name: 'testName',
-    label: 'testLabel'
-  }
+    label: 'testLabel',
+  },
 };
 
 const textInputSelector = '[data-testid=textInput]';
@@ -37,8 +37,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          autocomplete: testValue
-        }
+          autocomplete: testValue,
+        },
       });
       expect(wrapper.get(textInputSelector).attributes('autocomplete')).toBe(
         testValue
@@ -59,8 +59,8 @@ describe('SBTextInput', () => {
     it('label - should render with set upper label text', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
-          ...defaultMountOptions.props
-        }
+          ...defaultMountOptions.props,
+        },
       });
       expect(wrapper.get(upperLabelSelector).text()).toBe(
         defaultMountOptions.props.label
@@ -74,8 +74,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          icon: testIcon
-        }
+          icon: testIcon,
+        },
       });
       expect(wrapper.find(optionalIconButtonSelector).exists()).toBe(true);
     });
@@ -83,8 +83,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          icon: testIcon
-        }
+          icon: testIcon,
+        },
       });
       expect(wrapper.get(optionalIconSelector).attributes('icon')).toBe(
         testIcon
@@ -104,8 +104,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          preset: 'testValue'
-        }
+          preset: 'testValue',
+        },
       });
       expect(wrapper.get(upperLabelSelector).isVisible()).toBe(true);
     });
@@ -114,8 +114,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          preset: testValue
-        }
+          preset: testValue,
+        },
       });
       expect(
         (wrapper.get(textInputSelector).element as HTMLInputElement).value
@@ -137,8 +137,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          icon: 'test'
-        }
+          icon: 'test',
+        },
       });
       expect(
         wrapper.get(optionalIconButtonSelector).attributes()
@@ -148,8 +148,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          disabled: true
-        }
+          disabled: true,
+        },
       });
       expect(wrapper.get(textInputSelector).attributes()).toHaveProperty(
         'disabled'
@@ -159,8 +159,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          disabled: true
-        }
+          disabled: true,
+        },
       });
       expect(wrapper.get(clearValueButtonSelector).attributes()).toHaveProperty(
         'disabled'
@@ -171,8 +171,8 @@ describe('SBTextInput', () => {
         props: {
           ...defaultMountOptions.props,
           disabled: true,
-          icon: 'test'
-        }
+          icon: 'test',
+        },
       });
       expect(
         wrapper.get(optionalIconButtonSelector).attributes()
@@ -186,8 +186,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          message: 'testMessage'
-        }
+          message: 'testMessage',
+        },
       });
       expect(wrapper.find(messageHintSelector).exists()).toBe(true);
     });
@@ -196,8 +196,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          message: testMessage
-        }
+          message: testMessage,
+        },
       });
       expect(wrapper.find(messageHintSelector).text()).toBe(testMessage);
     });
@@ -207,8 +207,8 @@ describe('SBTextInput', () => {
         props: {
           ...defaultMountOptions.props,
           callback,
-          icon: testIcon
-        }
+          icon: testIcon,
+        },
       });
 
       await wrapper.get(optionalIconButtonSelector).trigger('click');
@@ -221,8 +221,8 @@ describe('SBTextInput', () => {
         props: {
           ...defaultMountOptions.props,
           callback,
-          icon: testIcon
-        }
+          icon: testIcon,
+        },
       });
 
       await wrapper.get(textInputSelector).trigger('keypress.enter');
@@ -242,8 +242,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          debounce: true
-        }
+          debounce: true,
+        },
       });
 
       await wrapper.get(textInputSelector).setValue('1');
@@ -266,8 +266,8 @@ describe('SBTextInput', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
-          type: testType
-        }
+          type: testType,
+        },
       });
 
       expect(wrapper.get(textInputSelector).attributes('type')).toBe(testType);

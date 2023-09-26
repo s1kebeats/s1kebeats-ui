@@ -2,95 +2,120 @@ import SBBtn from './SBBtn.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof SBBtn> = {
-  component: SBBtn
+  component: SBBtn,
 };
 
 export default meta;
 
-const SBBtnUiTypes: InstanceType<typeof SBBtn>['$props']['uiType'][] = [
+const SBBtnDesignTypes: InstanceType<typeof SBBtn>['$props']['designType'][] = [
   'primary',
   'secondary',
   'subtle',
-  'ghost'
+  'ghost',
 ];
 const SBBtnSizes: InstanceType<typeof SBBtn>['$props']['size'][] = [
   'xs',
   'sm',
   'md',
   'lg',
-  'xl'
+  'xl',
+];
+const SBBtnColors: InstanceType<typeof SBBtn>['$props']['color'][] = [
+  'primary',
+  'secondary',
+  'success',
+  'warning',
+  'danger',
 ];
 
 export const Presentation = () => (
   <div class="grid gap-5">
-    {SBBtnUiTypes.map((uiType) => {
+    {SBBtnColors.map((color) => {
       return (
-        <div class="flex flex-col gap-5 items-start">
-          {SBBtnSizes.map((size) => {
+        <div class="grid gap-5">
+          {SBBtnDesignTypes.map((designType) => {
             return (
-              <div class="flex gap-5">
-                <SBBtn
-                  icon="material-symbols:add-rounded"
-                  position="right"
-                  ui-type={uiType}
-                  size={size}
-                  key={size! + uiType!}
-                >
-                  Button
-                </SBBtn>
-                <SBBtn
-                  icon="material-symbols:add-rounded"
-                  loading={true}
-                  position="right"
-                  ui-type={uiType}
-                  size={size}
-                  key={size! + uiType!}
-                >
-                  Button
-                </SBBtn>
-                <SBBtn ui-type={uiType} size={size} key={size! + uiType!}>
-                  Button
-                </SBBtn>
-                <SBBtn
-                  loading={true}
-                  ui-type={uiType}
-                  size={size}
-                  key={size! + uiType!}
-                >
-                  Button
-                </SBBtn>
-                <SBBtn
-                  icon="material-symbols:add-rounded"
-                  position="left"
-                  ui-type={uiType}
-                  size={size}
-                  key={size! + uiType!}
-                >
-                  Button
-                </SBBtn>
-                <SBBtn
-                  loading={true}
-                  icon="material-symbols:add-rounded"
-                  position="left"
-                  ui-type={uiType}
-                  size={size}
-                  key={size! + uiType!}
-                >
-                  Button
-                </SBBtn>
-                <SBBtn
-                  icon="material-symbols:close-rounded"
-                  ui-type={uiType}
-                  size={size}
-                  key={size! + uiType!}
-                />
-                <SBBtn
-                  loading={true}
-                  icon="material-symbols:add-rounded"
-                  ui-type={uiType}
-                  size={size}
-                  key={size! + uiType!}
-                />
+              <div class="flex flex-col gap-5 items-start">
+                {SBBtnSizes.map((size) => {
+                  return (
+                    <div class="flex gap-5">
+                      <SBBtn
+                        color={color}
+                        icon="material-symbols:add-rounded"
+                        position="right"
+                        design-type={designType}
+                        size={size}
+                        key={size! + designType!}
+                      >
+                        Button
+                      </SBBtn>
+                      <SBBtn
+                        color={color}
+                        icon="material-symbols:add-rounded"
+                        loading={true}
+                        position="right"
+                        design-type={designType}
+                        size={size}
+                        key={size! + designType!}
+                      >
+                        Button
+                      </SBBtn>
+                      <SBBtn
+                        color={color}
+                        design-type={designType}
+                        size={size}
+                        key={size! + designType!}
+                      >
+                        Button
+                      </SBBtn>
+                      <SBBtn
+                        color={color}
+                        loading={true}
+                        design-type={designType}
+                        size={size}
+                        key={size! + designType!}
+                      >
+                        Button
+                      </SBBtn>
+                      <SBBtn
+                        color={color}
+                        icon="material-symbols:add-rounded"
+                        position="left"
+                        design-type={designType}
+                        size={size}
+                        key={size! + designType!}
+                      >
+                        Button
+                      </SBBtn>
+                      <SBBtn
+                        color={color}
+                        loading={true}
+                        icon="material-symbols:add-rounded"
+                        position="left"
+                        design-type={designType}
+                        size={size}
+                        key={size! + designType!}
+                      >
+                        Button
+                      </SBBtn>
+                      <SBBtn
+                        color={color}
+                        icon="material-symbols:close-rounded"
+                        design-type={designType}
+                        size={size}
+                        key={size! + designType!}
+                      />
+                      <SBBtn
+                        color={color}
+                        loading={true}
+                        icon="material-symbols:add-rounded"
+                        design-type={designType}
+                        size={size}
+                        key={size! + designType!}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             );
           })}

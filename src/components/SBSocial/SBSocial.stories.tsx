@@ -4,7 +4,7 @@ import SBYoutubeLink from './SBYoutubeLink.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof SBInstagramLink> = {
-  component: SBInstagramLink
+  component: SBInstagramLink,
 };
 
 export default meta;

@@ -15,8 +15,8 @@
           'bg-grayscale-bg outline-grayscale-header outline outline-[2px]':
             focused,
           'bg-grayscale-input': !focused,
-          'cursor-not-allowed': disabled
-        }
+          'cursor-not-allowed': disabled,
+        },
       ]"
       @focusin="focused = true"
       @focusout="focused = false"
@@ -28,7 +28,7 @@
         @click.prevent="callback ? callback() : null"
         :class="{
           'cursor-default': !callback,
-          'cursor-not-allowed': disabled
+          'cursor-not-allowed': disabled,
         }"
       >
         <Icon
@@ -40,8 +40,8 @@
             coloredIconClasses,
             {
               '!text-black': focused,
-              'hover:text-black': callback
-            }
+              'hover:text-black': callback,
+            },
           ]"
         />
       </button>
@@ -67,7 +67,7 @@
           v-model.trim="value"
           :disabled="disabled"
           :class="{
-            'cursor-not-allowed': disabled
+            'cursor-not-allowed': disabled,
           }"
         />
       </div>
@@ -76,7 +76,7 @@
         :class="{
           'min-w-[19px]': size === 'sm',
           'min-w-[22px]': size === 'md' || size === 'lg',
-          'min-w-[24px]': size === 'xl'
+          'min-w-[24px]': size === 'xl',
         }"
         data-testid="clearValueButton"
         @click.prevent="focused ? clearInputValue() : null"
@@ -110,7 +110,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   debounce: false,
   type: 'text',
-  autocomplete: 'off'
+  autocomplete: 'off',
 });
 
 const emit = defineEmits<{

@@ -10,7 +10,7 @@
         class="flex items-center justify-center"
         :class="[
           buttonElementsContainerSizingClasses,
-          { 'opacity-0': loading }
+          { 'opacity-0': loading },
         ]"
       >
         <slot v-if="position === 'left'" />
@@ -39,10 +39,10 @@ import Props from './SBBtn.props';
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
-  uiType: 'primary',
+  designType: 'primary',
   position: 'left',
   loading: false,
-  type: 'button'
+  type: 'button',
 });
 
 const buttonSizingClasses = computed(() => {
@@ -73,7 +73,7 @@ const buttonElementsContainerSizingClasses = computed(() => {
 });
 
 const buttonTypeClasses = computed(() => {
-  switch (props.uiType) {
+  switch (props.designType) {
     case 'secondary':
       return 'border-2 border-primary text-primary hover:text-primary-default_strong hover:border-primary-default_strong focus:border-white focus:outline-8 focus:outline focus:outline-primary-bg_strong disabled:opacity-50 active:text-grayscale-header active:border-grayscale-header';
     case 'subtle':

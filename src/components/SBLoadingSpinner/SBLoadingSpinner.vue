@@ -11,7 +11,7 @@ import { computed } from 'vue';
 const props = withDefaults(
   defineProps<{ size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' }>(),
   {
-    size: 'md'
+    size: 'md',
   }
 );
 

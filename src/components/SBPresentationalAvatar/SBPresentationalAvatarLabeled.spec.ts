@@ -6,8 +6,8 @@ const defaultMountOptions = {
   props: {
     username: 'testUsername',
     image: 'testImage',
-    size: 'sm'
-  } as const
+    size: 'sm',
+  } as const,
 };
 
 const presentationalAvatarSelector = '[data-testid=presentationalAvatar]';
@@ -77,8 +77,8 @@ describe('SBPresentationalAvatarLabeled', () => {
       const wrapper = shallowMount(SBPresentationalAvatarLabeled, {
         props: {
           ...defaultMountOptions.props,
-          position: 'right'
-        }
+          position: 'right',
+        },
       });
 
       expect(wrapper.find(presentationalAvatarLabelLeftSelector).exists()).toBe(
