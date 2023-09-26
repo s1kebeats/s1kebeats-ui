@@ -1,6 +1,6 @@
 <template>
   <button
-    class="font-semibold transition-all disabled:cursor-not-allowed"
+    class="color font-semibold transition-all disabled:cursor-not-allowed"
     :class="[buttonSizingClasses, buttonTypeClasses]"
     :type="type"
   >
@@ -95,3 +95,11 @@ const iconSizingClasses = computed(() => {
   }
 });
 </script>
+<style lang="scss" scoped>
+.color {
+  background-color: var(--color-#{v-bind(color)});
+  &:hover {
+    background-color: var(--color-primary-strong);
+  }
+}
+</style>
