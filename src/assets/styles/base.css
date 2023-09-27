@@ -1,31 +1,41 @@
 :root {
-    --color-primary: '#610bef',
-    --color-primary-strong: '#4700ab',
-    --color-primary-weak: '#a996ff',
-    --color-primary-bg: '#f7f7fc',
-    --color-primary-bg-strong: '#bfbefc',
+  --color-primary: #610bef;
+  --color-primary-strong: #4700ab;
+  --color-primary-weak: #a996ff;
+  --color-primary-bg: #f7f7fc;
+  --color-primary-bg-strong: #bfbefc;
 
-    --color-secondary: '#005bd4',
-    --color-secondary-strong: '#0041ac',
-    --color-secondary-weak: '#50c8fc',
-    --color-secondary-bg: '#e3feff',
-    --color-secondary-bg-strong: '#8de9ff',
+  --color-secondary: #005bd4;
+  --color-secondary-strong: #0041ac;
+  --color-secondary-weak: #50c8fc;
+  --color-secondary-bg: #e3feff;
+  --color-secondary-bg-strong: #8de9ff;
 
-    --color-success: '#008a00',
-    --color-success-strong: '#067306',
-    --color-success-weak: '#a6f787',
-    --color-success-bg: '#eaf9de',
-    --color-success-bg-strong: '#cbffae',
+  --color-success: #008a00;
+  --color-success-strong: #067306;
+  --color-success-weak: #a6f787;
+  --color-success-bg: #eaf9de;
+  --color-success-bg-strong: #cbffae;
 
-    --color-warning: '#eaac30',
-    --color-warning-strong: '#946300',
-    --color-warning-weak: '#ffdf9a',
-    --color-warning-bg: '#fff8e9',
-    --color-warning-bg-strong: '#ffe6b0',
+  --color-warning: #eaac30;
+  --color-warning-strong: #946300;
+  --color-warning-weak: #ffdf9a;
+  --color-warning-bg: #fff8e9;
+  --color-warning-bg-strong: #ffe6b0;
 
-    --color-danger: '#ca024f',
-    --color-danger-strong: '#9e0038',
-    --color-danger-weak: '#ff75cb',
-    --color-danger-bg: '#ffecfc',
-    --color-danger-bg-strong: '#ffabe8',
+  --color-danger: #ca024f;
+  --color-danger-strong: #9e0038;
+  --color-danger-weak: #ff75cb;
+  --color-danger-bg: #ffecfc;
+  --color-danger-bg-strong: #ffabe8;
+
+  --color-grayscale-header: #14142b;
+  --color-grayscale-header-weak: #262338;
+  --color-grayscale-body: #4e4b66;
+  --color-grayscale-label: #6e7191;
+  --color-grayscale-placehold: #a0a3bd;
+  --color-grayscale-line: #d9dbe9;
+  --color-grayscale-input: #eff0f6;
+  --color-grayscale-bg: #fcfcfc;
+  --color-grayscale-bg-weak: #f7f7fc;
 }

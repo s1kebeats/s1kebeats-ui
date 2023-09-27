@@ -1,7 +1,7 @@
 <template>
   <button
-    class="color font-semibold transition-all disabled:cursor-not-allowed"
-    :class="[buttonSizingClasses, buttonTypeClasses]"
+    class="font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50 focus:outline focus:outline-8"
+    :class="[`color-${color}`, `design-${design}`, buttonSizingClasses]"
     :type="type"
   >
     <div class="relative flex items-center justify-center">
@@ -39,7 +39,8 @@ import Props from './SBBtn.props';
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
-  designType: 'primary',
+  design: 'primary',
+  color: 'primary',
   position: 'left',
   loading: false,
   type: 'button',
@@ -72,19 +73,6 @@ const buttonElementsContainerSizingClasses = computed(() => {
   }
 });
 
-const buttonTypeClasses = computed(() => {
-  switch (props.designType) {
-    case 'secondary':
-      return 'border-2 border-primary text-primary hover:text-primary-default_strong hover:border-primary-default_strong focus:border-white focus:outline-8 focus:outline focus:outline-primary-bg_strong disabled:opacity-50 active:text-grayscale-header active:border-grayscale-header';
-    case 'subtle':
-      return 'border-2 border-grayscale-line text-primary hover:border-grayscale-placeholder hover:text-primary-default_strong focus:border-white focus:outline-8 focus:outline focus:outline-grayscale-input active:border-grayscale-header active:text-grayscale-header disabled:opacity-50';
-    case 'ghost':
-      return 'text-primary hover:text-primary-default_strong focus:outline-8 focus:outline focus:outline-grayscale-input active:text-grayscale-header disabled:opacity-50';
-    default:
-      return 'text-grayscale-bg bg-primary hover:bg-primary-default_strong focus:outline-8 focus:outline focus:outline-primary-bg_strong disabled:opacity-50 active:bg-grayscale-header';
-  }
-});
-
 const iconSizingClasses = computed(() => {
   switch (props.size) {
     case 'xs':
@@ -97,9 +85,101 @@ const iconSizingClasses = computed(() => {
 </script>
 <style lang="scss" scoped>
 .color {
-  background-color: var(--color-#{v-bind(color)});
-  &:hover {
-    background-color: var(--color-primary-strong);
+  @each $suffix, $color, $strongColor,
+    $strongBgColor
+      in (
+        'primary',
+        var(--color-primary),
+        var(--color-primary-strong),
+        var(--color-primary-bg-strong)
+      ),
+    (
+      'secondary',
+      var(--color-secondary),
+      var(--color-secondary-strong),
+      var(--color-secondary-bg-strong)
+    ),
+    (
+      'success',
+      var(--color-success),
+      var(--color-success-strong),
+      var(--color-success-bg-strong)
+    ),
+    (
+      'warning',
+      var(--color-warning),
+      var(--color-warning-strong),
+      var(--color-warning-bg-strong)
+    ),
+    (
+      'danger',
+      var(--color-danger),
+      var(--color-danger-strong),
+      var(--color-danger-bg-strong)
+    )
+  {
+    &-#{$suffix} {
+      background-color: $color;
+      border-color: $color;
+      color: $color;
+      &:hover {
+        background-color: $strongColor;
+        color: $strongColor;
+        border-color: $strongColor;
+      }
+      &:focus {
+        outline-color: $strongBgColor;
+      }
+    }
+  }
+}
+.design {
+  &-primary {
+    color: var(--color-grayscale-bg);
+    &:hover {
+      color: var(--color-grayscale-bg);
+    }
+    &:active {
+      background-color: var(--color-grayscale-header);
+    }
+  }
+  &-subtle {
+    border-color: var(--color-grayscale-line);
+    &:hover {
+      border-color: var(--color-grayscale-placehold);
+    }
+    &:focus {
+      outline-color: var(--color-grayscale-input);
+      background-color: var(--color-grayscale-bg);
+    }
+  }
+  &-ghost {
+    &:focus {
+      outline-color: var(--color-grayscale-input);
+    }
+  }
+  &-secondary,
+  &-subtle,
+  &-ghost {
+    background-color: var(--color-grayscale-bg);
+    &:hover {
+      background-color: var(--color-grayscale-bg);
+    }
+    &:active {
+      color: var(--color-grayscale-header);
+    }
+  }
+  &-secondary,
+  &-subtle {
+    border-style: solid;
+    border-width: 2px;
+    &:focus {
+      border-color: var(--color-grayscale-bg);
+    }
+    &:active {
+      border-color: var(--color-grayscale-header);
+      background-color: var(--color-grayscale-bg);
+    }
   }
 }
 </style>

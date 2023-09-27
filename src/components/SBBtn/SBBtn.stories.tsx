@@ -7,7 +7,7 @@ const meta: Meta<typeof SBBtn> = {
 
 export default meta;
 
-const SBBtnDesignTypes: InstanceType<typeof SBBtn>['$props']['designType'][] = [
+const SBBtnDesigns: InstanceType<typeof SBBtn>['$props']['design'][] = [
   'primary',
   'secondary',
   'subtle',
@@ -33,7 +33,7 @@ export const Presentation = () => (
     {SBBtnColors.map((color) => {
       return (
         <div class="grid gap-5">
-          {SBBtnDesignTypes.map((designType) => {
+          {SBBtnDesigns.map((design) => {
             return (
               <div class="flex flex-col gap-5 items-start">
                 {SBBtnSizes.map((size) => {
@@ -43,9 +43,9 @@ export const Presentation = () => (
                         color={color}
                         icon="material-symbols:add-rounded"
                         position="right"
-                        design-type={designType}
+                        design={design}
                         size={size}
-                        key={size! + designType!}
+                        key={size! + design!}
                       >
                         Button
                       </SBBtn>
@@ -54,26 +54,26 @@ export const Presentation = () => (
                         icon="material-symbols:add-rounded"
                         loading={true}
                         position="right"
-                        design-type={designType}
+                        design-type={design}
                         size={size}
-                        key={size! + designType!}
+                        key={size! + design!}
                       >
                         Button
                       </SBBtn>
                       <SBBtn
                         color={color}
-                        design-type={designType}
+                        design-type={design}
                         size={size}
-                        key={size! + designType!}
+                        key={size! + design!}
                       >
                         Button
                       </SBBtn>
                       <SBBtn
                         color={color}
                         loading={true}
-                        design-type={designType}
+                        design-type={design}
                         size={size}
-                        key={size! + designType!}
+                        key={size! + design!}
                       >
                         Button
                       </SBBtn>
@@ -81,9 +81,9 @@ export const Presentation = () => (
                         color={color}
                         icon="material-symbols:add-rounded"
                         position="left"
-                        design-type={designType}
+                        design-type={design}
                         size={size}
-                        key={size! + designType!}
+                        key={size! + design!}
                       >
                         Button
                       </SBBtn>
@@ -92,26 +92,26 @@ export const Presentation = () => (
                         loading={true}
                         icon="material-symbols:add-rounded"
                         position="left"
-                        design-type={designType}
+                        design-type={design}
                         size={size}
-                        key={size! + designType!}
+                        key={size! + design!}
                       >
                         Button
                       </SBBtn>
                       <SBBtn
                         color={color}
                         icon="material-symbols:close-rounded"
-                        design-type={designType}
+                        design-type={design}
                         size={size}
-                        key={size! + designType!}
+                        key={size! + design!}
                       />
                       <SBBtn
                         color={color}
                         loading={true}
                         icon="material-symbols:add-rounded"
-                        design-type={designType}
+                        design-type={design}
                         size={size}
-                        key={size! + designType!}
+                        key={size! + design!}
                       />
                     </div>
                   );
