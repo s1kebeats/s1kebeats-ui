@@ -54,7 +54,7 @@ export const Presentation = () => (
                         icon="material-symbols:add-rounded"
                         loading={true}
                         position="right"
-                        design-type={design}
+                        design={design}
                         size={size}
                         key={size! + design!}
                       >
@@ -62,7 +62,7 @@ export const Presentation = () => (
                       </SBBtn>
                       <SBBtn
                         color={color}
-                        design-type={design}
+                        design={design}
                         size={size}
                         key={size! + design!}
                       >
@@ -71,7 +71,7 @@ export const Presentation = () => (
                       <SBBtn
                         color={color}
                         loading={true}
-                        design-type={design}
+                        design={design}
                         size={size}
                         key={size! + design!}
                       >
@@ -81,7 +81,7 @@ export const Presentation = () => (
                         color={color}
                         icon="material-symbols:add-rounded"
                         position="left"
-                        design-type={design}
+                        design={design}
                         size={size}
                         key={size! + design!}
                       >
@@ -92,7 +92,7 @@ export const Presentation = () => (
                         loading={true}
                         icon="material-symbols:add-rounded"
                         position="left"
-                        design-type={design}
+                        design={design}
                         size={size}
                         key={size! + design!}
                       >
@@ -101,7 +101,7 @@ export const Presentation = () => (
                       <SBBtn
                         color={color}
                         icon="material-symbols:close-rounded"
-                        design-type={design}
+                        design={design}
                         size={size}
                         key={size! + design!}
                       />
@@ -109,7 +109,7 @@ export const Presentation = () => (
                         color={color}
                         loading={true}
                         icon="material-symbols:add-rounded"
-                        design-type={design}
+                        design={design}
                         size={size}
                         key={size! + design!}
                       />
