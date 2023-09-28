@@ -2,7 +2,7 @@ import SBTextInput from './SBTextInput.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof SBTextInput> = {
-  component: SBTextInput
+  component: SBTextInput,
 };
 
 export default meta;
@@ -13,7 +13,7 @@ const SBTextInputSizes: InstanceType<typeof SBTextInput>['$props']['size'][] = [
   'sm',
   'md',
   'lg',
-  'xl'
+  'xl',
 ];
 
 export const Presentation = () => (

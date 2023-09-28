@@ -7,8 +7,8 @@ const socialLinkSelector = '[data-testid=socialLink]';
 const defaultMountOptions = {
   props: {
     username: 'username',
-    size: 'lg'
-  }
+    size: 'lg',
+  },
 };
 
 describe('SBYoutubeLink', () => {

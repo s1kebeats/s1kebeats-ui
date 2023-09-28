@@ -5,6 +5,6 @@ import type SBPresentationalAvatarProps from './SBPresentationalAvatar.props';
 export {
   SBPresentationalAvatar,
   SBPresentationalAvatarLabeled,
-  type SBPresentationalAvatarProps
+  type SBPresentationalAvatarProps,
 };
 export default { SBPresentationalAvatar, SBPresentationalAvatarLabeled };

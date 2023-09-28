@@ -23,7 +23,7 @@ import { computed } from 'vue';
 import type Props from './SBPresentationalAvatar.props';
 
 const props = withDefaults(defineProps<Props>(), {
-  size: 'md'
+  size: 'md',
 });
 const cutUsername = computed(() => props.username.slice(0, 2).toUpperCase());
 

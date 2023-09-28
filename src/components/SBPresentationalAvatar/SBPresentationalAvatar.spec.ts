@@ -14,8 +14,8 @@ describe('SBPresentationalAvatar', () => {
       const wrapper = mount(SBPresentationalAvatar, {
         props: {
           username: 'testUsername',
-          image: 'testImage'
-        }
+          image: 'testImage',
+        },
       });
 
       expect(wrapper.find(presentationalAvatarImageSelector).exists()).toBe(
@@ -29,8 +29,8 @@ describe('SBPresentationalAvatar', () => {
       const wrapper = mount(SBPresentationalAvatar, {
         props: {
           username: 'testUsername',
-          image: null
-        }
+          image: null,
+        },
       });
 
       expect(wrapper.find(presentationalAvatarAbbrSelector).exists()).toBe(
@@ -45,8 +45,8 @@ describe('SBPresentationalAvatar', () => {
       const wrapper = mount(SBPresentationalAvatar, {
         props: {
           username: testUsername,
-          image: null
-        }
+          image: null,
+        },
       });
       expect(wrapper.get(presentationalAvatarAbbrSelector).text()).toBe(
         testUsername.slice(0, 2).toUpperCase()
@@ -57,8 +57,8 @@ describe('SBPresentationalAvatar', () => {
     const wrapper = mount(SBPresentationalAvatar, {
       props: {
         username: 'testUsername',
-        image: null
-      }
+        image: null,
+      },
     });
 
     expect(wrapper.get(presentationalAvatarSelector)).toMatchInlineSnapshot(`

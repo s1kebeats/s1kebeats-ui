@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/vue3';
 import SBBtn from '@/components/SBBtn';
 
 const meta: Meta<typeof SBSocialLink> = {
-  component: SBSocialLink
+  component: SBSocialLink,
 };
 
 export default meta;
@@ -11,7 +11,7 @@ export default meta;
 const socialLinkSizes: InstanceType<typeof SBSocialLink>['$props']['size'][] = [
   'sm',
   'md',
-  'lg'
+  'lg',
 ];
 
 export const Presentation = () => (

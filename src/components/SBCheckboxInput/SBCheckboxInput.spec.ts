@@ -5,8 +5,8 @@ import { shallowMount } from '@vue/test-utils';
 const defaultMountOptions = {
   props: {
     name: 'testName',
-    label: 'testLabel'
-  }
+    label: 'testLabel',
+  },
 };
 
 const realCheckboxInputSelector = '[data-testid=realCheckboxInput]';
@@ -35,8 +35,8 @@ describe('SBCheckboxInput', () => {
       const wrapper = shallowMount(SBCheckboxInput, {
         props: {
           ...defaultMountOptions.props,
-          checked: true
-        }
+          checked: true,
+        },
       });
 
       expect(wrapper.get(realCheckboxInputSelector).attributes('value')).toBe(
@@ -47,8 +47,8 @@ describe('SBCheckboxInput', () => {
       const wrapper = shallowMount(SBCheckboxInput, {
         props: {
           ...defaultMountOptions.props,
-          label: undefined
-        }
+          label: undefined,
+        },
       });
 
       expect(
@@ -75,8 +75,8 @@ describe('SBCheckboxInput', () => {
       const wrapper = shallowMount(SBCheckboxInput, {
         props: {
           ...defaultMountOptions.props,
-          position: 'right'
-        }
+          position: 'right',
+        },
       });
 
       expect(wrapper.find(checkboxInputLabelRightSelector).exists()).toBe(true);
@@ -93,8 +93,8 @@ describe('SBCheckboxInput', () => {
       const wrapper = shallowMount(SBCheckboxInput, {
         props: {
           ...defaultMountOptions.props,
-          disabled: true
-        }
+          disabled: true,
+        },
       });
 
       expect(

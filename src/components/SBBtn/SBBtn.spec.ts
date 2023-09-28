@@ -17,8 +17,8 @@ describe('SBBtn', () => {
     it('loading - should render loadingSpinner without button content when set to "true"', () => {
       const wrapper = shallowMount(SBBtn, {
         props: {
-          loading: true
-        }
+          loading: true,
+        },
       });
       expect(wrapper.find(buttonContentWrapperSelector).classes()).toContain(
         'opacity-0'
@@ -28,8 +28,8 @@ describe('SBBtn', () => {
     it('icon - should render icon when provided', () => {
       const wrapper = shallowMount(SBBtn, {
         props: {
-          icon: testIcon
-        }
+          icon: testIcon,
+        },
       });
       expect(wrapper.find(buttonIconSelector).exists()).toBe(true);
     });
@@ -40,16 +40,16 @@ describe('SBBtn', () => {
     it('icon - should render with set icon', () => {
       const wrapper = shallowMount(SBBtn, {
         props: {
-          icon: testIcon
-        }
+          icon: testIcon,
+        },
       });
       expect(wrapper.get(buttonIconSelector).attributes('icon')).toBe(testIcon);
     });
     it('type - should render with type "button" by default', () => {
       const wrapper = shallowMount(SBBtn, {
         props: {
-          icon: testIcon
-        }
+          icon: testIcon,
+        },
       });
       expect(wrapper.get('button').attributes('type')).toBe('button');
     });
@@ -58,8 +58,8 @@ describe('SBBtn', () => {
       const wrapper = shallowMount(SBBtn, {
         props: {
           icon: testIcon,
-          type: testValue
-        }
+          type: testValue,
+        },
       });
       expect(wrapper.get('button').attributes('type')).toBe(testValue);
     });
@@ -68,15 +68,18 @@ describe('SBBtn', () => {
     const wrapper = shallowMount(SBBtn);
     expect(wrapper.element).toMatchInlineSnapshot(`
       <button
-        class="font-semibold transition-all disabled:cursor-not-allowed text-base rounded-xl min-h-[52px] px-6 text-grayscale-bg bg-primary hover:bg-primary-default_strong focus:outline-8 focus:outline focus:outline-primary-bg_strong disabled:opacity-50 active:bg-grayscale-header"
+        class="font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50 focus:outline focus:outline-8 color-primary design-primary text-base rounded-xl min-h-[52px] px-6"
+        data-v-3dcf9e49=""
         type="button"
       >
         <div
           class="relative flex items-center justify-center"
+          data-v-3dcf9e49=""
         >
           <div
             class="flex items-center justify-center gap-3"
             data-testid="buttonContentWrapper"
+            data-v-3dcf9e49=""
           >
             
             

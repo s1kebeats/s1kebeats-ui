@@ -1,3 +1,4 @@
+@import url(./base.css);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

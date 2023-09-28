@@ -2,7 +2,7 @@ import SBLoadingSpinner from './SBLoadingSpinner.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof SBLoadingSpinner> = {
-  component: SBLoadingSpinner
+  component: SBLoadingSpinner,
 };
 
 export default meta;

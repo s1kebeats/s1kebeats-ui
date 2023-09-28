@@ -2,7 +2,7 @@ import SBEmailInput from './SBEmailInput.vue';
 import type { Meta } from '@storybook/vue3';
 
 const meta: Meta<typeof SBEmailInput> = {
-  component: SBEmailInput
+  component: SBEmailInput,
 };
 
 export default meta;

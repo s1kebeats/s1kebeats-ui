@@ -4,8 +4,8 @@
     :class="[
       inputContainerClasses,
       {
-        'cursor-not-allowed': disabled
-      }
+        'cursor-not-allowed': disabled,
+      },
     ]"
     data-testid="confidentialInputContainer"
   >
@@ -19,8 +19,8 @@
           'opacity-50': disabled,
           'bg-grayscale-bg outline-grayscale-header outline outline-[2px]':
             focused,
-          'bg-grayscale-input': !focused
-        }
+          'bg-grayscale-input': !focused,
+        },
       ]"
       @focusin="focused = true"
       @focusout="focused = false"
@@ -32,7 +32,7 @@
         @click.prevent="callback ? callback() : null"
         :class="{
           'cursor-default': !callback,
-          'cursor-not-allowed': disabled
+          'cursor-not-allowed': disabled,
         }"
       >
         <Icon
@@ -44,8 +44,8 @@
             coloredIconClasses,
             {
               '!text-black': focused,
-              'hover:text-black': callback
-            }
+              'hover:text-black': callback,
+            },
           ]"
         />
       </button>
@@ -70,7 +70,7 @@
           v-model.trim="value"
           :disabled="disabled"
           :class="{
-            'cursor-not-allowed': disabled
+            'cursor-not-allowed': disabled,
           }"
         />
       </div>
@@ -80,7 +80,7 @@
           'w-[19px]': size === 'sm',
           'w-[22px]': size === 'md' || size === 'lg',
           'w-[24px]': size === 'xl',
-          'cursor-not-allowed': disabled
+          'cursor-not-allowed': disabled,
         }"
         data-testid="toggleValueButton"
         @click.prevent="toggleValueVisibility"
@@ -99,8 +99,8 @@
             coloredIconClasses,
             {
               '!text-black': focused,
-              'hover:text-black': callback
-            }
+              'hover:text-black': callback,
+            },
           ]"
         />
       </button>
@@ -121,7 +121,7 @@ const props = withDefaults(
     disabled: false,
     debounce: false,
     icon: true,
-    autocomplete: 'off'
+    autocomplete: 'off',
   }
 );
 
