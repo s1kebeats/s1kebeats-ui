@@ -1,3 +1,5 @@
+import './assets/styles/base.css';
+
 import SBBtn from './components/SBBtn';
 import SBCheckboxInput from './components/SBCheckboxInput';
 import SBConfidentialInput from './components/SBConfidentialInput';
