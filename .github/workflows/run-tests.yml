@@ -2,8 +2,6 @@ name: Run tests
 
 on:
   # Runs on pushes and pulls targeting the default branch
-  push:
-    branches: ['main']
   pull_request:
         branches: ['main']
 
