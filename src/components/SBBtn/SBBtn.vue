@@ -1,7 +1,11 @@
 <template>
   <button
     class="font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50 focus:outline focus:outline-8"
-    :class="[`color-${color}`, `design-${design}`, buttonSizingClasses]"
+    :class="[
+      `sbbtn-color-${color}`,
+      `sbbtn-design-${design}`,
+      buttonSizingClasses,
+    ]"
     :type="type"
   >
     <div class="relative flex items-center justify-center">
@@ -83,8 +87,8 @@ const iconSizingClasses = computed(() => {
   }
 });
 </script>
-<style lang="scss" scoped>
-.color {
+<style lang="scss">
+.sbbtn-color {
   @each $suffix, $color, $strongColor,
     $strongBgColor
       in (
@@ -133,7 +137,7 @@ const iconSizingClasses = computed(() => {
     }
   }
 }
-.design {
+.sbbtn-design {
   &-primary {
     color: var(--color-grayscale-bg);
     &:hover {

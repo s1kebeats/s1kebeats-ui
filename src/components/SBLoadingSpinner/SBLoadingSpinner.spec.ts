@@ -7,9 +7,8 @@ describe('SBLoadingSpinner', () => {
     const wrapper = shallowMount(SBLoadingSpinner);
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div
-        class="spinner border-[2px] border-current aspect-square transition-all w-[24px]"
+        class="sbloadingspinner border-[2px] border-current aspect-square transition-all w-[24px]"
         data-testid="loadingSpinner"
-        data-v-e8cd9dfa=""
       />
     `);
   });
