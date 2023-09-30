@@ -1,6 +1,6 @@
 <template>
   <div
-    class="spinner border-[2px] border-current aspect-square transition-all"
+    class="sbloadingspinner border-[2px] border-current aspect-square transition-all"
     data-testid="loadingSpinner"
     :class="[spinnerSizingClasses]"
   ></div>
@@ -26,15 +26,15 @@ const spinnerSizingClasses = computed(() => {
   }
 });
 </script>
-<style scoped lang="scss">
-.spinner {
+<style lang="scss">
+.sbloadingspinner {
   clear: both;
   border-top: transparent solid !important;
   border-radius: 50%;
-  -webkit-animation: spinnerRotation 0.6s infinite linear;
-  animation: spinnerRotation 0.6s infinite linear;
+  -webkit-animation: sbloadingspinnerRotation 0.6s infinite linear;
+  animation: sbloadingspinnerRotation 0.6s infinite linear;
 }
-@keyframes spinnerRotation {
+@keyframes sbloadingspinnerRotation {
   from {
     transform: rotate(0deg);
   }

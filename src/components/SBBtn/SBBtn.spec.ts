@@ -68,18 +68,15 @@ describe('SBBtn', () => {
     const wrapper = shallowMount(SBBtn);
     expect(wrapper.element).toMatchInlineSnapshot(`
       <button
-        class="font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50 focus:outline focus:outline-8 color-primary design-primary text-base rounded-xl min-h-[52px] px-6"
-        data-v-3dcf9e49=""
+        class="font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50 focus:outline focus:outline-8 sbbtn-color-primary sbbtn-design-primary text-base rounded-xl min-h-[52px] px-6"
         type="button"
       >
         <div
           class="relative flex items-center justify-center"
-          data-v-3dcf9e49=""
         >
           <div
             class="flex items-center justify-center gap-3"
             data-testid="buttonContentWrapper"
-            data-v-3dcf9e49=""
           >
             
             
