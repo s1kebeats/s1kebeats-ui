@@ -27,6 +27,8 @@ jobs:
             cache: 'pnpm'
         - name: Install dependencies
           run: pnpm install
+        - name: Build
+          run: pnpm build
         - name: NPM publish
           uses: JS-DevTools/npm-publish@v2
           with:
