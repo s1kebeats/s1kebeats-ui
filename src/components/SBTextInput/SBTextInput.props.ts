@@ -1,6 +1,7 @@
 export default interface Props {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   name: string;
+  value: string;
   label?: string;
   icon?: string | null;
   preset?: string | null;

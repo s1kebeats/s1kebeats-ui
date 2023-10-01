@@ -97,7 +97,7 @@
 </template>
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { computed, ref, watch, watchEffect } from 'vue';
+import { ref } from 'vue';
 import type Props from './SBTextInput.props';
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
@@ -108,7 +108,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:value', value: string): void;
+  (e: 'update:modelValue', value: string): void;
 }>();
 
 const value = ref('');
