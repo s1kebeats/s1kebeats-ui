@@ -92,13 +92,6 @@
         </transition>
       </button>
     </div>
-    <span
-      data-testid="messageHint"
-      class="cursor-default"
-      v-if="message"
-      :class="messageClasses"
-      >{{ message }}</span
-    >
   </div>
 </template>
 <script setup lang="ts">
