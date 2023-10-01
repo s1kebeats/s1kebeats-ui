@@ -50,6 +50,7 @@
       >
         <span
           data-testid="upperLabel"
+          v-if="label"
           v-show="value"
           class="w-full text-sm truncate"
           :class="inputLabelClasses"

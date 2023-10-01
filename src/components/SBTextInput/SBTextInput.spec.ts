@@ -56,12 +56,18 @@ describe('SBTextInput', () => {
         defaultMountOptions.props.label
       );
     });
-    it('label - should render with set upper label text', () => {
+    it('label - should not render upper label if was not provided', () => {
       const wrapper = shallowMount(SBTextInput, {
         props: {
           ...defaultMountOptions.props,
+          label: undefined,
         },
       });
+      expect(wrapper.find(upperLabelSelector).exists()).toBe(false);
+    });
+    it('label - should render upper label with valid text when provided', () => {
+      const wrapper = shallowMount(SBTextInput, defaultMountOptions);
+      expect(wrapper.find(upperLabelSelector).exists()).toBe(true);
       expect(wrapper.get(upperLabelSelector).text()).toBe(
         defaultMountOptions.props.label
       );
