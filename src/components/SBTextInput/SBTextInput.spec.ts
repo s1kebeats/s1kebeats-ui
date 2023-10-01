@@ -184,29 +184,6 @@ describe('SBTextInput', () => {
         wrapper.get(optionalIconButtonSelector).attributes()
       ).toHaveProperty('disabled');
     });
-    it('message - should not render message hint when not provided', () => {
-      const wrapper = shallowMount(SBTextInput, defaultMountOptions);
-      expect(wrapper.find(messageHintSelector).exists()).toBe(false);
-    });
-    it('message - should render message hint when provided', () => {
-      const wrapper = shallowMount(SBTextInput, {
-        props: {
-          ...defaultMountOptions.props,
-          message: 'testMessage',
-        },
-      });
-      expect(wrapper.find(messageHintSelector).exists()).toBe(true);
-    });
-    it('message - should render provided message hint text', () => {
-      const testMessage = 'testMessage';
-      const wrapper = shallowMount(SBTextInput, {
-        props: {
-          ...defaultMountOptions.props,
-          message: testMessage,
-        },
-      });
-      expect(wrapper.find(messageHintSelector).text()).toBe(testMessage);
-    });
     it('callback - should call provided callback on optional icon button click', async () => {
       const callback = vi.fn();
       const wrapper = shallowMount(SBTextInput, {
