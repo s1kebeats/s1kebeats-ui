@@ -1,4 +1,4 @@
-name: Run tests
+name: Test
 
 on:
   # Runs on pushes and pulls targeting the default branch
