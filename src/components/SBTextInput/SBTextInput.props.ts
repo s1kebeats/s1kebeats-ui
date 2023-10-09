@@ -8,6 +8,6 @@ export default interface Props {
   state?: 'success' | 'error' | null;
   callback?: Function;
   debounce?: boolean;
-  type?: 'text' | 'email';
+  type?: 'text' | 'email' | 'password';
   autocomplete?: string;
 }
