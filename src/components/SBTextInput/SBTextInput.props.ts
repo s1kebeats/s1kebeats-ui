@@ -4,7 +4,6 @@ export default interface Props {
   value: string;
   label?: string;
   icon?: string | null;
-  preset?: string | null;
   disabled?: boolean;
   state?: 'success' | 'error' | null;
   callback?: Function;
