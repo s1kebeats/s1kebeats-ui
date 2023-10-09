@@ -5,7 +5,7 @@ export default interface Props {
   label?: string;
   icon?: string | null;
   disabled?: boolean;
-  state?: 'success' | 'error' | null;
+  state?: 'success' | 'error' | 'default';
   callback?: Function;
   debounce?: boolean;
   type?: 'text' | 'email' | 'password';
